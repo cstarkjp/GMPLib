@@ -1,0 +1,224 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>initialize.py &#8212; GMPLib 1.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pydoctheme.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="parameters.py" href="parameters.html" />
+    <link rel="prev" title="Geomorphysics Python Library (GMPLib)" href="../index.html" /> 
+  </head><body>
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="parameters.html" title="parameters.py"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="../index.html" title="Geomorphysics Python Library (GMPLib)"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">GMPLib 1.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><code class="docutils literal notranslate"><span class="pre">initialize.py</span></code></a></li> 
+      </ul>
+    </div>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-gmplib.initialize">
+<span id="initialize-py"></span><h1><code class="docutils literal notranslate"><span class="pre">initialize.py</span></code><a class="headerlink" href="#module-gmplib.initialize" title="Permalink to this headline">¶</a></h1>
+<hr class="docutils" />
+<p>Configure to run in <a class="reference external" href="https://ipython.readthedocs.io/en/stable/">IPython</a>.</p>
+<hr class="docutils" />
+<p>Sets up <a class="reference external" href="https://ipython.readthedocs.io/en/stable/">IPython</a> environment if we’re running
+in a <a class="reference external" href="https://jupyter-notebook.readthedocs.io/en/stable/">Jupyter notebook</a> or <a class="reference external" href="https://qtconsole.readthedocs.io/en/stable/">Jupyter QtConsole</a>.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>prepares Matplotlib to display inline and (for Macs) at a ‘retina’ resolution – if this
+is not available, a benign error report (currently disabled) is made and progress continues</p></li>
+<li><p>enables automatic reloading of <code class="xref py py-mod docutils literal notranslate"><span class="pre">salt</span></code>
+(in case the code has been modded) when
+a notebook is re-run in-situ</p></li>
+</ul>
+</div></blockquote>
+<hr class="docutils" />
+<p>Requires <a class="reference external" href="https://matplotlib.org/">Matplotlib</a> and <a class="reference external" href="https://ipython.readthedocs.io/en/stable/">IPython</a>.</p>
+<p>Uses IPython extensions <a class="reference external" href="https://ipython.org/ipython-doc/3/config/extensions/autoreload.html">autoreload</a>.</p>
+<p>The  <a class="reference external" href="https://ipython.org/ipython-doc/3/config/extensions/autoreload.html">autoreload</a> extension forces the parent package to be reloaded on
+restart. This makes code modding and subsequent rerunning of a notebook
+smooth and seamless. It is not needed for normal operation, and if unavailable processing
+continues regardless.</p>
+<hr class="docutils" />
+<div class="section" id="code">
+<h2>Code<a class="headerlink" href="#code" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">---------------------------------------------------------------------</span>
+
+<span class="sd">Configure to run in `IPython`_.</span>
+
+<span class="sd">---------------------------------------------------------------------</span>
+
+<span class="sd">Sets up `IPython`_ environment if we&#39;re running</span>
+<span class="sd">in a `Jupyter notebook`_ or `Jupyter QtConsole`_.</span>
+
+<span class="sd"> - prepares Matplotlib to display inline and (for Macs) at a &#39;retina&#39; resolution -- if this</span>
+<span class="sd">   is not available, a benign error report (currently disabled) is made and progress continues</span>
+<span class="sd"> - enables automatic reloading of :py:mod:`salt`</span>
+<span class="sd">   (in case the code has been modded) when</span>
+<span class="sd">   a notebook is re-run in-situ</span>
+
+
+
+<span class="sd">---------------------------------------------------------------------</span>
+
+<span class="sd">Requires `Matplotlib`_ and `IPython`_.</span>
+
+<span class="sd">Uses IPython extensions `autoreload`_.</span>
+
+<span class="sd">The  `autoreload`_ extension forces the parent package to be reloaded on</span>
+<span class="sd">restart. This makes code modding and subsequent rerunning of a notebook</span>
+<span class="sd">smooth and seamless. It is not needed for normal operation, and if unavailable processing</span>
+<span class="sd">continues regardless.</span>
+
+
+<span class="sd">---------------------------------------------------------------------</span>
+
+<span class="sd">.. _Matplotlib: https://matplotlib.org/</span>
+<span class="sd">.. _autoreload: https://ipython.org/ipython-doc/3/config/extensions/autoreload.html</span>
+<span class="sd">.. _IPython: https://ipython.readthedocs.io/en/stable/</span>
+<span class="sd">.. _Jupyter notebook: https://jupyter-notebook.readthedocs.io/en/stable/</span>
+<span class="sd">.. _Jupyter QtConsole: https://qtconsole.readthedocs.io/en/stable/</span>
+
+
+
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="c1"># Jupyter `%magic` commands `%load_ext`, `%aimport`, and `%autoreload`</span>
+<span class="c1">#  are needed here to force the notebook to reload the `streamline` module,</span>
+<span class="c1">#  and its constituent modules, as changes are made to it.</span>
+<span class="c1"># Force module to reload</span>
+
+
+<span class="kn">import</span> <span class="nn">matplotlib</span> <span class="k">as</span> <span class="nn">mpl</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">get_ipython</span><span class="p">()</span><span class="o">.</span><span class="n">magic</span><span class="p">(</span><span class="s2">&quot;config InlineBackend.figure_format = &#39;retina&#39;&quot;</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">NameError</span> <span class="k">as</span> <span class="n">error</span><span class="p">:</span>
+<span class="c1">#     print(&#39;Error trying to invoke get_ipython(), possibly because not running IPython:&#39;,</span>
+<span class="c1">#           error)</span>
+    <span class="k">pass</span>
+<span class="k">except</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Possibly benign error trying to config Matplotlib backend&#39;</span><span class="p">)</span>
+    <span class="c1">#import traceback</span>
+    <span class="c1">#print(traceback.format_exc())</span>
+    <span class="k">pass</span>
+
+<span class="k">try</span><span class="p">:</span>
+<span class="c1">#     get_ipython().magic(&#39;matplotlib notebook&#39;)</span>
+    <span class="n">get_ipython</span><span class="p">()</span><span class="o">.</span><span class="n">magic</span><span class="p">(</span><span class="s1">&#39;matplotlib inline&#39;</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">NameError</span> <span class="k">as</span> <span class="n">error</span><span class="p">:</span>
+<span class="c1">#     print(&#39;Error trying to invoke get_ipython(), possibly because not running IPython:&#39;,</span>
+<span class="c1">#           error)</span>
+    <span class="k">pass</span>
+<span class="k">except</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Possibly benign error trying to config Matplotlib backend&#39;</span><span class="p">)</span>
+    <span class="c1">#import traceback</span>
+    <span class="c1">#print(traceback.format_exc())</span>
+    <span class="k">pass</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">get_ipython</span><span class="p">()</span><span class="o">.</span><span class="n">magic</span><span class="p">(</span><span class="s1">&#39;load_ext autoreload&#39;</span><span class="p">)</span>
+    <span class="n">get_ipython</span><span class="p">()</span><span class="o">.</span><span class="n">magic</span><span class="p">(</span><span class="s1">&#39;autoreload 2&#39;</span><span class="p">)</span>
+    <span class="n">get_ipython</span><span class="p">()</span><span class="o">.</span><span class="n">magic</span><span class="p">(</span><span class="s1">&#39;aimport &#39;</span><span class="o">+</span><span class="n">package_name</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">NameError</span> <span class="k">as</span> <span class="n">error</span><span class="p">:</span>
+<span class="c1">#     print(&#39;Error trying to invoke get_ipython(), possibly because not running IPython:&#39;,</span>
+<span class="c1">#           error)</span>
+    <span class="k">pass</span>
+<span class="k">except</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Possibly benign error trying to config autoreload&#39;</span><span class="p">)</span>
+    <span class="c1">#import traceback</span>
+    <span class="c1">#print(traceback.format_exc())</span>
+    <span class="k">pass</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel"></h3>
+      <a class="biglink" href="../index.html">
+          <img src="../_static/gmplib_icon_noalpha_192px.png" />
+      </a>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel"  placeholder="Search..."/>
+      <!-- <input type="submit" value="Search" /> -->
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+<h3><a href="../index.html">Contents</a></h3>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Package initialization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="parameters.html">Parameter parsing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plot_utils.html">Figure plotting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="save.html">Figure export</a></li>
+<li class="toctree-l1"><a class="reference internal" href="utils.html">Utilities</a></li>
+</ul>
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="parameters.html" title="parameters.py"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="../index.html" title="Geomorphysics Python Library (GMPLib)"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">GMPLib 1.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><code class="docutils literal notranslate"><span class="pre">initialize.py</span></code></a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2021, CPS.
+    <!--
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.0.3. -->
+    </div>
+  </body>
+</html>
