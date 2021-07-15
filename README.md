@@ -1,5 +1,7 @@
 # Geomorphysics Python Library (GMPLib)
 
-[![Zenodo Badge](https://zenodo.org/badge/TBD/cstarkjp/gmplib.svg)](https://zenodo.org/badge/latestdoi/TBD/cstarkjp/gmplib)
+
+[![DOI](https://zenodo.org/badge/386201544.svg)](https://zenodo.org/badge/latestdoi/386201544)
+
 
 This library provides some basic Python utilities for tasks such as JSON parameter file handling and graph plotting.
