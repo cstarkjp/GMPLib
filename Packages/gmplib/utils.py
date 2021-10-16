@@ -107,10 +107,13 @@ def e2d(eqn_or_eqnlist, do_flip=False, do_negate=False):
 def dict2mat(dct):
     return Matrix([item for item in dct.items()])
 
-def omitdict(dct, omitlist):
+def omitdict(dct, omitlist, verbose=False):
     rtn_dct = dct.copy()
     for k in list(omitlist):
-        del rtn_dct[k]
+        try:
+            del rtn_dct[k]
+        except KeyError:
+            if verbose: print(f'{k} not found: skipping')
     return rtn_dct
 
 def xdict(dct, xlist):
