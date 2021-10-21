@@ -151,7 +151,7 @@ def convert(eqn, units, n=0, do_raw=False):
     """
     tmp = Quantity('unknown_units')
     SI.set_quantity_dimension(tmp, SI.get_quantity_dimension(eqn.lhs))
-    cf = convert_to(tmp, units)
+    cf = convert_to(tmp, units).n()
 
     # return Eq(eqn.lhs, np.round(float(N(eqn.rhs)), n)*N(cf))
     return Eq(eqn.lhs, np.round(float(N(cf.args[0]*eqn.rhs)), n)*Mul(*cf.args[1:])) if do_raw is not True \
