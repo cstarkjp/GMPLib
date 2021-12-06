@@ -28,16 +28,16 @@ from matplotlib.legend_handler import HandlerPatch
 from matplotlib import cm
 from mpl_toolkits.axes_grid1 import make_axes_locatable
 from mpl_toolkits.axes_grid1.inset_locator import inset_axes
+
 from itertools import cycle
-
 import numpy as np
-
 import warnings
 warnings.filterwarnings("ignore")
 
 __all__ = ['GraphingBase']
 
-
+# from dataclasses import dataclass, field
+# @dataclass(repr=True, eq=False, order=False, unsafe_hash=False, frozen=False)
 class GraphingBase():
     """
     Base visualization class.
@@ -58,7 +58,30 @@ class GraphingBase():
         marker_cycle  (int) :  cycle of markers
         linestyle_list  (list) :  list of line styles (solid, dashdot, dashed, custom dashed)
     """
+    # dpi: int = field(repr=False, default=100)
+    # font_size: int = field(repr=False, default=11)
+    # fdict: dict = field(repr=True, default_factory=dict)
+    # colors: list = field(repr=False, default_factory=list) #=lambda: (plt.rcParams['axes.prop_cycle']).by_key()['color'])
+    # markers: list = field(repr=False, default_factory=list) #=lambda: ['o', 's', 'v', 'p', '*', 'D', 'X', '^','h','P'])
+    # linestyle_list: list = field(repr=False, default_factory=list) #=lambda: [ 'solid', 'dashdot', 'dashed', (0, (3, 1, 1, 1))])
+    #
+    # def __post_init__(self):
+    #     self.colors = (plt.rcParams['axes.prop_cycle']).by_key()['color']
+    #     self.n_colors = len(list(self.colors))
+    #     self.color_cycle = cycle(self.colors)
+    #     self.markers = ['o', 's', 'v', 'p', '*', 'D', 'X', '^','h','P']
+    #     self.n_markers = len(self.markers)
+    #     self.marker_cycle = cycle(self.markers)
+    #     self.linestyle_list = [ 'solid', 'dashdot', 'dashed', (0, (3, 1, 1, 1))]
+
     def __init__(self, dpi=100, font_size=11):
+        """
+        Constructor method.
+
+        Args:
+            dpi (int): resolution for rasterized images
+            font_size (int): general font size
+        """
         self.dpi = dpi
         self.font_size = font_size
         self.fdict = dict()
@@ -71,10 +94,10 @@ class GraphingBase():
         self.marker_cycle = cycle(self.markers)
         self.linestyle_list = [ 'solid', 'dashdot', 'dashed', (0, (3, 1, 1, 1))]
 
-    color = lambda self,idx: self.colors[idx%self.n_colors]
+    colors = lambda self,idx: self.colors[idx%self.n_colors]
     marker = lambda self,idx: self.markers[idx%self.n_markers]
 
-    def create_figure(self, fig_name, fig_size=None, dpi=None):
+    def create_figure(self, fig_name, fig_size=None, dpi=None) -> plt.figure:
         """
         Initialize a :mod:`MatPlotLib/Pyplot <matplotlib.pyplot>` figure,
         set its size and dpi, set the font size, choose the Arial font family if possible,
@@ -99,7 +122,7 @@ class GraphingBase():
         return fig
 
     @staticmethod
-    def get_aspect(axes):
+    def get_aspect(axes) -> float:
         """
         Get aspect ratio of graph.
 
@@ -124,14 +147,14 @@ class GraphingBase():
         return disp_ratio/data_ratio
 
     @staticmethod
-    def naturalize(fig):
+    def naturalize(fig) -> None:
         axes = fig.gca()
         # x_lim, y_lim = axes.get_xlim(), axes.get_ylim()
         # axes.set_aspect((y_lim[1]-y_lim[0])/(x_lim[1]-x_lim[0]))
         axes.set_aspect(1/get_aspect(axes))
 
     @staticmethod
-    def stretch(fig, xs=None, ys=None):
+    def stretch(fig, xs=None, ys=None) -> None:
         axes = fig.gca()
         if xs is not None:
             x_lim = axes.get_xlim()
@@ -143,7 +166,7 @@ class GraphingBase():
             axes.set_ylim(y_lim[0]-y_range*ys[0],y_lim[1]+y_range*ys[1])
 
     @staticmethod
-    def covector_fishbone_vertical(x,y, px,py, ref, fishbone_len, n_ticks=5, sf=1, color='DarkBlue'):
+    def covector_fishbone_vertical(x,y, px,py, ref, fishbone_len, n_ticks=5, sf=1, color='DarkBlue') -> None:
         phl, plw, phw  = 0.0, 0.5, 0
         plt.arrow(x,y, 0, -fishbone_len,
                     color=color, ec=color,
@@ -162,7 +185,7 @@ class GraphingBase():
             plt.plot([x-npx/2,x+npx/2],[y-dy+npy/2,y-dy-npy/2], c=color)
 
     @staticmethod
-    def covector_fishbone(x,y, px,py, ref, fishbone_len, n_ticks=5, sf=1, color='DarkBlue'):
+    def covector_fishbone(x,y, px,py, ref, fishbone_len, n_ticks=5, sf=1, color='DarkBlue') -> None:
         phl, plw, phw = 0.0, 0.5, 0
         p_norm = norm((px,py))
         sf_ = sf*fishbone_len/p_norm

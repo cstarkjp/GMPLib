@@ -44,7 +44,8 @@ def is_jsonable(item):
     except Exception:
         return False
 
-def export_results(results_to_export, results_dir, suffix='', do_parse=True, max_nparray_size=None, do_dolfin_adjoint=False):
+def export_results(results_to_export, results_dir, suffix='', do_parse=True,
+                   max_nparray_size=None, do_dolfin_adjoint=False):
     """
     """
     pdebug=print
