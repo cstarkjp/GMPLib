@@ -5,7 +5,8 @@ Geomorphysics Python Library (GMPLib)
    :target: https://zenodo.org/badge/latestdoi/386201544
 
 
-This library provides some basic Python utilities for tasks such as JSON parameter file handling and graph plotting,
+This library provides some basic Python utilities for tasks such as
+JSON parameter file handling and graph plotting,
 principally to support the `GME software package`_.
 The code can be accessed directly at the `GMPLib repository`_.
 
@@ -29,5 +30,5 @@ Indices and tables
 * :ref:`modindex`
 * :ref:`search`
 
-.. _GMPLib repository: https://github.com/cstarkjp/GMPLib
-.. _GME software package: https://github.com/cstarkjp/GME
+.. _GMPLib repository: https://github.com/geomorphysics/GMPLib
+.. _GME software package: https://github.com/geomorphysics/GME
