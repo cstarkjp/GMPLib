@@ -40,49 +40,54 @@ continues regardless.
 
 """
 
+# import logging
+import matplotlib as mpl
+
 # Jupyter `%magic` commands `%load_ext`, `%aimport`, and `%autoreload`
 #  are needed here to force the notebook to reload the `streamline` module,
 #  and its constituent modules, as changes are made to it.
 # Force module to reload
 
+from IPython import get_ipython
 
-import matplotlib as mpl
+def check_is_ipython():
+    """
+    Check if we are running an IPython kernel from Jupyter etc
+    """
+    try:
+        if 'IPKernelApp' not in get_ipython().config:  # pragma: no cover
+            return False
+    except ImportError:
+        return False
+    except AttributeError:
+        return False
+    return True
 
-try:
-    get_ipython().magic("config InlineBackend.figure_format = 'retina'")
-except NameError as error:
-#     print('Error trying to invoke get_ipython(), possibly because not running IPython:',
-#           error)
-    pass
-except:
-    print('Possibly benign error trying to config Matplotlib backend')
-    #import traceback
-    #print(traceback.format_exc())
-    pass
+is_python = check_is_ipython()
 
-try:
-#     get_ipython().magic('matplotlib notebook')
-    get_ipython().magic('matplotlib inline')
-except NameError as error:
-#     print('Error trying to invoke get_ipython(), possibly because not running IPython:',
-#           error)
-    pass
-except:
-    print('Possibly benign error trying to config Matplotlib backend')
-    #import traceback
-    #print(traceback.format_exc())
-    pass
+if is_python:
+    try:
+        get_ipython().magic("config InlineBackend.figure_format = 'retina'")
+    except NameError as error:
+        pass
+    except:
+        print('Possibly benign error trying to config Matplotlib backend')
 
-try:
-    get_ipython().magic('load_ext autoreload')
-    get_ipython().magic('autoreload 2')
-    get_ipython().magic('aimport '+package_name)
-except NameError as error:
-#     print('Error trying to invoke get_ipython(), possibly because not running IPython:',
-#           error)
-    pass
-except:
-    print('Possibly benign error trying to config autoreload')
-    #import traceback
-    #print(traceback.format_exc())
-    pass
+    try:
+        get_ipython().magic('matplotlib inline')
+    except NameError as error:
+        pass
+    except:
+        print('Possibly benign error trying to config Matplotlib backend')
+
+    try:
+        get_ipython().magic('load_ext autoreload')
+        get_ipython().magic('autoreload 2')
+        # get_ipython().magic('aimport '+package_name)
+    except NameError as error:
+        print(
+            'Error trying to invoke get_ipython(), possibly because not running IPython:',
+             error
+        )
+    except:
+        print('Possibly benign error trying to config autoreload')

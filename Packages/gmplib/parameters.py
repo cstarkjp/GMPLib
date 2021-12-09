@@ -1,13 +1,14 @@
 """
 ---------------------------------------------------------------------
 
-Import job parameters from JSON files and build a settings dictionary.
+Import job parameters from JSON files and build a settings dictionary
+
+TODO: This would be much better done using dataclasses
 
 ---------------------------------------------------------------------
 
 Requires Python packages/modules:
-  -  :mod:`os`
-  -  :mod:`json`
+  -  :mod:`os`, :mod:`json`
   -  :mod:`sympy`
 
 ---------------------------------------------------------------------
@@ -16,15 +17,23 @@ Requires Python packages/modules:
 
 """
 
+import warnings
+import logging
+
+from typing import Dict, Tuple #List, Dict, Any, Callable, Optional
+
 from os.path import realpath, join
 from json import load
-from sympy.parsing.sympy_parser import parse_expr
 from copy import copy
+
+from sympy.parsing.sympy_parser import parse_expr
+
+warnings.filterwarnings("ignore")
 
 __all__ = ['import_parameters', 'read_json_file', 'Parameters', 'ParametersNestedGroup']
 
 
-def import_parameters(path, filenames=['defaults']):
+def import_parameters(path, filenames=('defaults')) -> Tuple[Dict, str]:
     """
     Load JSON parameters files (defaults and job) and parse them in turn to
     generate a job parameters dictionary.
@@ -45,7 +54,8 @@ def read_json_file(filepaths):
     """
     Load and parse a list of JSON parameters files into a parameters dict.
 
-    Step through a list of JSON parameters files (usually "defaults.json" and the job JSON file).
+    Step through a list of JSON parameters files
+    (usually "defaults.json" and the job JSON file).
     Parse each into a parameters dict, ensuring that subsequent JSON parameters
     override any set by previous JSON files.
 
@@ -61,7 +71,7 @@ def read_json_file(filepaths):
     for filepath in filepaths:
         parameters_file_name = filepath+'.json'
         # Read in the parameters file
-        with open(parameters_file_name) as json_file:
+        with open(parameters_file_name, encoding='latin-1') as json_file:
             parameters = load(json_file)
         # Step through all the dict items in turn
         # We do this so that we can replace a (sub-)dict item
@@ -74,10 +84,12 @@ def read_json_file(filepaths):
                 for subitem in item[1].items():
                     # If the destination sub-dict doesn't exist yet, create it
                     # Either way, add the item to this sub-dict
-                    try:
+                    # logging.debug(item[0])
+                    if item[0] in parameters_dict:
+                        # logging.debug(parameters_dict[item[0]])
                         # The sub-dict exists: update this key and value
                         parameters_dict[item[0]].update({subitem[0] : subitem[1]})
-                    except:
+                    else:
                         # The sub-dict does not exist yet, so set this key and value
                         #   as its first item
                         parameters_dict[item[0]] = {subitem[0] : subitem[1]}
@@ -88,11 +100,12 @@ def read_json_file(filepaths):
                 #   of sub-dicts only, one per workflow class instance
     return parameters_dict
 
+
 class Parameters():
     """
     Parameters (job parameters) container
     """
-    def __init__(self, imported_parameters, evaluations={}, sequence=()):
+    def __init__(self, imported_parameters, evaluations=None, sequence=()):
         """
         Initialize class instance.
         Convert top-level items in the parameters dictionary, whose keys are group names
@@ -103,22 +116,27 @@ class Parameters():
             imported_parameters (dict): job parameters dictionary
 
         Attributes:
-            various (class attribute): matching top-level items in the parameters dictionary
+            various (class attribute): matching top-level items in the
+            parameters dictionary
         """
+        if evaluations is None:
+            evaluations = {}
         imported_parameters_ = copy(imported_parameters)
         for group_name in sequence:
             group_dict = imported_parameters[group_name]
-            setattr(self, group_name, ParametersNestedGroup(self, group_name, group_dict, evaluations))
+            setattr(self, group_name, ParametersNestedGroup(group_name, group_dict,
+                                                            evaluations))
             imported_parameters_.pop(group_name)
         for group_name, group_dict in imported_parameters_.items():
             group_dict = imported_parameters_[group_name]
-            setattr(self, group_name, ParametersNestedGroup(self, group_name, group_dict, evaluations))
+            setattr(self, group_name, ParametersNestedGroup(group_name, group_dict,
+                                                            evaluations))
 
 class ParametersNestedGroup():
     """
     ParametersNestedGroup (job parameters) sub-container
     """
-    def __init__(self, root, group_name, parameters_dict, evaluations={}):
+    def __init__(self, group_name, parameters_dict, evaluations=None):
         """
         Initialize class instance.
         Convert items in a parameters sub-dictionary into class attributes,
@@ -130,22 +148,20 @@ class ParametersNestedGroup():
             imported_parameters (dict): job parameters dictionary
 
         Attributes:
-            various (class attribute): matching second-level items in the parameters dictionary
+            various (class attribute): matching second-level items in the
+            parameters dictionary
         """
-        # print(root, group_name, parameters_dict, evaluations)
+        if evaluations is None:
+            evaluations = {}
+        #logging.debug(group_name, parameters_dict, evaluations)
         for s_key,s_value in parameters_dict.items():
             setattr( self,s_key, parse_expr(s_value.replace('sy.',''))
-                                if type(s_value)==str and 'sy.' in s_value else
+                                if isinstance(s_value,str) and 'sy.' in s_value else
                                 (None if s_value=='None' else (s_value)) )
         # For each item containing a "p." reference, evaluate it
         #  - this allows us to set parameters that are dependent on other parameters
         p = self
-        r = root
-        # try:
-        #     print(eval('root.physical.channel_radius*3'))
-        # except:
-        #     pass
         if group_name in evaluations.keys():
             for attr in evaluations[group_name]:
-                # print(group_name,attr, eval(str(getattr(self, attr))))
+                logging.debug(group_name,attr, eval(str(getattr(self, attr))))
                 setattr(p, attr, eval(str(getattr(self, attr))))

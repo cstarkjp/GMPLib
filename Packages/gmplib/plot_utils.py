@@ -23,7 +23,8 @@ import matplotlib as mpl, matplotlib.pyplot as plt
 import matplotlib.ticker as ticker
 from matplotlib.ticker import FormatStrFormatter
 import matplotlib.patches as patches
-from matplotlib.patches import Patch, FancyArrow, FancyArrowPatch, Arrow, Rectangle, Circle, RegularPolygon
+from matplotlib.patches import Patch, FancyArrow, FancyArrowPatch, Arrow, \
+                                Rectangle, Circle, RegularPolygon
 from matplotlib.legend_handler import HandlerPatch
 from matplotlib import cm
 from mpl_toolkits.axes_grid1 import make_axes_locatable
