@@ -20,6 +20,8 @@ from sympy import latex
 from json import dump
 import numpy as np
 
+__all__ = ['create_dir', 'create_directories',
+           'export_results', 'export_plots','export_plot']
 
 def create_dir(dir):
     try:
@@ -52,7 +54,6 @@ def create_directories(results_path=['..','Results'], results_dir='Demo'):
     results_dir_ = results_path_+[results_dir]
     return create_dir(join(*results_dir_))
 
-
 def export_results(results_dir, filename, raw_dict, suffix=''):
     """
     Export results to JSON file
@@ -69,8 +70,7 @@ def export_results(results_dir, filename, raw_dict, suffix=''):
         print(join(*results_path_))
         dump(serializable_dict, fp, separators=(', \n', ': '))
 
-
-def export_plots(fig_dict, results_dir, file_types='pdf', suffix=''):
+def export_plots(fig_dict, results_dir, file_types='pdf', suffix='', dpi=100):
     """
     Export plots to PDFs or other format files
 
@@ -86,10 +86,10 @@ def export_plots(fig_dict, results_dir, file_types='pdf', suffix=''):
         file_types = [file_types]
     for file_type in file_types:
         for fig_dict_item in list(fig_dict.items()):
-            export_plot(*fig_dict_item, results_path, file_type=file_type, suffix=suffix)
+            export_plot(*fig_dict_item, results_path, file_type=file_type, suffix=suffix,
+                        dpi=dpi)
 
-
-def export_plot(fig_name, fig, results_dir, file_type='pdf', suffix=''):
+def export_plot(fig_name, fig, results_dir, file_type='pdf', suffix='', dpi=None):
     """
     Export plot to PDF or other format file
 
@@ -102,7 +102,8 @@ def export_plot(fig_name, fig, results_dir, file_type='pdf', suffix=''):
     """
     fig_name += suffix+'.'+file_type.lower()
     try:
-        fig.savefig(join(results_dir,fig_name), bbox_inches = 'tight', pad_inches = 0.05)
+        fig.savefig(join(results_dir,fig_name), bbox_inches='tight', pad_inches=0.05,
+                    dpi=dpi)
         print('Exported "'+fig_name+'"')
     except OSError:
         print('Failed to export figure "'+fig_name+'"')

@@ -116,6 +116,7 @@ class GraphingBase():
         self.fdict.update({fig_name:fig})
         fig.set_size_inches(*fig_size if fig_size is not None else [8,8])
         fig.set_dpi(dpi if dpi is not None else self.dpi)
+        print('dpi=', dpi)
         try:
             mpl.rc('font', size=self.font_size, family='Arial')
         except:
