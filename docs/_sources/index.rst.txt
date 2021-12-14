@@ -15,11 +15,12 @@ Python package
 .. toctree::
   :maxdepth: 1
 
-  Package initialization <../modules/initialize>
-  Parameter parsing <../modules/parameters>
-  Figure plotting <../modules/plot_utils>
-  Figure export <../modules/save>
+  Initialization <../modules/initialize>
+  Parameters <../modules/parameters>
+  Plotting <../modules/plot_utils>
+  Export <../modules/save>
   Utilities <../modules/utils>
+  Image prep <../modules/image>
 
 
 

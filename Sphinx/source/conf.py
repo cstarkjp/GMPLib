@@ -122,7 +122,9 @@ intersphinx_mapping = {
    'scipy': ('https://docs.scipy.org/doc/scipy/reference', None),
    'sympy': ('https://docs.sympy.org/dev/', None),
    'PIL': ('https://pillow.readthedocs.io/en/latest/', None),
-   'IPython': ('http://ipython.org/ipython-doc/stable', None)
+   'IPython': ('http://ipython.org/ipython-doc/stable', None),
+   'Wand': ('https://docs.wand-py.org/en/0.6.7/', None),
+   'PyPDF2': ('https://pythonhosted.org/PyPDF2/', None)
    }
 
 

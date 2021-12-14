@@ -14,6 +14,7 @@
     <script src="../_static/doctools.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="image.py" href="image.html" />
     <link rel="prev" title="save.py" href="save.html" /> 
   </head><body>
 
@@ -26,6 +27,9 @@
         <li class="right" >
           <a href="../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
+        <li class="right" >
+          <a href="image.html" title="image.py"
+             accesskey="N">next</a> |</li>
         <li class="right" >
           <a href="save.html" title="save.py"
              accesskey="P">previous</a> |</li>
@@ -43,40 +47,107 @@
   <div class="section" id="module-gmplib.utils">
 <span id="utils-py"></span><h1><code class="docutils literal notranslate"><span class="pre">utils.py</span></code><a class="headerlink" href="#module-gmplib.utils" title="Permalink to this headline">¶</a></h1>
 <hr class="docutils" />
-<p>Utility functions to help printing and image display.</p>
+<p>Utility functions.</p>
 <hr class="docutils" />
 <dl class="simple">
 <dt>Requires Python packages/modules:</dt><dd><ul class="simple">
+<li><p><a class="reference external" href="https://numpy.org/doc/stable/reference/index.html#module-numpy" title="(in NumPy v1.21)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">numpy</span></code></a></p></li>
 <li><p><a class="reference external" href="http://ipython.org/ipython-doc/stable/api/generated/IPython.display.html#module-IPython.display" title="(in IPython v3.2.1)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">IPython.display</span></code></a></p></li>
-<li><p><a class="reference external" href="https://docs.python.org/3/library/os.html#module-os" title="(in Python v3.10)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">os</span></code></a></p></li>
 <li><p><a class="reference external" href="https://pillow.readthedocs.io/en/latest/PIL.html#module-PIL" title="(in Pillow (PIL Fork) v9.0.0.dev0)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">PIL</span></code></a></p></li>
-<li><p><a class="reference external" href="https://docs.python.org/3/library/functools.html#module-functools" title="(in Python v3.10)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">functools</span></code></a></p></li>
+<li><p><a class="reference external" href="https://pythonhosted.org/PyPDF2/PdfFileWriter.html#module-PyPDF2" title="(in PyPDF2 v1.26)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">PyPDF2</span></code></a></p></li>
+<li><p><a class="reference external" href="https://docs.sympy.org/dev/index.html#module-sympy" title="(in SymPy v1.10.dev)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sympy</span></code></a></p></li>
 </ul>
 </dd>
 </dl>
 <hr class="docutils" />
-<dl class="py function">
-<dt class="sig sig-object py" id="gmplib.utils.export_results">
-<span class="sig-prename descclassname"><span class="pre">gmplib.utils.</span></span><span class="sig-name descname"><span class="pre">export_results</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">results_to_export</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">results_dir</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">suffix</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">do_parse</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_nparray_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">do_dolfin_adjoint</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gmplib.utils.export_results" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dl class="py class">
+<dt class="sig sig-object py" id="gmplib.utils.Results">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">gmplib.utils.</span></span><span class="sig-name descname"><span class="pre">Results</span></span><a class="headerlink" href="#gmplib.utils.Results" title="Permalink to this definition">¶</a></dt>
+<dd><p>TBD</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="gmplib.utils.Results.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.10)"><span class="pre">None</span></a><a class="headerlink" href="#gmplib.utils.Results.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>TBD</p>
+</dd></dl>
+
+</dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="gmplib.utils.fetch_images">
-<span class="sig-prename descclassname"><span class="pre">gmplib.utils.</span></span><span class="sig-name descname"><span class="pre">fetch_images</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">images</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">image_sources</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">image_paths</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gmplib.utils.fetch_images" title="Permalink to this definition">¶</a></dt>
-<dd><p>Imports images from a list of source directories.
-If <cite>images</cite> and <cite>image_sources</cite> are <cite>None</cite> new dictionaries are created;
-otherwise, pre-existing such dictionaries are expected.</p>
-<p>This tool is used by the discussion notebooks to import snapshot images
-for inline display.</p>
+<dt class="sig sig-object py" id="gmplib.utils.convert">
+<span class="sig-prename descclassname"><span class="pre">gmplib.utils.</span></span><span class="sig-name descname"><span class="pre">convert</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">eqn</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.sympy.org/dev/modules/core.html#sympy.core.relational.Equality" title="(in SymPy v1.10.dev)"><span class="pre">sympy.core.relational.Equality</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">units</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.sympy.org/dev/modules/physics/units/quantities.html#sympy.physics.units.quantities.Quantity" title="(in SymPy v1.10.dev)"><span class="pre">sympy.physics.units.quantities.Quantity</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><span class="pre">int</span></a></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">do_raw</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><span class="pre">bool</span></a></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference external" href="https://docs.sympy.org/dev/modules/core.html#sympy.core.relational.Equality" title="(in SymPy v1.10.dev)"><span class="pre">sympy.core.relational.Equality</span></a><a class="headerlink" href="#gmplib.utils.convert" title="Permalink to this definition">¶</a></dt>
+<dd><p>XXX</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>images</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.10)"><em>dict</em></a>) – pre-existing dictionary of images</p></li>
-<li><p><strong>image_sources</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.10)"><em>dict</em></a>) – pre-existing dictionary of image source paths</p></li>
-<li><p><strong>image_paths</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.10)"><em>list</em></a>) – source directories from which to fetch new images</p></li>
+<li><p><strong>eqn</strong> (<a class="reference external" href="https://docs.sympy.org/dev/modules/core.html#sympy.core.relational.Equality" title="(in SymPy v1.10.dev)"><code class="xref py py-class docutils literal notranslate"><span class="pre">sympy.Eq</span></code></a>) – Sympy equation object</p></li>
+<li><p><strong>n</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a>) – number of decimal places</p></li>
+<li><p><strong>sf</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><em>float</em></a>) – scale factor</p></li>
 </ul>
 </dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Sympy equation object</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>eqn (<a class="reference external" href="https://docs.sympy.org/dev/modules/core.html#sympy.core.relational.Equality" title="(in SymPy v1.10.dev)"><code class="xref py py-class docutils literal notranslate"><span class="pre">sympy.Eq</span></code></a>)</p>
+</dd>
 </dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="gmplib.utils.dict2mat">
+<span class="sig-prename descclassname"><span class="pre">gmplib.utils.</span></span><span class="sig-name descname"><span class="pre">dict2mat</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dict_</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Dict</span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference external" href="https://docs.sympy.org/dev/modules/matrices/dense.html#sympy.matrices.dense.MutableDenseMatrix" title="(in SymPy v1.10.dev)"><span class="pre">sympy.matrices.dense.MutableDenseMatrix</span></a><a class="headerlink" href="#gmplib.utils.dict2mat" title="Permalink to this definition">¶</a></dt>
+<dd><p>TBD</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="gmplib.utils.e2d">
+<span class="sig-prename descclassname"><span class="pre">gmplib.utils.</span></span><span class="sig-name descname"><span class="pre">e2d</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">eqn_or_eqns</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">,</span> </span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">do_flip</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><span class="pre">bool</span></a></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">do_negate</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><span class="pre">bool</span></a></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#gmplib.utils.e2d" title="Permalink to this definition">¶</a></dt>
+<dd><p>TBD</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="gmplib.utils.export_results">
+<span class="sig-prename descclassname"><span class="pre">gmplib.utils.</span></span><span class="sig-name descname"><span class="pre">export_results</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">results_to_export</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">results_dir</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/os.html#os.PathLike" title="(in Python v3.10)"><span class="pre">os.PathLike</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">suffix</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">do_parse</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><span class="pre">bool</span></a></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_nparray_size</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><span class="pre">int</span></a><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">do_dolfin_adjoint</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><span class="pre">bool</span></a></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.10)"><span class="pre">None</span></a><a class="headerlink" href="#gmplib.utils.export_results" title="Permalink to this definition">¶</a></dt>
+<dd><p>TBD</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="gmplib.utils.get_pkg_path">
+<span class="sig-prename descclassname"><span class="pre">gmplib.utils.</span></span><span class="sig-name descname"><span class="pre">get_pkg_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pkg</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Any</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dirname</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a><a class="headerlink" href="#gmplib.utils.get_pkg_path" title="Permalink to this definition">¶</a></dt>
+<dd><p>TBD</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="gmplib.utils.gmround">
+<span class="sig-prename descclassname"><span class="pre">gmplib.utils.</span></span><span class="sig-name descname"><span class="pre">gmround</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">eqn</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.sympy.org/dev/modules/core.html#sympy.core.relational.Equality" title="(in SymPy v1.10.dev)"><span class="pre">sympy.core.relational.Equality</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><span class="pre">int</span></a></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sf</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><span class="pre">float</span></a></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference external" href="https://docs.sympy.org/dev/modules/core.html#sympy.core.relational.Equality" title="(in SymPy v1.10.dev)"><span class="pre">sympy.core.relational.Equality</span></a><a class="headerlink" href="#gmplib.utils.gmround" title="Permalink to this definition">¶</a></dt>
+<dd><p>Round numerical RHS of Sympy equation, converting to integer if zero decimal places requested.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>eqn</strong> (<a class="reference external" href="https://docs.sympy.org/dev/modules/core.html#sympy.core.relational.Equality" title="(in SymPy v1.10.dev)"><code class="xref py py-class docutils literal notranslate"><span class="pre">sympy.Eq</span></code></a>) – Sympy equation object</p></li>
+<li><p><strong>n</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a>) – number of decimal places</p></li>
+<li><p><strong>sf</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><em>float</em></a>) – scale factor</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Sympy equation object</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>eqn (<a class="reference external" href="https://docs.sympy.org/dev/modules/core.html#sympy.core.relational.Equality" title="(in SymPy v1.10.dev)"><code class="xref py py-class docutils literal notranslate"><span class="pre">sympy.Eq</span></code></a>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="gmplib.utils.is_jsonable">
+<span class="sig-prename descclassname"><span class="pre">gmplib.utils.</span></span><span class="sig-name descname"><span class="pre">is_jsonable</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">item</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><span class="pre">bool</span></a><a class="headerlink" href="#gmplib.utils.is_jsonable" title="Permalink to this definition">¶</a></dt>
+<dd><p>TBD</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="gmplib.utils.omitdict">
+<span class="sig-prename descclassname"><span class="pre">gmplib.utils.</span></span><span class="sig-name descname"><span class="pre">omitdict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dict_</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">omitlist</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#gmplib.utils.omitdict" title="Permalink to this definition">¶</a></dt>
+<dd><p>TBD</p>
 </dd></dl>
 
 <div class="section" id="code">
@@ -84,69 +155,102 @@ for inline display.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">---------------------------------------------------------------------</span>
 
-<span class="sd">Utility functions to help printing and image display.</span>
+<span class="sd">Utility functions.</span>
 
 <span class="sd">---------------------------------------------------------------------</span>
 
 <span class="sd">Requires Python packages/modules:</span>
+<span class="sd">  -  :mod:`numpy`</span>
 <span class="sd">  -  :mod:`IPython.display`</span>
-<span class="sd">  -  :mod:`os`</span>
 <span class="sd">  -  :mod:`PIL`</span>
-<span class="sd">  -  :mod:`functools`</span>
+<span class="sd">  -  :mod:`PyPDF2`</span>
+<span class="sd">  -  :mod:`sympy`</span>
 
 <span class="sd">---------------------------------------------------------------------</span>
 
 <span class="sd">&quot;&quot;&quot;</span>
+<span class="c1"># Allow failed import of dolfin-adjoint if not using FEniCS</span>
+<span class="c1"># pylint: disable=import-error, import-outside-toplevel</span>
+<span class="kn">import</span> <span class="nn">warnings</span>
+<span class="kn">import</span> <span class="nn">logging</span>
 
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">copy</span> <span class="kn">import</span> <span class="n">deepcopy</span>
-<span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">reduce</span>
-<span class="kn">from</span> <span class="nn">sys</span> <span class="kn">import</span> <span class="n">stdout</span>
-<span class="kn">from</span> <span class="nn">os</span> <span class="kn">import</span> <span class="n">listdir</span>
+<span class="c1"># Library modules</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="c1"># from os import listdir</span>
 <span class="kn">from</span> <span class="nn">os.path</span> <span class="kn">import</span> <span class="n">realpath</span><span class="p">,</span> <span class="n">join</span>
 <span class="kn">from</span> <span class="nn">json</span> <span class="kn">import</span> <span class="n">dumps</span>
-<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">Image</span><span class="p">,</span><span class="n">display</span><span class="p">,</span><span class="n">Math</span><span class="p">,</span><span class="n">Latex</span><span class="p">,</span><span class="n">display_pretty</span>
-<span class="kn">import</span> <span class="nn">PIL</span>
+<span class="c1"># from functools import reduce</span>
+<span class="kn">from</span> <span class="nn">copy</span> <span class="kn">import</span> <span class="n">deepcopy</span>
+
+<span class="c1"># Typing</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">,</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Union</span><span class="p">,</span> <span class="n">List</span> <span class="c1">#, Optional</span>
+
+<span class="c1"># Abstract classes &amp; methods</span>
+<span class="kn">from</span> <span class="nn">abc</span> <span class="kn">import</span> <span class="n">ABC</span> <span class="c1">#, abstractmethod</span>
+
+<span class="c1"># Numpy</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="c1"># SymPy</span>
 <span class="kn">from</span> <span class="nn">sympy</span> <span class="kn">import</span> <span class="n">Eq</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="n">Mul</span><span class="p">,</span> <span class="n">Matrix</span>
 <span class="kn">from</span> <span class="nn">sympy.physics.units</span> <span class="kn">import</span> <span class="n">Quantity</span><span class="p">,</span> <span class="n">convert_to</span>
 <span class="kn">from</span> <span class="nn">sympy.physics.units.systems</span> <span class="kn">import</span> <span class="n">SI</span>
 
-<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;numify&#39;</span><span class="p">,</span> <span class="s1">&#39;get_pkg_path&#39;</span><span class="p">,</span> <span class="s1">&#39;is_jsonable&#39;</span><span class="p">,</span> <span class="s1">&#39;export_results&#39;</span><span class="p">,</span> <span class="s1">&#39;Results&#39;</span><span class="p">,</span>
-           <span class="s1">&#39;e2d&#39;</span><span class="p">,</span> <span class="s1">&#39;fetch_images&#39;</span><span class="p">,</span> <span class="s1">&#39;resize&#39;</span><span class="p">]</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
+
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;numify&#39;</span><span class="p">,</span> <span class="s1">&#39;get_pkg_path&#39;</span><span class="p">,</span> <span class="s1">&#39;is_jsonable&#39;</span><span class="p">,</span> <span class="s1">&#39;export_results&#39;</span><span class="p">,</span> <span class="s1">&#39;Results&#39;</span><span class="p">,</span> <span class="s1">&#39;e2d&#39;</span><span class="p">,</span>
+           <span class="s1">&#39;dict2mat&#39;</span><span class="p">,</span> <span class="s1">&#39;omitdict&#39;</span><span class="p">,</span> <span class="s1">&#39;gmround&#39;</span><span class="p">,</span> <span class="s1">&#39;convert&#39;</span><span class="p">]</span>
 
 <span class="n">numify</span> <span class="o">=</span> <span class="k">lambda</span> <span class="nb">str</span><span class="p">:</span> <span class="nb">float</span><span class="p">(</span><span class="nb">str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;p&#39;</span><span class="p">,</span><span class="s1">&#39;.&#39;</span><span class="p">))</span>
 
-
-<span class="k">def</span> <span class="nf">get_pkg_path</span><span class="p">(</span><span class="n">pkg</span><span class="p">,</span> <span class="n">dirname</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">get_pkg_path</span><span class="p">(</span><span class="n">pkg</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span> <span class="n">dirname</span><span class="p">:</span> <span class="nb">str</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    TBD</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">realpath</span><span class="p">(</span><span class="n">join</span><span class="p">(</span><span class="n">pkg</span><span class="o">.</span><span class="n">__path__</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="s1">&#39;..&#39;</span><span class="p">,</span><span class="s1">&#39;..&#39;</span><span class="p">,</span><span class="n">dirname</span><span class="p">))</span>
 
-<span class="k">def</span> <span class="nf">is_jsonable</span><span class="p">(</span><span class="n">item</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">is_jsonable</span><span class="p">(</span><span class="n">item</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    TBD</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="n">dumps</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
         <span class="k">return</span> <span class="kc">True</span>
     <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
         <span class="k">return</span> <span class="kc">False</span>
 
-<span class="k">def</span> <span class="nf">export_results</span><span class="p">(</span><span class="n">results_to_export</span><span class="p">,</span> <span class="n">results_dir</span><span class="p">,</span> <span class="n">suffix</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">do_parse</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-                   <span class="n">max_nparray_size</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">do_dolfin_adjoint</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">export_results</span><span class="p">(</span><span class="n">results_to_export</span><span class="p">:</span> <span class="n">Dict</span><span class="p">,</span>
+                   <span class="n">results_dir</span><span class="p">:</span> <span class="n">os</span><span class="o">.</span><span class="n">PathLike</span><span class="p">,</span> <span class="n">suffix</span><span class="p">:</span> <span class="nb">str</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span>
+                   <span class="n">do_parse</span><span class="p">:</span> <span class="nb">bool</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                   <span class="n">max_nparray_size</span><span class="p">:</span> <span class="nb">int</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                   <span class="n">do_dolfin_adjoint</span><span class="p">:</span> <span class="nb">bool</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    TBD</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">pdebug</span><span class="o">=</span><span class="nb">print</span>
     <span class="k">if</span> <span class="n">do_dolfin_adjoint</span><span class="p">:</span>
-        <span class="kn">import</span> <span class="nn">dolfin_adjoint</span> <span class="k">as</span> <span class="nn">adj</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="kn">import</span> <span class="nn">dolfin_adjoint</span> <span class="k">as</span> <span class="nn">adj</span>
+        <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="ne">Exception</span><span class="p">)</span>
+            <span class="k">raise</span>
     <span class="k">if</span> <span class="n">do_parse</span><span class="p">:</span>
         <span class="n">export</span> <span class="o">=</span> <span class="n">Results</span><span class="p">()</span>
         <span class="k">for</span> <span class="n">attribute</span><span class="p">,</span> <span class="n">attribute_value</span> <span class="ow">in</span> <span class="n">results_to_export</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
             <span class="n">attribute_value_copy</span> <span class="o">=</span> <span class="n">deepcopy</span><span class="p">(</span><span class="n">attribute_value</span><span class="p">)</span>
-            <span class="n">unjsonable_sub_attributes</span> <span class="o">=</span> <span class="p">{}</span>
+            <span class="c1"># unjsonable_sub_attributes = {}</span>
             <span class="k">for</span> <span class="n">sub_attribute</span> <span class="ow">in</span> <span class="n">attribute_value</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">:</span>
                 <span class="n">sub_attribute_value</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">attribute_value_copy</span><span class="p">,</span><span class="n">sub_attribute</span><span class="p">)</span>
                 <span class="n">var_types</span> <span class="o">=</span> <span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">do_dolfin_adjoint</span> <span class="k">else</span> <span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="n">adj</span><span class="o">.</span><span class="n">AdjFloat</span><span class="p">]</span>
-                <span class="k">if</span> <span class="nb">any</span><span class="p">([</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">sub_attribute_value</span><span class="p">,</span> <span class="n">var_type</span><span class="p">)</span> <span class="k">for</span> <span class="n">var_type</span> <span class="ow">in</span> <span class="n">var_types</span><span class="p">]):</span>
-                    <span class="nb">setattr</span><span class="p">(</span><span class="n">attribute_value_copy</span><span class="p">,</span> <span class="n">sub_attribute</span><span class="p">,</span> <span class="nb">float</span><span class="p">(</span><span class="n">sub_attribute_value</span><span class="p">))</span>
+                <span class="n">matching_subattrs</span> <span class="o">=</span> <span class="p">[</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">sub_attribute_value</span><span class="p">,</span> <span class="n">var_type</span><span class="p">)</span>
+                         <span class="k">for</span> <span class="n">var_type</span> <span class="ow">in</span> <span class="n">var_types</span><span class="p">]</span>
+                <span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="n">matching_subattrs</span><span class="p">):</span>
+                    <span class="nb">setattr</span><span class="p">(</span><span class="n">attribute_value_copy</span><span class="p">,</span> <span class="n">sub_attribute</span><span class="p">,</span>
+                            <span class="nb">float</span><span class="p">(</span><span class="n">sub_attribute_value</span><span class="p">))</span>
                 <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">sub_attribute_value</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> \
-                        <span class="ow">and</span> <span class="p">(</span><span class="n">max_nparray_size</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">sub_attribute_value</span><span class="o">.</span><span class="n">size</span><span class="o">&lt;=</span><span class="n">max_nparray_size</span><span class="p">):</span>
-                    <span class="nb">setattr</span><span class="p">(</span><span class="n">attribute_value_copy</span><span class="p">,</span> <span class="n">sub_attribute</span><span class="p">,</span> <span class="p">[</span><span class="nb">list</span><span class="p">(</span><span class="n">array</span><span class="p">)</span> <span class="k">for</span> <span class="n">array</span> <span class="ow">in</span> <span class="n">sub_attribute_value</span><span class="p">])</span>
+                        <span class="ow">and</span> <span class="p">(</span><span class="n">max_nparray_size</span> <span class="ow">is</span> <span class="kc">None</span> \
+                        <span class="ow">or</span> <span class="n">sub_attribute_value</span><span class="o">.</span><span class="n">size</span><span class="o">&lt;=</span><span class="n">max_nparray_size</span><span class="p">):</span>
+                    <span class="nb">setattr</span><span class="p">(</span><span class="n">attribute_value_copy</span><span class="p">,</span> <span class="n">sub_attribute</span><span class="p">,</span>
+                            <span class="p">[</span><span class="nb">list</span><span class="p">(</span><span class="n">array</span><span class="p">)</span> <span class="k">for</span> <span class="n">array</span> <span class="ow">in</span> <span class="n">sub_attribute_value</span><span class="p">])</span>
             <span class="nb">setattr</span><span class="p">(</span><span class="n">export</span><span class="p">,</span> <span class="n">attribute</span><span class="p">,</span> <span class="n">attribute_value_copy</span><span class="p">)</span>
 
         <span class="n">export_dict</span> <span class="o">=</span> <span class="p">{}</span>
@@ -160,52 +264,58 @@ for inline display.</p>
         <span class="n">json_str</span> <span class="o">=</span> <span class="n">dumps</span><span class="p">(</span><span class="n">export_dict</span><span class="p">,</span> <span class="n">sort_keys</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
     <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Failed to serialize results into JSON format&#39;</span><span class="p">)</span>
-    <span class="n">json_filename</span> <span class="o">=</span> <span class="s1">&#39;results&#39;</span><span class="o">+</span><span class="n">suffix</span><span class="o">+</span><span class="s1">&#39;.json&#39;</span>
+    <span class="n">json_filename</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;results</span><span class="si">{</span><span class="n">suffix</span><span class="si">}</span><span class="s1">.json&#39;</span>
     <span class="n">json_path</span> <span class="o">=</span> <span class="n">realpath</span><span class="p">(</span><span class="n">join</span><span class="p">(</span><span class="n">results_dir</span><span class="p">,</span><span class="n">json_filename</span><span class="p">))</span>
-    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">json_path</span><span class="p">,</span><span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">json_file</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Writing to &quot;</span><span class="si">{}</span><span class="s1">&quot;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">json_path</span><span class="p">))</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">json_path</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;latin-1&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">json_file</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Writing to &quot;</span><span class="si">{</span><span class="n">json_path</span><span class="si">}</span><span class="s1">&quot;&#39;</span><span class="p">)</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="n">json_file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">json_str</span><span class="p">)</span>
         <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
             <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Failed to write analysis results JSON file&#39;</span><span class="p">)</span>
 
+<span class="k">class</span> <span class="nc">Results</span><span class="p">(</span><span class="n">ABC</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    TBD</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        TBD</span>
+<span class="sd">        &quot;&quot;&quot;</span>
 
-<span class="k">class</span> <span class="nc">Results</span><span class="p">():</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">pass</span>
+<span class="k">def</span> <span class="nf">e2d</span><span class="p">(</span><span class="n">eqn_or_eqns</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">Any</span><span class="p">,</span><span class="n">Tuple</span><span class="p">[</span><span class="n">Any</span><span class="p">],</span><span class="n">List</span><span class="p">[</span><span class="n">Any</span><span class="p">]],</span>
+        <span class="n">do_flip</span><span class="p">:</span> <span class="nb">bool</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">do_negate</span><span class="p">:</span> <span class="nb">bool</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="n">Any</span><span class="p">,</span><span class="n">Any</span><span class="p">]:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    TBD</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">negate_eqn</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">eqn_</span><span class="p">:</span> <span class="n">Eq</span><span class="p">(</span><span class="o">-</span><span class="n">eqn_</span><span class="o">.</span><span class="n">lhs</span><span class="p">,</span><span class="o">-</span><span class="n">eqn_</span><span class="o">.</span><span class="n">rhs</span><span class="p">)</span> <span class="k">if</span> <span class="n">do_negate</span> <span class="k">else</span> <span class="n">eqn_</span>
+    <span class="n">flip_eqn</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">eqn_</span><span class="p">:</span> <span class="n">Eq</span><span class="p">(</span><span class="n">eqn_</span><span class="o">.</span><span class="n">rhs</span><span class="p">,</span><span class="n">eqn_</span><span class="o">.</span><span class="n">lhs</span><span class="p">)</span> <span class="k">if</span> <span class="n">do_flip</span> <span class="k">else</span> <span class="n">eqn_</span>
+    <span class="n">make_dict</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">eqn_</span><span class="p">:</span> <span class="nb">dict</span><span class="p">([</span> <span class="p">(</span><span class="n">flip_eqn</span><span class="p">(</span><span class="n">negate_eqn</span><span class="p">(</span><span class="n">eqn_</span><span class="p">)))</span><span class="o">.</span><span class="n">args</span> <span class="p">])</span>
+    <span class="n">eqns</span> <span class="o">=</span> <span class="n">eqn_or_eqns</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">eqn_or_eqns</span><span class="p">,(</span><span class="nb">list</span><span class="p">,</span><span class="nb">tuple</span><span class="p">))</span> \
+        <span class="k">else</span> <span class="p">[</span><span class="n">eqn_or_eqns</span><span class="p">]</span>
+    <span class="n">eqn_dict</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="n">Any</span><span class="p">,</span><span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">eqn</span> <span class="ow">in</span> <span class="n">eqns</span><span class="p">:</span>
+        <span class="n">eqn_dict</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">make_dict</span><span class="p">(</span><span class="n">eqn</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">eqn_dict</span>
 
+<span class="k">def</span> <span class="nf">dict2mat</span><span class="p">(</span><span class="n">dict_</span><span class="p">:</span> <span class="n">Dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Matrix</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    TBD</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">Matrix</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">dict_</span><span class="o">.</span><span class="n">items</span><span class="p">()))</span>
 
-<span class="k">def</span> <span class="nf">e2d</span><span class="p">(</span><span class="n">eqn_or_eqnlist</span><span class="p">,</span> <span class="n">do_flip</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">do_negate</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-    <span class="k">if</span> <span class="n">do_negate</span><span class="p">:</span>
-        <span class="n">ngfn</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">eqn</span><span class="p">:</span> <span class="p">[</span><span class="o">-</span><span class="n">eqn</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="o">-</span><span class="n">eqn</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="n">ngfn</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">eqn</span><span class="p">:</span> <span class="n">eqn</span>
-    <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">eqn_or_eqnlist</span><span class="p">)</span> <span class="ow">is</span> <span class="nb">list</span><span class="p">:</span>
-        <span class="n">eqndict</span> <span class="o">=</span> <span class="p">{}</span>
-        <span class="p">[</span><span class="n">eqndict</span><span class="o">.</span><span class="n">update</span><span class="p">(</span> <span class="nb">dict</span><span class="p">([</span><span class="nb">reversed</span><span class="p">(</span><span class="n">ngfn</span><span class="p">(</span><span class="n">eqn</span><span class="o">.</span><span class="n">args</span><span class="p">))]</span> <span class="k">if</span> <span class="n">do_flip</span> <span class="k">else</span> <span class="p">[</span><span class="n">ngfn</span><span class="p">(</span><span class="n">eqn</span><span class="o">.</span><span class="n">args</span><span class="p">)])</span> <span class="p">)</span>
-                                    <span class="k">for</span> <span class="n">eqn</span> <span class="ow">in</span> <span class="n">eqn_or_eqnlist</span><span class="p">]</span>
-        <span class="k">return</span> <span class="n">eqndict</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="k">return</span> <span class="nb">dict</span><span class="p">([</span><span class="nb">reversed</span><span class="p">(</span><span class="n">ngfn</span><span class="p">(</span><span class="n">eqn_or_eqnlist</span><span class="o">.</span><span class="n">args</span><span class="p">))]</span> <span class="k">if</span> <span class="n">do_flip</span> <span class="k">else</span> <span class="p">[</span><span class="n">eqn_or_eqnlist</span><span class="o">.</span><span class="n">args</span><span class="p">])</span>
-
-<span class="k">def</span> <span class="nf">dict2mat</span><span class="p">(</span><span class="n">dct</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">Matrix</span><span class="p">([</span><span class="n">item</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">dct</span><span class="o">.</span><span class="n">items</span><span class="p">()])</span>
-
-<span class="k">def</span> <span class="nf">omitdict</span><span class="p">(</span><span class="n">dct</span><span class="p">,</span> <span class="n">omitlist</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-    <span class="n">rtn_dct</span> <span class="o">=</span> <span class="n">dct</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="k">def</span> <span class="nf">omitdict</span><span class="p">(</span><span class="n">dict_</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="n">Any</span><span class="p">,</span><span class="n">Any</span><span class="p">],</span> <span class="n">omitlist</span><span class="p">:</span> <span class="n">List</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="n">Any</span><span class="p">,</span><span class="n">Any</span><span class="p">]:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    TBD</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">rtn_dict_</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="n">Any</span><span class="p">,</span><span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="n">dict_</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
     <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">omitlist</span><span class="p">):</span>
         <span class="k">try</span><span class="p">:</span>
-            <span class="k">del</span> <span class="n">rtn_dct</span><span class="p">[</span><span class="n">k</span><span class="p">]</span>
+            <span class="k">del</span> <span class="n">rtn_dict_</span><span class="p">[</span><span class="n">k</span><span class="p">]</span>
         <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
-            <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">k</span><span class="si">}</span><span class="s1"> not found: skipping&#39;</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">rtn_dct</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">k</span><span class="si">}</span><span class="s1"> not found: skipping&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">rtn_dict_</span>
 
-<span class="k">def</span> <span class="nf">xdict</span><span class="p">(</span><span class="n">dct</span><span class="p">,</span> <span class="n">xlist</span><span class="p">):</span>
-    <span class="n">rtn_dct</span> <span class="o">=</span> <span class="p">{}</span>
-    <span class="p">[</span><span class="n">rtn_dct</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="n">k</span><span class="p">:</span><span class="n">dct</span><span class="p">[</span><span class="n">k</span><span class="p">]})</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">xlist</span><span class="p">)]</span>
-    <span class="k">return</span> <span class="n">rtn_dct</span>
-
-<span class="k">def</span> <span class="nf">round</span><span class="p">(</span><span class="n">eqn</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sf</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">gmround</span><span class="p">(</span><span class="n">eqn</span><span class="p">:</span> <span class="n">Eq</span><span class="p">,</span> <span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sf</span><span class="p">:</span> <span class="nb">float</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Eq</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Round numerical RHS of Sympy equation, converting to integer if zero decimal places requested.</span>
 
@@ -217,11 +327,11 @@ for inline display.</p>
 <span class="sd">    Returns:</span>
 <span class="sd">        eqn (:class:`sympy.Eq &lt;sympy.core.relational.Equality&gt;`): Sympy equation object</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">approx_rhs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">N</span><span class="p">(</span><span class="n">eqn</span><span class="o">.</span><span class="n">rhs</span><span class="p">)</span><span class="o">*</span><span class="n">sf</span><span class="p">),</span><span class="n">n</span><span class="p">)</span> <span class="k">if</span> <span class="n">n</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">N</span><span class="p">(</span><span class="n">eqn</span><span class="o">.</span><span class="n">rhs</span><span class="p">)</span><span class="o">*</span><span class="n">sf</span>
-    <span class="n">rtn_eqn</span> <span class="o">=</span> <span class="n">Eq</span><span class="p">(</span><span class="n">eqn</span><span class="o">.</span><span class="n">lhs</span><span class="p">,</span> <span class="n">approx_rhs</span> <span class="k">if</span> <span class="n">n</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">n</span><span class="o">&gt;</span><span class="mi">0</span> <span class="k">else</span> <span class="nb">int</span><span class="p">(</span><span class="n">approx_rhs</span><span class="p">))</span>
-    <span class="k">return</span> <span class="n">rtn_eqn</span>
+    <span class="n">approx_rhs</span><span class="p">:</span> <span class="nb">float</span>\
+        <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">N</span><span class="p">(</span><span class="n">eqn</span><span class="o">.</span><span class="n">rhs</span><span class="p">)</span><span class="o">*</span><span class="n">sf</span><span class="p">),</span><span class="n">n</span><span class="p">)</span> <span class="k">if</span> <span class="n">n</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">N</span><span class="p">(</span><span class="n">eqn</span><span class="o">.</span><span class="n">rhs</span><span class="p">)</span><span class="o">*</span><span class="n">sf</span>
+    <span class="k">return</span> <span class="n">Eq</span><span class="p">(</span><span class="n">eqn</span><span class="o">.</span><span class="n">lhs</span><span class="p">,</span> <span class="n">approx_rhs</span> <span class="k">if</span> <span class="n">n</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">n</span><span class="o">&gt;</span><span class="mi">0</span> <span class="k">else</span> <span class="nb">int</span><span class="p">(</span><span class="n">approx_rhs</span><span class="p">))</span>
 
-<span class="k">def</span> <span class="nf">convert</span><span class="p">(</span><span class="n">eqn</span><span class="p">,</span> <span class="n">units</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">do_raw</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">convert</span><span class="p">(</span><span class="n">eqn</span><span class="p">:</span> <span class="n">Eq</span><span class="p">,</span> <span class="n">units</span><span class="p">:</span> <span class="n">Quantity</span><span class="p">,</span> <span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">do_raw</span><span class="p">:</span> <span class="nb">bool</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Eq</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    XXX</span>
 
@@ -233,110 +343,14 @@ for inline display.</p>
 <span class="sd">    Returns:</span>
 <span class="sd">        eqn (:class:`sympy.Eq &lt;sympy.core.relational.Equality&gt;`): Sympy equation object</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">tmp</span> <span class="o">=</span> <span class="n">Quantity</span><span class="p">(</span><span class="s1">&#39;unknown_units&#39;</span><span class="p">)</span>
-    <span class="n">SI</span><span class="o">.</span><span class="n">set_quantity_dimension</span><span class="p">(</span><span class="n">tmp</span><span class="p">,</span> <span class="n">SI</span><span class="o">.</span><span class="n">get_quantity_dimension</span><span class="p">(</span><span class="n">eqn</span><span class="o">.</span><span class="n">lhs</span><span class="p">))</span>
-    <span class="n">cf</span> <span class="o">=</span> <span class="n">convert_to</span><span class="p">(</span><span class="n">tmp</span><span class="p">,</span> <span class="n">units</span><span class="p">)</span><span class="o">.</span><span class="n">n</span><span class="p">()</span>
+    <span class="n">_</span> <span class="o">=</span> <span class="n">Quantity</span><span class="p">(</span><span class="s1">&#39;unknown_units&#39;</span><span class="p">)</span>
+    <span class="n">SI</span><span class="o">.</span><span class="n">set_quantity_dimension</span><span class="p">(</span><span class="n">_</span><span class="p">,</span> <span class="n">SI</span><span class="o">.</span><span class="n">get_quantity_dimension</span><span class="p">(</span><span class="n">eqn</span><span class="o">.</span><span class="n">lhs</span><span class="p">))</span>
+    <span class="n">cf</span> <span class="o">=</span> <span class="n">convert_to</span><span class="p">(</span><span class="n">_</span><span class="p">,</span> <span class="n">units</span><span class="p">)</span><span class="o">.</span><span class="n">n</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">Eq</span><span class="p">(</span><span class="n">eqn</span><span class="o">.</span><span class="n">lhs</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">N</span><span class="p">(</span><span class="n">cf</span><span class="o">.</span><span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">eqn</span><span class="o">.</span><span class="n">rhs</span><span class="p">)),</span> <span class="n">n</span><span class="p">)</span><span class="o">*</span><span class="n">Mul</span><span class="p">(</span><span class="o">*</span><span class="n">cf</span><span class="o">.</span><span class="n">args</span><span class="p">[</span><span class="mi">1</span><span class="p">:]))</span> \
+                <span class="k">if</span> <span class="n">do_raw</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">True</span> \
+      <span class="k">else</span> <span class="n">Eq</span><span class="p">(</span><span class="n">eqn</span><span class="o">.</span><span class="n">lhs</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">N</span><span class="p">(</span><span class="n">eqn</span><span class="o">.</span><span class="n">rhs</span><span class="p">)),</span> <span class="n">n</span><span class="p">)</span><span class="o">*</span><span class="n">N</span><span class="p">(</span><span class="n">cf</span><span class="p">))</span>
 
-    <span class="c1"># return Eq(eqn.lhs, np.round(float(N(eqn.rhs)), n)*N(cf))</span>
-    <span class="k">return</span> <span class="n">Eq</span><span class="p">(</span><span class="n">eqn</span><span class="o">.</span><span class="n">lhs</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">N</span><span class="p">(</span><span class="n">cf</span><span class="o">.</span><span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">eqn</span><span class="o">.</span><span class="n">rhs</span><span class="p">)),</span> <span class="n">n</span><span class="p">)</span><span class="o">*</span><span class="n">Mul</span><span class="p">(</span><span class="o">*</span><span class="n">cf</span><span class="o">.</span><span class="n">args</span><span class="p">[</span><span class="mi">1</span><span class="p">:]))</span> <span class="k">if</span> <span class="n">do_raw</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">True</span> \
-        <span class="k">else</span> <span class="n">Eq</span><span class="p">(</span><span class="n">eqn</span><span class="o">.</span><span class="n">lhs</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">N</span><span class="p">(</span><span class="n">eqn</span><span class="o">.</span><span class="n">rhs</span><span class="p">)),</span> <span class="n">n</span><span class="p">)</span><span class="o">*</span><span class="n">N</span><span class="p">(</span><span class="n">cf</span><span class="p">))</span>
-
-<span class="k">def</span> <span class="nf">vprint</span><span class="p">(</span><span class="n">verbose</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Wrapper for print() with verbose flag to suppress output if desired.</span>
-
-<span class="sd">    Args:</span>
-<span class="sd">        verbose  (bool): turn printing on or off</span>
-<span class="sd">        *args (str): print() function args</span>
-<span class="sd">        **kwargs (str): print() function keyword args</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span> <span class="n">flush</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-        <span class="c1"># Try to really force this line to print before the GPU prints anything</span>
-        <span class="n">stdout</span><span class="o">.</span><span class="n">flush</span><span class="p">()</span>
-
-<span class="k">def</span> <span class="nf">fetch_images</span><span class="p">(</span><span class="n">images</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">image_sources</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">image_paths</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Imports images from a list of source directories.</span>
-<span class="sd">    If `images` and `image_sources` are `None` new dictionaries are created;</span>
-<span class="sd">    otherwise, pre-existing such dictionaries are expected.</span>
-
-<span class="sd">    This tool is used by the discussion notebooks to import snapshot images</span>
-<span class="sd">    for inline display.</span>
-
-<span class="sd">    Args:</span>
-<span class="sd">        images (dict): pre-existing dictionary of images</span>
-<span class="sd">        image_sources (dict): pre-existing dictionary of image source paths</span>
-<span class="sd">        image_paths (list): source directories from which to fetch new images</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">images</span> <span class="o">=</span> <span class="p">{}</span> <span class="k">if</span> <span class="n">images</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">images</span>
-    <span class="n">image_sources</span> <span class="o">=</span> <span class="p">{}</span> <span class="k">if</span> <span class="n">image_sources</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">image_sources</span>
-    <span class="k">for</span> <span class="n">image_path</span> <span class="ow">in</span> <span class="n">image_paths</span><span class="p">:</span>
-        <span class="n">listing</span> <span class="o">=</span> <span class="n">listdir</span><span class="p">(</span><span class="n">image_path</span><span class="p">)</span>
-        <span class="n">image_list</span> <span class="o">=</span> <span class="p">[(</span><span class="n">file</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;.png&#39;</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;.PNG&#39;</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;.jpg&#39;</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;.jpeg&#39;</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="p">),</span>
-                       <span class="n">Image</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="n">join</span><span class="p">(</span><span class="n">image_path</span><span class="p">,</span><span class="n">file</span><span class="p">)))</span>
-                      <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">listing</span> <span class="k">if</span> <span class="n">file</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39;PNG&#39;</span><span class="p">)</span> <span class="ow">or</span> <span class="n">file</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39;png&#39;</span><span class="p">)</span>
-                      <span class="ow">or</span> <span class="n">file</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39;jpg&#39;</span><span class="p">)</span> <span class="ow">or</span> <span class="n">file</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39;jpeg&#39;</span><span class="p">)]</span>
-        <span class="n">images</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="n">key</span><span class="p">:</span> <span class="n">value</span> <span class="k">for</span> <span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">image_list</span><span class="p">)})</span>
-        <span class="n">image_sources</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="n">key</span><span class="p">:</span> <span class="n">image_path</span> <span class="k">for</span> <span class="p">(</span><span class="n">key</span><span class="p">)</span> <span class="ow">in</span> <span class="p">(</span><span class="n">listing</span><span class="p">)})</span>
-    <span class="k">return</span> <span class="n">images</span><span class="p">,</span> <span class="n">image_sources</span>
-
-<span class="k">def</span> <span class="nf">resize</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-    <span class="k">if</span> <span class="n">width</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">image</span><span class="o">.</span><span class="n">width</span> <span class="o">=</span> <span class="n">width</span>
-    <span class="k">if</span> <span class="n">height</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">image</span><span class="o">.</span><span class="n">height</span> <span class="o">=</span> <span class="n">height</span>
-    <span class="k">return</span> <span class="n">image</span>
-
-<span class="k">def</span> <span class="nf">combine_images_vertically</span><span class="p">(</span> <span class="n">into_filename</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">image_bundle</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">image_sources</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-                               <span class="n">spacing</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">out_path</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">do_align_right</span><span class="o">=</span><span class="kc">False</span> <span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Join together a set of images, with padding, into a vertical combo image.</span>
-
-<span class="sd">    Args:</span>
-<span class="sd">        into_filename  (str): name of output combined-image file</span>
-<span class="sd">        image_bundle  (list): list of image filenames</span>
-<span class="sd">        image_sources (dict): dictionary of image source paths</span>
-<span class="sd">        spacing (int): pixel padding between images</span>
-<span class="sd">        out_path (list): path to tmp directory to write the combined image file to</span>
-<span class="sd">        do_align_right (bool): align all images along right margin</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">image_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">PIL</span><span class="o">.</span><span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">join</span><span class="p">(</span><span class="n">image_sources</span><span class="p">[</span><span class="n">image_name</span><span class="p">],</span><span class="n">image_name</span><span class="p">))</span>
-                  <span class="k">for</span> <span class="n">image_name</span> <span class="ow">in</span> <span class="n">image_bundle</span><span class="p">]</span>
-    <span class="n">x_size</span> <span class="o">=</span> <span class="nb">max</span><span class="p">([</span><span class="n">image</span><span class="o">.</span><span class="n">size</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">image</span> <span class="ow">in</span> <span class="n">image_list</span><span class="p">])</span>
-    <span class="n">y_sizes</span> <span class="o">=</span> <span class="p">[</span><span class="n">image</span><span class="o">.</span><span class="n">size</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">image</span> <span class="ow">in</span> <span class="n">image_list</span><span class="p">]</span>
-    <span class="n">y_size</span> <span class="o">=</span> <span class="n">reduce</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">:</span> <span class="n">x</span><span class="o">+</span><span class="n">y</span><span class="p">,</span> <span class="n">y_sizes</span><span class="p">)</span> <span class="o">+</span> <span class="n">spacing</span><span class="o">*</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">image_list</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
-    <span class="n">combo_image</span> <span class="o">=</span> <span class="n">PIL</span><span class="o">.</span><span class="n">Image</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s1">&#39;RGB&#39;</span><span class="p">,(</span><span class="n">x_size</span><span class="p">,</span> <span class="n">y_size</span><span class="p">),</span> <span class="p">(</span><span class="mi">255</span><span class="p">,</span><span class="mi">255</span><span class="p">,</span><span class="mi">255</span><span class="p">))</span>
-    <span class="n">y_offset</span> <span class="o">=</span> <span class="mi">0</span>
-    <span class="k">for</span> <span class="n">image</span><span class="p">,</span><span class="n">y_size</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">image_list</span><span class="p">,</span><span class="n">y_sizes</span><span class="p">):</span>
-        <span class="n">x_offset</span> <span class="o">=</span> <span class="n">x_size</span><span class="o">-</span><span class="n">image</span><span class="o">.</span><span class="n">size</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">if</span> <span class="n">do_align_right</span> <span class="k">else</span> <span class="mi">0</span>
-        <span class="n">combo_image</span><span class="o">.</span><span class="n">paste</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="p">(</span><span class="n">x_offset</span><span class="p">,</span><span class="n">y_offset</span><span class="p">))</span>
-        <span class="n">y_offset</span> <span class="o">+=</span> <span class="n">y_size</span> <span class="o">+</span> <span class="n">spacing</span>
-    <span class="n">combo_image</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">join</span><span class="p">(</span><span class="n">out_path</span><span class="p">,</span><span class="n">into_filename</span><span class="p">))</span>
-
-<span class="k">def</span> <span class="nf">combine_images_horizontally</span><span class="p">(</span> <span class="n">into_filename</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">image_bundle</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">image_sources</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-                                 <span class="n">spacing</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">out_path</span><span class="o">=</span><span class="kc">None</span> <span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Join together a set of images, with padding, into a horizontal combo image.</span>
-
-<span class="sd">    Args:</span>
-<span class="sd">        into_filename  (str): name of output combined-image file</span>
-<span class="sd">        image_bundle  (list): list of image filenames</span>
-<span class="sd">        image_sources (dict): dictionary of image source paths</span>
-<span class="sd">        spacing (int): pixel padding between images</span>
-<span class="sd">        out_path (list): path to tmp directory to write the combined image file to</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">image_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">PIL</span><span class="o">.</span><span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">join</span><span class="p">(</span><span class="n">image_sources</span><span class="p">[</span><span class="n">image_name</span><span class="p">],</span><span class="n">image_name</span><span class="p">))</span>
-                  <span class="k">for</span> <span class="n">image_name</span> <span class="ow">in</span> <span class="n">image_bundle</span><span class="p">]</span>
-    <span class="n">y_size</span> <span class="o">=</span> <span class="nb">max</span><span class="p">([</span><span class="n">image</span><span class="o">.</span><span class="n">size</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">image</span> <span class="ow">in</span> <span class="n">image_list</span><span class="p">])</span>
-    <span class="n">x_sizes</span> <span class="o">=</span> <span class="p">[</span><span class="n">image</span><span class="o">.</span><span class="n">size</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">image</span> <span class="ow">in</span> <span class="n">image_list</span><span class="p">]</span>
-    <span class="n">x_size</span> <span class="o">=</span> <span class="n">reduce</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">:</span> <span class="n">x</span><span class="o">+</span><span class="n">y</span><span class="p">,</span> <span class="n">x_sizes</span><span class="p">)</span> <span class="o">+</span> <span class="n">spacing</span><span class="o">*</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">image_list</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
-    <span class="n">combo_image</span> <span class="o">=</span> <span class="n">PIL</span><span class="o">.</span><span class="n">Image</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s1">&#39;RGB&#39;</span><span class="p">,(</span><span class="n">x_size</span><span class="p">,</span> <span class="n">y_size</span><span class="p">),</span> <span class="p">(</span><span class="mi">255</span><span class="p">,</span><span class="mi">255</span><span class="p">,</span><span class="mi">255</span><span class="p">))</span>
-    <span class="n">x_offset</span> <span class="o">=</span> <span class="mi">0</span>
-    <span class="k">for</span> <span class="n">image</span><span class="p">,</span><span class="n">x_size</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">image_list</span><span class="p">,</span><span class="n">x_sizes</span><span class="p">):</span>
-        <span class="n">combo_image</span><span class="o">.</span><span class="n">paste</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="p">(</span><span class="n">x_offset</span><span class="p">,</span><span class="mi">0</span><span class="p">))</span>
-        <span class="n">x_offset</span> <span class="o">+=</span> <span class="n">x_size</span> <span class="o">+</span> <span class="n">spacing</span>
-    <span class="n">combo_image</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">join</span><span class="p">(</span><span class="n">out_path</span><span class="p">,</span><span class="n">into_filename</span><span class="p">))</span>
+<span class="c1">#</span>
 </pre></div>
 </div>
 </div>
@@ -364,11 +378,12 @@ for inline display.</p>
 <script>$('#searchbox').show(0);</script>
 <h3><a href="../index.html">Contents</a></h3>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="initialize.html">Package initialization</a></li>
-<li class="toctree-l1"><a class="reference internal" href="parameters.html">Parameter parsing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="plot_utils.html">Figure plotting</a></li>
-<li class="toctree-l1"><a class="reference internal" href="save.html">Figure export</a></li>
+<li class="toctree-l1"><a class="reference internal" href="initialize.html">Initialization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="parameters.html">Parameters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plot_utils.html">Plotting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="save.html">Export</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="image.html">Image prep</a></li>
 </ul>
 
         </div>
@@ -384,6 +399,9 @@ for inline display.</p>
         <li class="right" >
           <a href="../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
+        <li class="right" >
+          <a href="image.html" title="image.py"
+             >next</a> |</li>
         <li class="right" >
           <a href="save.html" title="save.py"
              >previous</a> |</li>

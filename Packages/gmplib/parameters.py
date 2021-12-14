@@ -8,7 +8,6 @@ TODO: This would be much better done using dataclasses
 ---------------------------------------------------------------------
 
 Requires Python packages/modules:
-  -  :mod:`os`, :mod:`json`
   -  :mod:`sympy`
 
 ---------------------------------------------------------------------
@@ -16,7 +15,6 @@ Requires Python packages/modules:
 .. _json: https://docs.python.org/3/library/json.html
 
 """
-
 import warnings
 import logging
 
