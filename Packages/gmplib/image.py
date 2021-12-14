@@ -164,8 +164,7 @@ class combine_pdf_images(combine_images):
         for image_name in image_bundle:
             pdf_path = join(image_sources[f'{image_name}.{file_type}'],
                                           f'{image_name}.{file_type}')
-            with open(pdf_path,'rb') as f:
-                pdf_reader = PdfFileReader(f)
+            pdf_reader = PdfFileReader(open(pdf_path,'rb'))
             self.page_list.append(pdf_reader.getPage(0))
 
     def save_combo_image(self, out_path, into_filename, file_type) -> None:
