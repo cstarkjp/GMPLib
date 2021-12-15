@@ -540,10 +540,10 @@ for inline display.</p>
             <span class="bp">self</span><span class="o">.</span><span class="n">combo_page</span><span class="o">.</span><span class="n">mergeTranslatedPage</span><span class="p">(</span><span class="n">page_</span><span class="p">,</span> <span class="n">x_offset</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
 
 
-<span class="k">def</span> <span class="nf">fetch_images</span><span class="p">(</span><span class="n">images</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span><span class="n">Image</span><span class="p">]]</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-                 <span class="n">image_sources</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span><span class="nb">str</span><span class="p">]]</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-                 <span class="n">image_paths</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]]</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> \
-            <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span><span class="n">Image</span><span class="p">],</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span><span class="nb">str</span><span class="p">]]:</span>
+<span class="k">def</span> <span class="nf">fetch_images</span><span class="p">(</span> <span class="n">images</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span><span class="n">Image</span><span class="p">]]</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                  <span class="n">image_sources</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span><span class="nb">str</span><span class="p">]]</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                  <span class="n">image_paths</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]]</span><span class="o">=</span><span class="kc">None</span>
+        <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span><span class="n">Image</span><span class="p">],</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span><span class="nb">str</span><span class="p">]]:</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Imports images from a list of source directories.</span>
 <span class="sd">    If `images` and `image_sources` are `None` new dictionaries are created;</span>
@@ -577,7 +577,8 @@ for inline display.</p>
 
 <span class="k">def</span> <span class="nf">resize</span><span class="p">(</span><span class="n">image</span><span class="p">:</span> <span class="n">Image</span><span class="p">,</span>
             <span class="n">width</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-            <span class="n">height</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Image</span><span class="p">:</span>
+            <span class="n">height</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span><span class="o">=</span><span class="kc">None</span>
+        <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Image</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Modify an :mod:`Image &lt;IPython image&gt;` size</span>
 
