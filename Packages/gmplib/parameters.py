@@ -3,7 +3,7 @@
 
 Import job parameters from JSON files and build a settings dictionary
 
-TODO: This would be much better done using dataclasses
+TODO: This might be better done using dataclasses
 
 ---------------------------------------------------------------------
 
@@ -11,19 +11,19 @@ Requires Python packages/modules:
   -  :mod:`sympy`
 
 ---------------------------------------------------------------------
-
-.. _json: https://docs.python.org/3/library/json.html
-
 """
+
 import warnings
 import logging
-
-from typing import Dict, Tuple #List, Dict, Any, Callable, Optional
-
+from os import PathLike
 from os.path import realpath, join
 from json import load
 from copy import copy
 
+# Typing
+from typing import Dict, Tuple, Any, List, Union, Optional
+
+# SymPy
 from sympy.parsing.sympy_parser import parse_expr
 
 warnings.filterwarnings("ignore")
@@ -31,7 +31,8 @@ warnings.filterwarnings("ignore")
 __all__ = ['import_parameters', 'read_json_file', 'Parameters', 'ParametersNestedGroup']
 
 
-def import_parameters(path, filenames=('defaults')) -> Tuple[Dict, str]:
+def import_parameters( path: Tuple[str],
+                       filenames: Tuple[str]=('defaults',) ) -> Tuple[Dict, str]:
     """
     Load JSON parameters files (defaults and job) and parse them in turn to
     generate a job parameters dictionary.
@@ -44,11 +45,12 @@ def import_parameters(path, filenames=('defaults')) -> Tuple[Dict, str]:
         dict:  job parameter dictionary
     """
     # Parse default and assigned JSON parameters files
-    dirpath = realpath(join(*path))
-    filepaths = [realpath(join(dirpath,filename)) for filename in filenames]
-    return read_json_file(filepaths), dirpath
+    dirpath: str = realpath(join(*path))
+    filepaths: List[str] \
+        = [realpath(join(dirpath,filename)) for filename in filenames]
+    return (read_json_file(filepaths), dirpath)
 
-def read_json_file(filepaths):
+def read_json_file(filepaths: Union[Tuple[str],List[str]]) -> Dict:
     """
     Load and parse a list of JSON parameters files into a parameters dict.
 
@@ -58,13 +60,13 @@ def read_json_file(filepaths):
     override any set by previous JSON files.
 
     Args:
-        parameters_file_name_list (list): JSON parameters files to be read and parsed
+        filepaths: JSON parameters files to be read and parsed
 
     Return:
         dict:  job parameters dictionary
     """
     # Start wit a clean parameters dictionary
-    parameters_dict = {}
+    parameters_dict: Dict[Any,Any] = {}
     # Step through each JSON parameters file in turn
     for filepath in filepaths:
         parameters_file_name = filepath+'.json'
@@ -103,7 +105,10 @@ class Parameters():
     """
     Parameters (job parameters) container
     """
-    def __init__(self, imported_parameters, evaluations=None, sequence=()):
+    def __init__(self,
+                 imported_parameters: Dict,
+                 evaluations: Optional[Dict]=None,
+                 sequence: Tuple=()):
         """
         Initialize class instance.
         Convert top-level items in the parameters dictionary, whose keys are group names
@@ -117,24 +122,27 @@ class Parameters():
             various (class attribute): matching top-level items in the
             parameters dictionary
         """
-        if evaluations is None:
-            evaluations = {}
-        imported_parameters_ = copy(imported_parameters)
+
+        evaluations_: Dict = {} if evaluations is None else evaluations
+        imported_parameters_: Dict = copy(imported_parameters)
         for group_name in sequence:
             group_dict = imported_parameters[group_name]
             setattr(self, group_name, ParametersNestedGroup(group_name, group_dict,
-                                                            evaluations))
+                                                            evaluations_))
             imported_parameters_.pop(group_name)
         for group_name, group_dict in imported_parameters_.items():
             group_dict = imported_parameters_[group_name]
             setattr(self, group_name, ParametersNestedGroup(group_name, group_dict,
-                                                            evaluations))
+                                                            evaluations_))
 
 class ParametersNestedGroup():
     """
     ParametersNestedGroup (job parameters) sub-container
     """
-    def __init__(self, group_name, parameters_dict, evaluations=None):
+    def __init__(self,
+                 group_name: str,
+                 parameters_dict: Dict,
+                 evaluations: Optional[Dict]=None):
         """
         Initialize class instance.
         Convert items in a parameters sub-dictionary into class attributes,

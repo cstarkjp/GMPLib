@@ -17,10 +17,10 @@ Python package
 
   Initialization <../modules/initialize>
   Parameters <../modules/parameters>
-  Plotting <../modules/plot_utils>
+  Plotting <../modules/plot>
   Export <../modules/save>
   Utilities <../modules/utils>
-  Image prep <../modules/image>
+  Image layout <../modules/image>
 
 
 

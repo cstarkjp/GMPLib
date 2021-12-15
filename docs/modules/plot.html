@@ -1,0 +1,594 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>plot.py &#8212; GMPLib 1.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pydoctheme.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="save.py" href="save.html" />
+    <link rel="prev" title="parameters.py" href="parameters.html" /> 
+  </head><body>
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="save.html" title="save.py"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="parameters.html" title="parameters.py"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">GMPLib 1.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><code class="docutils literal notranslate"><span class="pre">plot.py</span></code></a></li> 
+      </ul>
+    </div>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-gmplib.plot">
+<span id="plot-py"></span><h1><code class="docutils literal notranslate"><span class="pre">plot.py</span></code><a class="headerlink" href="#module-gmplib.plot" title="Permalink to this headline">¶</a></h1>
+<hr class="docutils" />
+<p>Graph plotting</p>
+<hr class="docutils" />
+<dl class="simple">
+<dt>Requires Python packages/modules:</dt><dd><ul class="simple">
+<li><p><a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/index.html#module-scipy" title="(in SciPy v1.7.1)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scipy</span></code></a></p></li>
+<li><p><a class="reference external" href="https://matplotlib.org/stable/index.html#module-matplotlib" title="(in Matplotlib v3.5.1)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">matplotlib</span></code></a></p></li>
+</ul>
+</dd>
+</dl>
+<p>Imports symbols from <code class="xref py py-mod docutils literal notranslate"><span class="pre">symbols</span></code> module.</p>
+<hr class="docutils" />
+<dl class="py class">
+<dt class="sig sig-object py" id="gmplib.plot.GraphingBase">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">gmplib.plot.</span></span><span class="sig-name descname"><span class="pre">GraphingBase</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dpi</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><span class="pre">int</span></a></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">100</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">font_size</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><span class="pre">int</span></a></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">11</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gmplib.plot.GraphingBase" title="Permalink to this definition">¶</a></dt>
+<dd><p>Visualization base class.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dpi</strong> – resolution for rasterized images</p></li>
+<li><p><strong>font_size</strong> – general font size</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="gmplib.plot.GraphingBase.dpi">
+<span class="sig-name descname"><span class="pre">dpi</span></span><a class="headerlink" href="#gmplib.plot.GraphingBase.dpi" title="Permalink to this definition">¶</a></dt>
+<dd><p>resolution for rasterized images</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)">int</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="gmplib.plot.GraphingBase.font_size">
+<span class="sig-name descname"><span class="pre">font_size</span></span><a class="headerlink" href="#gmplib.plot.GraphingBase.font_size" title="Permalink to this definition">¶</a></dt>
+<dd><p>general font size</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)">int</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="gmplib.plot.GraphingBase.fdict">
+<span class="sig-name descname"><span class="pre">fdict</span></span><a class="headerlink" href="#gmplib.plot.GraphingBase.fdict" title="Permalink to this definition">¶</a></dt>
+<dd><p>dictionary to which each figure is appended as it is generated</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.10)">dict</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="gmplib.plot.GraphingBase.colors">
+<span class="sig-name descname"><span class="pre">colors</span></span><a class="headerlink" href="#gmplib.plot.GraphingBase.colors" title="Permalink to this definition">¶</a></dt>
+<dd><p>list of colors</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.10)">list</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="gmplib.plot.GraphingBase.n_colors">
+<span class="sig-name descname"><span class="pre">n_colors</span></span><a class="headerlink" href="#gmplib.plot.GraphingBase.n_colors" title="Permalink to this definition">¶</a></dt>
+<dd><p>number of colors</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)">int</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="gmplib.plot.GraphingBase.color_cycle">
+<span class="sig-name descname"><span class="pre">color_cycle</span></span><a class="headerlink" href="#gmplib.plot.GraphingBase.color_cycle" title="Permalink to this definition">¶</a></dt>
+<dd><p>color property cycle</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/itertools.html#itertools.cycle" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">itertools</span> <span class="pre">cycle</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="gmplib.plot.GraphingBase.markers">
+<span class="sig-name descname"><span class="pre">markers</span></span><a class="headerlink" href="#gmplib.plot.GraphingBase.markers" title="Permalink to this definition">¶</a></dt>
+<dd><p>list of markers</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.10)">list</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="gmplib.plot.GraphingBase.n_markers">
+<span class="sig-name descname"><span class="pre">n_markers</span></span><a class="headerlink" href="#gmplib.plot.GraphingBase.n_markers" title="Permalink to this definition">¶</a></dt>
+<dd><p>number of markers</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/itertools.html#itertools.cycle" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">itertools</span> <span class="pre">cycle</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="gmplib.plot.GraphingBase.marker_cycle">
+<span class="sig-name descname"><span class="pre">marker_cycle</span></span><a class="headerlink" href="#gmplib.plot.GraphingBase.marker_cycle" title="Permalink to this definition">¶</a></dt>
+<dd><p>cycle of markers</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)">int</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="gmplib.plot.GraphingBase.linestyle_list">
+<span class="sig-name descname"><span class="pre">linestyle_list</span></span><a class="headerlink" href="#gmplib.plot.GraphingBase.linestyle_list" title="Permalink to this definition">¶</a></dt>
+<dd><p>list of line styles
+(solid, dashdot, dashed, custom dashed)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.10)">list</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="gmplib.plot.GraphingBase.color">
+<span class="sig-name descname"><span class="pre">color</span></span><a class="headerlink" href="#gmplib.plot.GraphingBase.color" title="Permalink to this definition">¶</a></dt>
+<dd><p>return i^th color</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">lambda(i)</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="gmplib.plot.GraphingBase.marker">
+<span class="sig-name descname"><span class="pre">marker</span></span><a class="headerlink" href="#gmplib.plot.GraphingBase.marker" title="Permalink to this definition">¶</a></dt>
+<dd><p>return i^th marker</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">lambda(i)</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="gmplib.plot.GraphingBase.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dpi</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><span class="pre">int</span></a></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">100</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">font_size</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><span class="pre">int</span></a></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">11</span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.10)"><span class="pre">None</span></a><a class="headerlink" href="#gmplib.plot.GraphingBase.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructor method.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dpi</strong> – resolution for rasterized images</p></li>
+<li><p><strong>font_size</strong> – general font size</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="gmplib.plot.GraphingBase.create_figure">
+<span class="sig-name descname"><span class="pre">create_figure</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fig_name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">fig_size</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><span class="pre">float</span></a><span class="p"><span class="pre">,</span> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dpi</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><span class="pre">int</span></a><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference external" href="https://matplotlib.org/stable/api/figure_api.html#matplotlib.figure.Figure" title="(in Matplotlib v3.5.1)"><span class="pre">matplotlib.figure.Figure</span></a><a class="headerlink" href="#gmplib.plot.GraphingBase.create_figure" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize a <a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.html#module-matplotlib.pyplot" title="(in Matplotlib v3.5.1)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">Pyplot</span></code></a> figure,
+set its size and dpi, set the font size, choose the Arial font family if possible,
+and append it to the figures dictionary,</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>fig_name</strong> – name of figure; used as key in figures dictionary</p></li>
+<li><p><strong>fig_size</strong> – optional width and height of figure in inches</p></li>
+<li><p><strong>dpi</strong> – rasterization resolution</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>reference to <a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.html#module-matplotlib.pyplot" title="(in Matplotlib v3.5.1)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">MatPlotLib/Pyplot</span></code></a> figure</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://matplotlib.org/stable/api/figure_api.html#matplotlib.figure.Figure" title="(in Matplotlib v3.5.1)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Pyplot</span> <span class="pre">figure</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="gmplib.plot.GraphingBase.get_aspect">
+<span class="sig-name descname"><span class="pre">get_aspect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">axes</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://matplotlib.org/stable/api/axes_api.html#matplotlib.axes.Axes" title="(in Matplotlib v3.5.1)"><span class="pre">matplotlib.axes._axes.Axes</span></a></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><span class="pre">float</span></a><a class="headerlink" href="#gmplib.plot.GraphingBase.get_aspect" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get aspect ratio of graph.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>axes</strong> (<a class="reference external" href="https://matplotlib.org/stable/api/axes_api.html#matplotlib.axes.Axes" title="(in Matplotlib v3.5.1)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MatPlotLib</span> <span class="pre">axes</span></code></a>) – the <cite>axes</cite> object of the figure</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>aspect ratio</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)">float</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="gmplib.plot.GraphingBase.naturalize">
+<span class="sig-name descname"><span class="pre">naturalize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fig</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://matplotlib.org/stable/api/figure_api.html#matplotlib.figure.Figure" title="(in Matplotlib v3.5.1)"><span class="pre">matplotlib.figure.Figure</span></a></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.10)"><span class="pre">None</span></a><a class="headerlink" href="#gmplib.plot.GraphingBase.naturalize" title="Permalink to this definition">¶</a></dt>
+<dd><p>TBD</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="gmplib.plot.GraphingBase.stretch">
+<span class="sig-name descname"><span class="pre">stretch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fig</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://matplotlib.org/stable/api/figure_api.html#matplotlib.figure.Figure" title="(in Matplotlib v3.5.1)"><span class="pre">matplotlib.figure.Figure</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">xs</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><span class="pre">float</span></a><span class="p"><span class="pre">,</span> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ys</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><span class="pre">float</span></a><span class="p"><span class="pre">,</span> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.10)"><span class="pre">None</span></a><a class="headerlink" href="#gmplib.plot.GraphingBase.stretch" title="Permalink to this definition">¶</a></dt>
+<dd><p>TBD</p>
+</dd></dl>
+
+</dd></dl>
+
+<div class="section" id="code">
+<h2>Code<a class="headerlink" href="#code" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">---------------------------------------------------------------------</span>
+
+<span class="sd">Graph plotting</span>
+
+<span class="sd">---------------------------------------------------------------------</span>
+
+<span class="sd">Requires Python packages/modules:</span>
+<span class="sd">  -  :mod:`scipy`</span>
+<span class="sd">  -  :mod:`matplotlib`</span>
+
+<span class="sd">Imports symbols from :mod:`.symbols` module.</span>
+
+<span class="sd">---------------------------------------------------------------------</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="c1"># Library</span>
+<span class="kn">import</span> <span class="nn">warnings</span>
+<span class="kn">import</span> <span class="nn">logging</span>
+<span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">cycle</span>
+<span class="kn">import</span> <span class="nn">operator</span> <span class="k">as</span> <span class="nn">op</span>
+
+<span class="c1"># Typing</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">,</span> <span class="n">Optional</span> <span class="c1">#, List,  Callable</span>
+
+<span class="c1"># SciPy</span>
+<span class="c1"># from scipy.linalg import norm</span>
+
+<span class="c1"># MatPlotLib</span>
+<span class="kn">import</span> <span class="nn">matplotlib</span> <span class="k">as</span> <span class="nn">mpl</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
+
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;GraphingBase&#39;</span><span class="p">]</span>
+
+<span class="k">class</span> <span class="nc">GraphingBase</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Visualization base class.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        dpi: resolution for rasterized images</span>
+<span class="sd">        font_size: general font size</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        dpi (int): resolution for rasterized images</span>
+<span class="sd">        font_size (int): general font size</span>
+<span class="sd">        fdict  (dict):  dictionary to which each figure is appended as it is generated</span>
+<span class="sd">        colors  (list):  list of colors</span>
+<span class="sd">        n_colors  (int):  number of colors</span>
+<span class="sd">        color_cycle  (:obj:`itertools cycle &lt;itertools.cycle&gt;`):  color property cycle</span>
+<span class="sd">        markers  (list):  list of markers</span>
+<span class="sd">        n_markers  (:obj:`itertools cycle &lt;itertools.cycle&gt;`):  number of markers</span>
+<span class="sd">        marker_cycle  (int):  cycle of markers</span>
+<span class="sd">        linestyle_list  (list):  list of line styles</span>
+<span class="sd">                                  (solid, dashdot, dashed, custom dashed)</span>
+<span class="sd">        color (:obj:`lambda(i) &lt;lambda&gt;`): return i^th color</span>
+<span class="sd">        marker (:obj:`lambda(i) &lt;lambda&gt;`): return i^th marker</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dpi</span><span class="p">:</span> <span class="nb">int</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">font_size</span><span class="p">:</span> <span class="nb">int</span><span class="o">=</span><span class="mi">11</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Constructor method.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            dpi: resolution for rasterized images</span>
+<span class="sd">            font_size: general font size</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dpi</span> <span class="o">=</span> <span class="n">dpi</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">font_size</span> <span class="o">=</span> <span class="n">font_size</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fdict</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="n">Any</span><span class="p">,</span><span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="n">prop_cycle</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;axes.prop_cycle&#39;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">colors</span> <span class="o">=</span> <span class="n">prop_cycle</span><span class="o">.</span><span class="n">by_key</span><span class="p">()[</span><span class="s1">&#39;color&#39;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">n_colors</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">colors</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">color_cycle</span> <span class="o">=</span> <span class="n">cycle</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">colors</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">markers</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="s1">&#39;s&#39;</span><span class="p">,</span> <span class="s1">&#39;v&#39;</span><span class="p">,</span> <span class="s1">&#39;p&#39;</span><span class="p">,</span> <span class="s1">&#39;*&#39;</span><span class="p">,</span> <span class="s1">&#39;D&#39;</span><span class="p">,</span> <span class="s1">&#39;X&#39;</span><span class="p">,</span> <span class="s1">&#39;^&#39;</span><span class="p">,</span><span class="s1">&#39;h&#39;</span><span class="p">,</span><span class="s1">&#39;P&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">n_markers</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">markers</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">marker_cycle</span> <span class="o">=</span> <span class="n">cycle</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">markers</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">linestyle_list</span> <span class="o">=</span> <span class="p">(</span> <span class="s1">&#39;solid&#39;</span><span class="p">,</span> <span class="s1">&#39;dashdot&#39;</span><span class="p">,</span> <span class="s1">&#39;dashed&#39;</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span> <span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">color</span>  <span class="o">=</span> <span class="k">lambda</span> <span class="n">i_</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">colors</span><span class="p">[</span><span class="n">i_</span><span class="o">%</span><span class="bp">self</span><span class="o">.</span><span class="n">n_colors</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">marker</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">i_</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">markers</span><span class="p">[</span><span class="n">i_</span><span class="o">%</span><span class="bp">self</span><span class="o">.</span><span class="n">n_markers</span><span class="p">]</span>
+
+    <span class="k">def</span> <span class="nf">create_figure</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+                      <span class="n">fig_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+                      <span class="n">fig_size</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span><span class="nb">float</span><span class="p">]]</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                      <span class="n">dpi</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">plt</span><span class="o">.</span><span class="n">Figure</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Initialize a :mod:`Pyplot &lt;matplotlib.pyplot&gt;` figure,</span>
+<span class="sd">        set its size and dpi, set the font size, choose the Arial font family if possible,</span>
+<span class="sd">        and append it to the figures dictionary,</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            fig_name: name of figure; used as key in figures dictionary</span>
+<span class="sd">            fig_size: optional width and height of figure in inches</span>
+<span class="sd">            dpi: rasterization resolution</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            :obj:`Pyplot figure &lt;matplotlib.figure.Figure&gt;`:</span>
+<span class="sd">                reference to :mod:`MatPlotLib/Pyplot &lt;matplotlib.pyplot&gt;` figure</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Creating plot: </span><span class="si">{</span><span class="n">fig_name</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fdict</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="n">fig_name</span><span class="p">:</span><span class="n">fig</span><span class="p">})</span>
+        <span class="n">fig</span><span class="o">.</span><span class="n">set_size_inches</span><span class="p">(</span><span class="o">*</span><span class="n">fig_size</span> <span class="k">if</span> <span class="n">fig_size</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
+        <span class="n">fig</span><span class="o">.</span><span class="n">set_dpi</span><span class="p">(</span><span class="n">dpi</span> <span class="k">if</span> <span class="n">dpi</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">dpi</span><span class="p">)</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">mpl</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;font&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">font_size</span><span class="p">,</span> <span class="n">family</span><span class="o">=</span><span class="s1">&#39;Arial&#39;</span><span class="p">)</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="n">mpl</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;font&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">font_size</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">fig</span>
+
+    <span class="k">def</span> <span class="nf">get_aspect</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">axes</span><span class="p">:</span> <span class="n">plt</span><span class="o">.</span><span class="n">Axes</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Get aspect ratio of graph.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            axes (:obj:`MatPlotLib axes &lt;matplotlib.axes.Axes&gt;`):</span>
+<span class="sd">                the `axes` object of the figure</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            float: aspect ratio</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># Total figure size</span>
+        <span class="n">figWH</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="n">axes</span><span class="o">.</span><span class="n">get_figure</span><span class="p">()</span><span class="o">.</span><span class="n">get_size_inches</span><span class="p">()</span>
+        <span class="n">figW</span><span class="p">,</span> <span class="n">figH</span> <span class="o">=</span> <span class="n">figWH</span>
+        <span class="c1"># Axis size on figure</span>
+        <span class="n">bounds</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span><span class="nb">float</span><span class="p">,</span><span class="nb">float</span><span class="p">,</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="n">axes</span><span class="o">.</span><span class="n">get_position</span><span class="p">()</span><span class="o">.</span><span class="n">bounds</span>
+        <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">h</span> <span class="o">=</span> <span class="n">bounds</span>
+        <span class="c1"># Ratio of display units</span>
+        <span class="n">disp_ratio</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="p">(</span><span class="n">figH</span> <span class="o">*</span> <span class="n">h</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">figW</span> <span class="o">*</span> <span class="n">w</span><span class="p">)</span>
+        <span class="c1"># Ratio of data units</span>
+        <span class="c1"># Negative over negative because of the order of subtraction</span>
+        <span class="c1"># logging.info(axes.get_ylim(),axes.get_xlim())</span>
+        <span class="n">data_ratio</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="n">op</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="o">*</span><span class="n">axes</span><span class="o">.</span><span class="n">get_ylim</span><span class="p">())</span> <span class="o">/</span> <span class="n">op</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="o">*</span><span class="n">axes</span><span class="o">.</span><span class="n">get_xlim</span><span class="p">())</span>
+        <span class="n">aspect_ratio</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="n">disp_ratio</span><span class="o">/</span><span class="n">data_ratio</span>
+        <span class="k">return</span> <span class="n">aspect_ratio</span>
+
+    <span class="k">def</span> <span class="nf">naturalize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fig</span><span class="p">:</span> <span class="n">plt</span><span class="o">.</span><span class="n">Figure</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        TBD</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">axes</span><span class="p">:</span> <span class="n">plt</span><span class="o">.</span><span class="n">Axes</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
+        <span class="c1"># x_lim, y_lim = axes.get_xlim(), axes.get_ylim()</span>
+        <span class="c1"># axes.set_aspect((y_lim[1]-y_lim[0])/(x_lim[1]-x_lim[0]))</span>
+        <span class="n">axes</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="bp">self</span><span class="o">.</span><span class="n">get_aspect</span><span class="p">(</span><span class="n">axes</span><span class="p">))</span>
+
+    <span class="k">def</span> <span class="nf">stretch</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fig</span><span class="p">:</span> <span class="n">plt</span><span class="o">.</span><span class="n">Figure</span><span class="p">,</span>
+                <span class="n">xs</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span><span class="nb">float</span><span class="p">]]</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                <span class="n">ys</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span><span class="nb">float</span><span class="p">]]</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        TBD</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">axes</span><span class="p">:</span> <span class="n">plt</span><span class="o">.</span><span class="n">Axes</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">xs</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">x_lim</span> <span class="o">=</span> <span class="n">axes</span><span class="o">.</span><span class="n">get_xlim</span><span class="p">()</span>
+            <span class="n">x_range</span> <span class="o">=</span> <span class="n">x_lim</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="n">x_lim</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">axes</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="n">x_lim</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="n">x_range</span><span class="o">*</span><span class="n">xs</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">x_lim</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="n">x_range</span><span class="o">*</span><span class="n">xs</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+        <span class="k">if</span> <span class="n">ys</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">y_lim</span> <span class="o">=</span> <span class="n">axes</span><span class="o">.</span><span class="n">get_ylim</span><span class="p">()</span>
+            <span class="n">y_range</span> <span class="o">=</span> <span class="n">y_lim</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="n">y_lim</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">axes</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="n">y_lim</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="n">y_range</span><span class="o">*</span><span class="n">ys</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">y_lim</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="n">y_range</span><span class="o">*</span><span class="n">ys</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+
+    <span class="c1"># def covector_fishbone_vertical(self,</span>
+    <span class="c1">#                                x: float, y: float,</span>
+    <span class="c1">#                                px: float, py: float,</span>
+    <span class="c1">#                                ref: float,</span>
+    <span class="c1">#                                fishbone_len: float,</span>
+    <span class="c1">#                                n_ticks: int=5,</span>
+    <span class="c1">#                                sf: float=1.0,</span>
+    <span class="c1">#                                color: str=&#39;DarkBlue&#39;) -&gt; None:</span>
+    <span class="c1">#     &quot;&quot;&quot;</span>
+    <span class="c1">#     TBD</span>
+    <span class="c1">#     &quot;&quot;&quot;</span>
+    <span class="c1">#     head_width_: float = 0.0</span>
+    <span class="c1">#     head_length_: float = 0.0</span>
+    <span class="c1">#     lw_: float = 0.5</span>
+    <span class="c1">#     plt.arrow(x,y, 0, -fishbone_len,</span>
+    <span class="c1">#                 color=color, ec=color,</span>
+    <span class="c1">#                 head_width=head_width_, head_length=head_length_,</span>
+    <span class="c1">#                 lw=lw_, shape=&#39;full&#39;, overhang=1,</span>
+    <span class="c1">#                 length_includes_head=True,</span>
+    <span class="c1">#                 head_starts_at_zero=False,)</span>
+    <span class="c1">#</span>
+    <span class="c1">#     dy_per_tick: float = sf*(ref/py) * (fishbone_len/n_ticks)</span>
+    <span class="c1">#     tick_sf: float = 0.02</span>
+    <span class="c1">#     for i_ in range(n_ticks):</span>
+    <span class="c1">#         npx: float = py*tick_sf</span>
+    <span class="c1">#         npy: float = px*tick_sf</span>
+    <span class="c1">#         dy: float = dy_per_tick*(i_+1)</span>
+    <span class="c1">#         if dy&gt;fishbone_len:</span>
+    <span class="c1">#             break</span>
+    <span class="c1">#         plt.plot([x-npx/2,x+npx/2],[y-dy+npy/2,y-dy-npy/2], c=color)</span>
+    <span class="c1">#</span>
+    <span class="c1"># def covector_fishbone(self,</span>
+    <span class="c1">#                        x: float, y: float,</span>
+    <span class="c1">#                        px: float, py: float,</span>
+    <span class="c1">#                        ref: float,</span>
+    <span class="c1">#                        fishbone_len: float,</span>
+    <span class="c1">#                        n_ticks: int=5,</span>
+    <span class="c1">#                        sf: float=1.0,</span>
+    <span class="c1">#                        color: str=&#39;DarkBlue&#39;) -&gt; None:</span>
+    <span class="c1">#     &quot;&quot;&quot;</span>
+    <span class="c1">#     TBD</span>
+    <span class="c1">#     &quot;&quot;&quot;</span>
+    <span class="c1">#     head_width_: float = 0.0</span>
+    <span class="c1">#     head_length_: float = 0.0</span>
+    <span class="c1">#     lw_: float = 0.5</span>
+    <span class="c1">#     p_norm: float = norm((px,py))</span>
+    <span class="c1">#     sf_: float = sf*fishbone_len/p_norm</span>
+    <span class="c1">#     dx: float = -sf_*px</span>
+    <span class="c1">#     dy: float = -sf_*py</span>
+    <span class="c1">#     plt.arrow(x,y, dx,dy,</span>
+    <span class="c1">#                 color=color, ec=color,</span>
+    <span class="c1">#                 head_width=head_width_, head_length=head_length_,</span>
+    <span class="c1">#                 lw=lw_, shape=&#39;full&#39;, overhang=1,</span>
+    <span class="c1">#                 length_includes_head=True,</span>
+    <span class="c1">#                 head_starts_at_zero=False,)</span>
+    <span class="c1">#</span>
+    <span class="c1">#     dx_per_tick: float = sf*(px/ref) * (fishbone_len/n_ticks)</span>
+    <span class="c1">#     dy_per_tick: float = sf*(py/ref) * (fishbone_len/n_ticks)</span>
+    <span class="c1">#     tick_sf: float = 0.03</span>
+    <span class="c1">#     for i_ in range(n_ticks+3):</span>
+    <span class="c1">#         dx = dx_per_tick*(i_+1)</span>
+    <span class="c1">#         dy = dy_per_tick*(i_+1)</span>
+    <span class="c1">#         d_norm: float = norm((dx,dy))</span>
+    <span class="c1">#         npx: float = tick_sf*dy/d_norm</span>
+    <span class="c1">#         npy: float = tick_sf*dx/d_norm</span>
+    <span class="c1">#         # logging.info(px,py,dx_per_tick,dy_per_tick)</span>
+    <span class="c1">#         if norm((dx,dy))&gt;fishbone_len:</span>
+    <span class="c1">#             break</span>
+    <span class="c1">#         plt.plot([x-dx],[y-dy], &#39;o&#39;, ms=2, c=color)</span>
+    <span class="c1">#         plt.plot([x-dx-npx/2,x-dx+npx/2],[y-dy+npy/2,y-dy-npy/2], c=color)</span>
+
+<span class="c1"># from dataclasses import dataclass, field</span>
+<span class="c1"># @dataclass(repr=True, eq=False, order=False, unsafe_hash=False, frozen=False)</span>
+
+    <span class="c1"># dpi: int = field(repr=False, default=100)</span>
+    <span class="c1"># font_size: int = field(repr=False, default=11)</span>
+    <span class="c1"># fdict: dict = field(repr=True, default_factory=dict)</span>
+    <span class="c1"># colors: list = field(repr=False, default_factory=list)</span>
+    <span class="c1">#      #=lambda: (plt.rcParams[&#39;axes.prop_cycle&#39;]).by_key()[&#39;color&#39;])</span>
+    <span class="c1"># markers: list = field(repr=False, default_factory=list)</span>
+    <span class="c1">#      #=lambda: [&#39;o&#39;, &#39;s&#39;, &#39;v&#39;, &#39;p&#39;, &#39;*&#39;, &#39;D&#39;, &#39;X&#39;, &#39;^&#39;,&#39;h&#39;,&#39;P&#39;])</span>
+    <span class="c1"># linestyle_list: list = field(repr=False, default_factory=list)</span>
+    <span class="c1">#      #=lambda: [ &#39;solid&#39;, &#39;dashdot&#39;, &#39;dashed&#39;, (0, (3, 1, 1, 1))])</span>
+    <span class="c1">#</span>
+    <span class="c1"># def __post_init__(self):</span>
+    <span class="c1">#     self.colors = (plt.rcParams[&#39;axes.prop_cycle&#39;]).by_key()[&#39;color&#39;]</span>
+    <span class="c1">#     self.n_colors = len(list(self.colors))</span>
+    <span class="c1">#     self.color_cycle = cycle(self.colors)</span>
+    <span class="c1">#     self.markers = [&#39;o&#39;, &#39;s&#39;, &#39;v&#39;, &#39;p&#39;, &#39;*&#39;, &#39;D&#39;, &#39;X&#39;, &#39;^&#39;,&#39;h&#39;,&#39;P&#39;]</span>
+    <span class="c1">#     self.n_markers = len(self.markers)</span>
+    <span class="c1">#     self.marker_cycle = cycle(self.markers)</span>
+    <span class="c1">#     self.linestyle_list = [ &#39;solid&#39;, &#39;dashdot&#39;, &#39;dashed&#39;, (0, (3, 1, 1, 1))]</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel"></h3>
+      <a class="biglink" href="../index.html">
+          <img src="../_static/gmplib_icon_noalpha_150px.png" />
+      </a>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel"  placeholder="Search..."/>
+      <!-- <input type="submit" value="Search" /> -->
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+<h3><a href="../index.html">Contents</a></h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="initialize.html">Initialization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="parameters.html">Parameters</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Plotting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="save.html">Export</a></li>
+<li class="toctree-l1"><a class="reference internal" href="utils.html">Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="image.html">Image layout</a></li>
+</ul>
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="save.html" title="save.py"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="parameters.html" title="parameters.py"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">GMPLib 1.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><code class="docutils literal notranslate"><span class="pre">plot.py</span></code></a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2021, CPS.
+    <!--
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.0.3. -->
+    </div>
+  </body>
+</html>

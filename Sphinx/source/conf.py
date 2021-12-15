@@ -113,19 +113,19 @@ html_sidebars = {
 # -- Intersphinx mappings -------------------------------------------------
 
 intersphinx_mapping = {
-   'sphinx': ('http://www.sphinx-doc.org/en/master', None),
-   'python': ('https://docs.python.org/3', None),
-   'matplotlib': ('https://matplotlib.org', None),
-   'mpl_toolkits': ('https://matplotlib.org', None),
-   'np': ('https://docs.scipy.org/doc/numpy', None),
-   'numpy': ('https://docs.scipy.org/doc/numpy', None),
-   'scipy': ('https://docs.scipy.org/doc/scipy/reference', None),
-   'sympy': ('https://docs.sympy.org/dev/', None),
-   'PIL': ('https://pillow.readthedocs.io/en/latest/', None),
-   'IPython': ('http://ipython.org/ipython-doc/stable', None),
-   'Wand': ('https://docs.wand-py.org/en/0.6.7/', None),
-   'PyPDF2': ('https://pythonhosted.org/PyPDF2/', None)
-   }
+    'sphinx': ('http://www.sphinx-doc.org/en/master', None),
+    'python': ('https://docs.python.org/3', None),
+    'matplotlib': ('https://matplotlib.org/stable', None),
+    # 'mpl_toolkits': ('https://matplotlib.org', None),
+    'np': ('https://docs.scipy.org/doc/numpy', None),
+    'numpy': ('https://docs.scipy.org/doc/numpy', None),
+    'scipy': ('https://docs.scipy.org/doc/scipy/reference', None),
+    'sympy': ('https://docs.sympy.org/dev/', None),
+    'PIL': ('https://pillow.readthedocs.io/en/latest/', None),
+    'IPython': ('http://ipython.org/ipython-doc/stable', None),
+    'Wand': ('https://docs.wand-py.org/en/0.6.7/', None),
+    'PyPDF2': ('https://pythonhosted.org/PyPDF2/', None)
+}
 
 
 # -- Napoleon settings -------------------------------------------------
