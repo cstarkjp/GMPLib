@@ -1,15 +1,12 @@
 """
 ---------------------------------------------------------------------
 
-Graph plotting
+Visualization
 
 ---------------------------------------------------------------------
 
 Requires Python packages/modules:
-  -  :mod:`scipy`
   -  :mod:`matplotlib`
-
-Imports symbols from :mod:`.symbols` module.
 
 ---------------------------------------------------------------------
 
@@ -80,10 +77,12 @@ class GraphingBase:
         self.color  = lambda i_: self.colors[i_%self.n_colors]
         self.marker = lambda i_: self.markers[i_%self.n_markers]
 
-    def create_figure(self,
-                      fig_name: str,
-                      fig_size: Optional[Tuple[float,float]]=None,
-                      dpi: Optional[int]=None) -> plt.Figure:
+    def create_figure(
+        self,
+        fig_name: str,
+        fig_size: Optional[Tuple[float,float]]=None,
+        dpi: Optional[int]=None
+        ) -> plt.Figure:
         """
         Initialize a :mod:`Pyplot <matplotlib.pyplot>` figure,
         set its size and dpi, set the font size, choose the Arial font family if possible,
@@ -98,11 +97,13 @@ class GraphingBase:
             :obj:`Pyplot figure <matplotlib.figure.Figure>`:
                 reference to :mod:`MatPlotLib/Pyplot <matplotlib.pyplot>` figure
         """
-        logging.info(f'Creating plot: {fig_name}')
+        fig_size_: Tuple[float,float] = (8,8) if fig_size is None else fig_size
+        dpi_: float = self.dpi if dpi is None else dpi
+        logging.info(f'Creating plot: {fig_name} size={fig_size_} @ {dpi_} dpi')
         fig = plt.figure()
         self.fdict.update({fig_name:fig})
-        fig.set_size_inches(*fig_size if fig_size is not None else (8,8))
-        fig.set_dpi(dpi if dpi is not None else self.dpi)
+        fig.set_size_inches(fig_size_)
+        fig.set_dpi(dpi_)
         try:
             mpl.rc('font', size=self.font_size, family='Arial')
         except:

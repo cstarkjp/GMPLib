@@ -47,16 +47,14 @@
   <div class="section" id="module-gmplib.plot">
 <span id="plot-py"></span><h1><code class="docutils literal notranslate"><span class="pre">plot.py</span></code><a class="headerlink" href="#module-gmplib.plot" title="Permalink to this headline">¶</a></h1>
 <hr class="docutils" />
-<p>Graph plotting</p>
+<p>Visualization</p>
 <hr class="docutils" />
 <dl class="simple">
 <dt>Requires Python packages/modules:</dt><dd><ul class="simple">
-<li><p><a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/index.html#module-scipy" title="(in SciPy v1.7.1)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scipy</span></code></a></p></li>
 <li><p><a class="reference external" href="https://matplotlib.org/stable/index.html#module-matplotlib" title="(in Matplotlib v3.5.1)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">matplotlib</span></code></a></p></li>
 </ul>
 </dd>
 </dl>
-<p>Imports symbols from <code class="xref py py-mod docutils literal notranslate"><span class="pre">symbols</span></code> module.</p>
 <hr class="docutils" />
 <dl class="py class">
 <dt class="sig sig-object py" id="gmplib.plot.GraphingBase">
@@ -276,15 +274,12 @@ and append it to the figures dictionary,</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">---------------------------------------------------------------------</span>
 
-<span class="sd">Graph plotting</span>
+<span class="sd">Visualization</span>
 
 <span class="sd">---------------------------------------------------------------------</span>
 
 <span class="sd">Requires Python packages/modules:</span>
-<span class="sd">  -  :mod:`scipy`</span>
 <span class="sd">  -  :mod:`matplotlib`</span>
-
-<span class="sd">Imports symbols from :mod:`.symbols` module.</span>
 
 <span class="sd">---------------------------------------------------------------------</span>
 
@@ -355,10 +350,12 @@ and append it to the figures dictionary,</p>
         <span class="bp">self</span><span class="o">.</span><span class="n">color</span>  <span class="o">=</span> <span class="k">lambda</span> <span class="n">i_</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">colors</span><span class="p">[</span><span class="n">i_</span><span class="o">%</span><span class="bp">self</span><span class="o">.</span><span class="n">n_colors</span><span class="p">]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">marker</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">i_</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">markers</span><span class="p">[</span><span class="n">i_</span><span class="o">%</span><span class="bp">self</span><span class="o">.</span><span class="n">n_markers</span><span class="p">]</span>
 
-    <span class="k">def</span> <span class="nf">create_figure</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
-                      <span class="n">fig_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-                      <span class="n">fig_size</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span><span class="nb">float</span><span class="p">]]</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-                      <span class="n">dpi</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">plt</span><span class="o">.</span><span class="n">Figure</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">create_figure</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">fig_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">fig_size</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span><span class="nb">float</span><span class="p">]]</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">dpi</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span><span class="o">=</span><span class="kc">None</span>
+        <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">plt</span><span class="o">.</span><span class="n">Figure</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Initialize a :mod:`Pyplot &lt;matplotlib.pyplot&gt;` figure,</span>
 <span class="sd">        set its size and dpi, set the font size, choose the Arial font family if possible,</span>
@@ -373,11 +370,13 @@ and append it to the figures dictionary,</p>
 <span class="sd">            :obj:`Pyplot figure &lt;matplotlib.figure.Figure&gt;`:</span>
 <span class="sd">                reference to :mod:`MatPlotLib/Pyplot &lt;matplotlib.pyplot&gt;` figure</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Creating plot: </span><span class="si">{</span><span class="n">fig_name</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="n">fig_size_</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">8</span><span class="p">)</span> <span class="k">if</span> <span class="n">fig_size</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">fig_size</span>
+        <span class="n">dpi_</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dpi</span> <span class="k">if</span> <span class="n">dpi</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">dpi</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Creating plot: </span><span class="si">{</span><span class="n">fig_name</span><span class="si">}</span><span class="s1"> size=</span><span class="si">{</span><span class="n">fig_size_</span><span class="si">}</span><span class="s1"> @ </span><span class="si">{</span><span class="n">dpi_</span><span class="si">}</span><span class="s1"> dpi&#39;</span><span class="p">)</span>
         <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">fdict</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="n">fig_name</span><span class="p">:</span><span class="n">fig</span><span class="p">})</span>
-        <span class="n">fig</span><span class="o">.</span><span class="n">set_size_inches</span><span class="p">(</span><span class="o">*</span><span class="n">fig_size</span> <span class="k">if</span> <span class="n">fig_size</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
-        <span class="n">fig</span><span class="o">.</span><span class="n">set_dpi</span><span class="p">(</span><span class="n">dpi</span> <span class="k">if</span> <span class="n">dpi</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">dpi</span><span class="p">)</span>
+        <span class="n">fig</span><span class="o">.</span><span class="n">set_size_inches</span><span class="p">(</span><span class="n">fig_size_</span><span class="p">)</span>
+        <span class="n">fig</span><span class="o">.</span><span class="n">set_dpi</span><span class="p">(</span><span class="n">dpi_</span><span class="p">)</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="n">mpl</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;font&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">font_size</span><span class="p">,</span> <span class="n">family</span><span class="o">=</span><span class="s1">&#39;Arial&#39;</span><span class="p">)</span>
         <span class="k">except</span><span class="p">:</span>
