@@ -15,7 +15,6 @@ Requires Python packages/modules:
 
 import warnings
 import logging
-from os import PathLike
 from os.path import realpath, join
 from json import load
 from copy import copy
@@ -28,11 +27,14 @@ from sympy.parsing.sympy_parser import parse_expr
 
 warnings.filterwarnings("ignore")
 
-__all__ = ['import_parameters', 'read_json_file', 'Parameters', 'ParametersNestedGroup']
+__all__ = ['import_parameters', 'read_json_file',
+           'Parameters', 'ParametersNestedGroup']
 
 
-def import_parameters( path: Tuple[str],
-                       filenames: Tuple[str]=('defaults',) ) -> Tuple[Dict, str]:
+def import_parameters(
+    path: Tuple[str],
+    filenames: Tuple[str] = ('defaults',)
+) -> Tuple[Dict, str]:
     """
     Load JSON parameters files (defaults and job) and parse them in turn to
     generate a job parameters dictionary.
@@ -47,10 +49,11 @@ def import_parameters( path: Tuple[str],
     # Parse default and assigned JSON parameters files
     dirpath: str = realpath(join(*path))
     filepaths: List[str] \
-        = [realpath(join(dirpath,filename)) for filename in filenames]
+        = [realpath(join(dirpath, filename)) for filename in filenames]
     return (read_json_file(filepaths), dirpath)
 
-def read_json_file(filepaths: Union[Tuple[str],List[str]]) -> Dict:
+
+def read_json_file(filepaths: Union[Tuple[str], List[str]]) -> Dict:
     """
     Load and parse a list of JSON parameters files into a parameters dict.
 
@@ -66,7 +69,7 @@ def read_json_file(filepaths: Union[Tuple[str],List[str]]) -> Dict:
         dict:  job parameters dictionary
     """
     # Start wit a clean parameters dictionary
-    parameters_dict: Dict[Any,Any] = {}
+    parameters_dict: Dict[Any, Any] = {}
     # Step through each JSON parameters file in turn
     for filepath in filepaths:
         parameters_file_name = filepath+'.json'
@@ -77,9 +80,9 @@ def read_json_file(filepaths: Union[Tuple[str],List[str]]) -> Dict:
         # We do this so that we can replace a (sub-)dict item
         #   if the second (etc) JSON file needs to override
         #   an item value set in the first (etc) JSON parameters file.
-        for key,item in zip(parameters.keys(),parameters.items()):
+        for key, item in zip(parameters.keys(), parameters.items()):
             # Check to see if the item is itself a dict
-            if isinstance(item[1],dict):
+            if isinstance(item[1], dict):
                 # If so, step through this source sub-dict
                 for subitem in item[1].items():
                     # If the destination sub-dict doesn't exist yet, create it
@@ -88,11 +91,12 @@ def read_json_file(filepaths: Union[Tuple[str],List[str]]) -> Dict:
                     if item[0] in parameters_dict:
                         # logging.debug(parameters_dict[item[0]])
                         # The sub-dict exists: update this key and value
-                        parameters_dict[item[0]].update({subitem[0] : subitem[1]})
+                        parameters_dict[item[0]].update(
+                            {subitem[0]: subitem[1]})
                     else:
-                        # The sub-dict does not exist yet, so set this key and value
-                        #   as its first item
-                        parameters_dict[item[0]] = {subitem[0] : subitem[1]}
+                        # The sub-dict does not exist yet, so set this key
+                        #    and value as its first item
+                        parameters_dict[item[0]] = {subitem[0]: subitem[1]}
             else:
                 # If not a dict, set the key, value
                 parameters_dict[key] = item[1]
@@ -105,18 +109,25 @@ class Parameters():
     """
     Parameters (job parameters) container
     """
-    def __init__(self,
-                 imported_parameters: Dict,
-                 evaluations: Optional[Dict]=None,
-                 sequence: Tuple=()):
+
+    def __init__(
+            self,
+            imported_parameters: Dict,
+            evaluations: Optional[Dict] = None,
+            sequence: Tuple = ()
+    ) -> None:
         """
         Initialize class instance.
-        Convert top-level items in the parameters dictionary, whose keys are group names
-        and whose values are sub-dictionary groups of parameters, into class attributes.
-        The attribute names are the group names and their values are the sub-dictionaries.
+        Convert top-level items in the parameters dictionary,
+        whose keys are group names
+        and whose values are sub-dictionary groups of parameters,
+        into class attributes.
+        The attribute names are the group names and their values
+        are the sub-dictionaries.
 
         Args:
-            imported_parameters (dict): job parameters dictionary
+            imported_parameters:
+                job parameters dictionary
 
         Attributes:
             various (class attribute): matching top-level items in the
@@ -127,28 +138,39 @@ class Parameters():
         imported_parameters_: Dict = copy(imported_parameters)
         for group_name in sequence:
             group_dict = imported_parameters[group_name]
-            setattr(self, group_name, ParametersNestedGroup(group_name, group_dict,
-                                                            evaluations_))
+            setattr(
+                self,
+                group_name,
+                ParametersNestedGroup(group_name, group_dict, evaluations_)
+            )
             imported_parameters_.pop(group_name)
         for group_name, group_dict in imported_parameters_.items():
             group_dict = imported_parameters_[group_name]
-            setattr(self, group_name, ParametersNestedGroup(group_name, group_dict,
-                                                            evaluations_))
+            setattr(
+                self,
+                group_name,
+                ParametersNestedGroup(group_name, group_dict, evaluations_)
+            )
+
 
 class ParametersNestedGroup():
     """
     ParametersNestedGroup (job parameters) sub-container
     """
-    def __init__(self,
-                 group_name: str,
-                 parameters_dict: Dict,
-                 evaluations: Optional[Dict]=None):
+
+    def __init__(
+            self,
+            group_name: str,
+            parameters_dict: Dict,
+            evaluations: Optional[Dict] = None
+    ) -> None:
         """
         Initialize class instance.
         Convert items in a parameters sub-dictionary into class attributes,
-        setting the attribute name to the dict item's key and the attribute value
-        to the dict item's value.
-        If the value is a Sympy reference, parse it into a Sympy object before attribution.
+        setting the attribute name to the dict item's key and the
+        attribute value to the dict item's value.
+        If the value is a Sympy reference, parse it into a Sympy object
+        before attribution.
 
         Args:
             imported_parameters (dict): job parameters dictionary
@@ -159,15 +181,16 @@ class ParametersNestedGroup():
         """
         if evaluations is None:
             evaluations = {}
-        #logging.debug(group_name, parameters_dict, evaluations)
-        for s_key,s_value in parameters_dict.items():
-            setattr( self,s_key, parse_expr(s_value.replace('sy.',''))
-                                if isinstance(s_value,str) and 'sy.' in s_value else
-                                (None if s_value=='None' else (s_value)) )
+        # logging.debug(group_name, parameters_dict, evaluations)
+        for s_key, s_value in parameters_dict.items():
+            setattr(self, s_key, parse_expr(s_value.replace('sy.', ''))
+                    if isinstance(s_value, str) and 'sy.' in s_value else
+                    (None if s_value == 'None' else (s_value)))
         # For each item containing a "p." reference, evaluate it
-        #  - this allows us to set parameters that are dependent on other parameters
+        #  - this allows us to set parameters that are dependent on
+        #    other parameters
         p = self
         if group_name in evaluations.keys():
             for attr in evaluations[group_name]:
-                logging.debug(group_name,attr, eval(str(getattr(self, attr))))
+                logging.debug(group_name, attr, eval(str(getattr(self, attr))))
                 setattr(p, attr, eval(str(getattr(self, attr))))

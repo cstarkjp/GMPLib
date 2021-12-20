@@ -18,7 +18,7 @@ from itertools import cycle
 import operator as op
 
 # Typing
-from typing import Dict, Any, Tuple, Optional #, List,  Callable
+from typing import Dict, Any, Tuple, Optional  # , List,  Callable
 
 # SciPy
 # from scipy.linalg import norm
@@ -31,77 +31,101 @@ warnings.filterwarnings("ignore")
 
 __all__ = ['GraphingBase']
 
+
 class GraphingBase:
     """
     Visualization base class.
 
     Args:
-        dpi: resolution for rasterized images
-        font_size: general font size
+        dpi:
+            resolution for rasterized images
+        font_size:
+            general font size
 
     Attributes:
-        dpi (int): resolution for rasterized images
-        font_size (int): general font size
-        fdict  (dict):  dictionary to which each figure is appended as it is generated
-        colors  (list):  list of colors
-        n_colors  (int):  number of colors
-        color_cycle  (:obj:`itertools cycle <itertools.cycle>`):  color property cycle
-        markers  (list):  list of markers
-        n_markers  (:obj:`itertools cycle <itertools.cycle>`):  number of markers
-        marker_cycle  (int):  cycle of markers
-        linestyle_list  (list):  list of line styles
-                                  (solid, dashdot, dashed, custom dashed)
-        color (:obj:`lambda(i) <lambda>`): return i^th color
-        marker (:obj:`lambda(i) <lambda>`): return i^th marker
+        dpi (int):
+            resolution for rasterized images
+        font_size (int):
+            general font size
+        fdict  (dict):
+            dictionary to which each figure is appended as it is generated
+        colors  (list):
+            list of colors
+        n_colors  (int):
+            number of colors
+        color_cycle  (:obj:`itertools cycle <itertools.cycle>`):
+            color property cycle
+        markers  (list):
+            list of markers
+        n_markers  (:obj:`itertools cycle <itertools.cycle>`):
+            number of markers
+        marker_cycle  (int):
+            cycle of markers
+        linestyle_list  (list):
+            list of line styles (solid, dashdot, dashed, custom dashed)
+        color (:obj:`lambda(i) <lambda>`):
+            return i^th color
+        marker (:obj:`lambda(i) <lambda>`):
+            return i^th marker
     """
-    def __init__(self, dpi: int=100, font_size: int=11) -> None:
+
+    def __init__(self, dpi: int = 100, font_size: int = 11) -> None:
         """
         Constructor method.
 
         Args:
-            dpi: resolution for rasterized images
-            font_size: general font size
+            dpi:
+                resolution for rasterized images
+            font_size:
+                general font size
         """
         self.dpi = dpi
         self.font_size = font_size
-        self.fdict: Dict[Any,Any] = {}
+        self.fdict: Dict[Any, Any] = {}
         prop_cycle = plt.rcParams['axes.prop_cycle']
         self.colors = prop_cycle.by_key()['color']
         self.n_colors = len(self.colors)
         self.color_cycle = cycle(self.colors)
-        self.markers = ('o', 's', 'v', 'p', '*', 'D', 'X', '^','h','P')
+        self.markers = ('o', 's', 'v', 'p', '*', 'D', 'X', '^', 'h', 'P')
         self.n_markers = len(self.markers)
         self.marker_cycle = cycle(self.markers)
-        self.linestyle_list = ( 'solid', 'dashdot', 'dashed', (0, (3, 1, 1, 1)) )
+        self.linestyle_list = ('solid', 'dashdot', 'dashed', (0, (3, 1, 1, 1)))
 
-        self.color  = lambda i_: self.colors[i_%self.n_colors]
-        self.marker = lambda i_: self.markers[i_%self.n_markers]
+        self.color = lambda i_: self.colors[i_ % self.n_colors]
+        self.marker = lambda i_: self.markers[i_ % self.n_markers]
 
     def create_figure(
-        self,
-        fig_name: str,
-        fig_size: Optional[Tuple[float,float]]=None,
-        dpi: Optional[int]=None
-        ) -> plt.Figure:
+            self,
+            fig_name: str,
+            fig_size: Optional[Tuple[float, float]] = None,
+            dpi: Optional[int] = None
+    ) -> plt.Figure:
         """
         Initialize a :mod:`Pyplot <matplotlib.pyplot>` figure,
-        set its size and dpi, set the font size, choose the Arial font family if possible,
+        set its size and dpi, set the font size,
+        choose the Arial font family if possible,
         and append it to the figures dictionary,
 
         Args:
-            fig_name: name of figure; used as key in figures dictionary
-            fig_size: optional width and height of figure in inches
-            dpi: rasterization resolution
+            fig_name:
+                name of figure; used as key in figures dictionary
+            fig_size:
+                optional width and height of figure in inches
+            dpi:
+                rasterization resolution
 
         Returns:
             :obj:`Pyplot figure <matplotlib.figure.Figure>`:
-                reference to :mod:`MatPlotLib/Pyplot <matplotlib.pyplot>` figure
+                reference to :mod:`MatPlotLib/Pyplot <matplotlib.pyplot>`
+                figure
         """
-        fig_size_: Tuple[float,float] = (8,8) if fig_size is None else fig_size
+        fig_size_: Tuple[float, float] = (
+            8, 8) if fig_size is None else fig_size
         dpi_: float = self.dpi if dpi is None else dpi
-        logging.info(f'Creating plot: {fig_name} size={fig_size_} @ {dpi_} dpi')
+        logging.info(
+            f'Creating plot: {fig_name} size={fig_size_} @ {dpi_} dpi')
         fig = plt.figure()
-        self.fdict.update({fig_name:fig})
+        self.fdict.update({fig_name: fig})
         fig.set_size_inches(fig_size_)
         fig.set_dpi(dpi_)
         try:
@@ -115,17 +139,18 @@ class GraphingBase:
         Get aspect ratio of graph.
 
         Args:
-            axes (:obj:`MatPlotLib axes <matplotlib.axes.Axes>`):
+            axes:
                 the `axes` object of the figure
 
         Returns:
-            float: aspect ratio
+            float:
+                aspect ratio
         """
         # Total figure size
-        figWH: Tuple[float,float] = axes.get_figure().get_size_inches()
+        figWH: Tuple[float, float] = axes.get_figure().get_size_inches()
         figW, figH = figWH
         # Axis size on figure
-        bounds: Tuple[float,float,float,float] = axes.get_position().bounds
+        bounds: Tuple[float, float, float, float] = axes.get_position().bounds
         _, _, w, h = bounds
         # Ratio of display units
         disp_ratio: float = (figH * h) / (figW * w)
@@ -145,9 +170,11 @@ class GraphingBase:
         # axes.set_aspect((y_lim[1]-y_lim[0])/(x_lim[1]-x_lim[0]))
         axes.set_aspect(1/self.get_aspect(axes))
 
-    def stretch(self, fig: plt.Figure,
-                xs: Optional[Tuple[float,float]]=None,
-                ys: Optional[Tuple[float,float]]=None) -> None:
+    def stretch(
+        self, fig: plt.Figure,
+        xs: Optional[Tuple[float, float]] = None,
+        ys: Optional[Tuple[float, float]] = None
+    ) -> None:
         """
         TBD
         """
@@ -155,11 +182,11 @@ class GraphingBase:
         if xs is not None:
             x_lim = axes.get_xlim()
             x_range = x_lim[1]-x_lim[0]
-            axes.set_xlim(x_lim[0]-x_range*xs[0],x_lim[1]+x_range*xs[1])
+            axes.set_xlim(x_lim[0]-x_range*xs[0], x_lim[1]+x_range*xs[1])
         if ys is not None:
             y_lim = axes.get_ylim()
             y_range = y_lim[1]-y_lim[0]
-            axes.set_ylim(y_lim[0]-y_range*ys[0],y_lim[1]+y_range*ys[1])
+            axes.set_ylim(y_lim[0]-y_range*ys[0], y_lim[1]+y_range*ys[1])
 
     # def covector_fishbone_vertical(self,
     #                                x: float, y: float,
@@ -230,7 +257,7 @@ class GraphingBase:
     #         if norm((dx,dy))>fishbone_len:
     #             break
     #         plt.plot([x-dx],[y-dy], 'o', ms=2, c=color)
-    #         plt.plot([x-dx-npx/2,x-dx+npx/2],[y-dy+npy/2,y-dy-npy/2], c=color)
+    #       plt.plot([x-dx-npx/2,x-dx+npx/2],[y-dy+npy/2,y-dy-npy/2], c=color)
 
 # from dataclasses import dataclass, field
 # @dataclass(repr=True, eq=False, order=False, unsafe_hash=False, frozen=False)
@@ -252,4 +279,5 @@ class GraphingBase:
     #     self.markers = ['o', 's', 'v', 'p', '*', 'D', 'X', '^','h','P']
     #     self.n_markers = len(self.markers)
     #     self.marker_cycle = cycle(self.markers)
-    #     self.linestyle_list = [ 'solid', 'dashdot', 'dashed', (0, (3, 1, 1, 1))]
+    #     self.linestyle_list = [ 'solid', 'dashdot', 'dashed',
+    #   (0, (3, 1, 1, 1))]

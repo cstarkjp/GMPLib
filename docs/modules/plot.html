@@ -170,8 +170,7 @@
 <dl class="py attribute">
 <dt class="sig sig-object py" id="gmplib.plot.GraphingBase.linestyle_list">
 <span class="sig-name descname"><span class="pre">linestyle_list</span></span><a class="headerlink" href="#gmplib.plot.GraphingBase.linestyle_list" title="Permalink to this definition">¶</a></dt>
-<dd><p>list of line styles
-(solid, dashdot, dashed, custom dashed)</p>
+<dd><p>list of line styles (solid, dashdot, dashed, custom dashed)</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type</dt>
 <dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.10)">list</a></p>
@@ -219,7 +218,8 @@
 <dt class="sig sig-object py" id="gmplib.plot.GraphingBase.create_figure">
 <span class="sig-name descname"><span class="pre">create_figure</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fig_name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">fig_size</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><span class="pre">float</span></a><span class="p"><span class="pre">,</span> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dpi</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><span class="pre">int</span></a><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference external" href="https://matplotlib.org/stable/api/figure_api.html#matplotlib.figure.Figure" title="(in Matplotlib v3.5.1)"><span class="pre">matplotlib.figure.Figure</span></a><a class="headerlink" href="#gmplib.plot.GraphingBase.create_figure" title="Permalink to this definition">¶</a></dt>
 <dd><p>Initialize a <a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.html#module-matplotlib.pyplot" title="(in Matplotlib v3.5.1)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">Pyplot</span></code></a> figure,
-set its size and dpi, set the font size, choose the Arial font family if possible,
+set its size and dpi, set the font size,
+choose the Arial font family if possible,
 and append it to the figures dictionary,</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -230,7 +230,8 @@ and append it to the figures dictionary,</p>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p>reference to <a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.html#module-matplotlib.pyplot" title="(in Matplotlib v3.5.1)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">MatPlotLib/Pyplot</span></code></a> figure</p>
+<dd class="field-even"><p>reference to <a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.html#module-matplotlib.pyplot" title="(in Matplotlib v3.5.1)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">MatPlotLib/Pyplot</span></code></a>
+figure</p>
 </dd>
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p><a class="reference external" href="https://matplotlib.org/stable/api/figure_api.html#matplotlib.figure.Figure" title="(in Matplotlib v3.5.1)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Pyplot</span> <span class="pre">figure</span></code></a></p>
@@ -244,7 +245,7 @@ and append it to the figures dictionary,</p>
 <dd><p>Get aspect ratio of graph.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>axes</strong> (<a class="reference external" href="https://matplotlib.org/stable/api/axes_api.html#matplotlib.axes.Axes" title="(in Matplotlib v3.5.1)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MatPlotLib</span> <span class="pre">axes</span></code></a>) – the <cite>axes</cite> object of the figure</p>
+<dd class="field-odd"><p><strong>axes</strong> – the <cite>axes</cite> object of the figure</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>aspect ratio</p>
@@ -291,7 +292,7 @@ and append it to the figures dictionary,</p>
 <span class="kn">import</span> <span class="nn">operator</span> <span class="k">as</span> <span class="nn">op</span>
 
 <span class="c1"># Typing</span>
-<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">,</span> <span class="n">Optional</span> <span class="c1">#, List,  Callable</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">,</span> <span class="n">Optional</span>  <span class="c1"># , List,  Callable</span>
 
 <span class="c1"># SciPy</span>
 <span class="c1"># from scipy.linalg import norm</span>
@@ -304,77 +305,101 @@ and append it to the figures dictionary,</p>
 
 <span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;GraphingBase&#39;</span><span class="p">]</span>
 
+
 <span class="k">class</span> <span class="nc">GraphingBase</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Visualization base class.</span>
 
 <span class="sd">    Args:</span>
-<span class="sd">        dpi: resolution for rasterized images</span>
-<span class="sd">        font_size: general font size</span>
+<span class="sd">        dpi:</span>
+<span class="sd">            resolution for rasterized images</span>
+<span class="sd">        font_size:</span>
+<span class="sd">            general font size</span>
 
 <span class="sd">    Attributes:</span>
-<span class="sd">        dpi (int): resolution for rasterized images</span>
-<span class="sd">        font_size (int): general font size</span>
-<span class="sd">        fdict  (dict):  dictionary to which each figure is appended as it is generated</span>
-<span class="sd">        colors  (list):  list of colors</span>
-<span class="sd">        n_colors  (int):  number of colors</span>
-<span class="sd">        color_cycle  (:obj:`itertools cycle &lt;itertools.cycle&gt;`):  color property cycle</span>
-<span class="sd">        markers  (list):  list of markers</span>
-<span class="sd">        n_markers  (:obj:`itertools cycle &lt;itertools.cycle&gt;`):  number of markers</span>
-<span class="sd">        marker_cycle  (int):  cycle of markers</span>
-<span class="sd">        linestyle_list  (list):  list of line styles</span>
-<span class="sd">                                  (solid, dashdot, dashed, custom dashed)</span>
-<span class="sd">        color (:obj:`lambda(i) &lt;lambda&gt;`): return i^th color</span>
-<span class="sd">        marker (:obj:`lambda(i) &lt;lambda&gt;`): return i^th marker</span>
+<span class="sd">        dpi (int):</span>
+<span class="sd">            resolution for rasterized images</span>
+<span class="sd">        font_size (int):</span>
+<span class="sd">            general font size</span>
+<span class="sd">        fdict  (dict):</span>
+<span class="sd">            dictionary to which each figure is appended as it is generated</span>
+<span class="sd">        colors  (list):</span>
+<span class="sd">            list of colors</span>
+<span class="sd">        n_colors  (int):</span>
+<span class="sd">            number of colors</span>
+<span class="sd">        color_cycle  (:obj:`itertools cycle &lt;itertools.cycle&gt;`):</span>
+<span class="sd">            color property cycle</span>
+<span class="sd">        markers  (list):</span>
+<span class="sd">            list of markers</span>
+<span class="sd">        n_markers  (:obj:`itertools cycle &lt;itertools.cycle&gt;`):</span>
+<span class="sd">            number of markers</span>
+<span class="sd">        marker_cycle  (int):</span>
+<span class="sd">            cycle of markers</span>
+<span class="sd">        linestyle_list  (list):</span>
+<span class="sd">            list of line styles (solid, dashdot, dashed, custom dashed)</span>
+<span class="sd">        color (:obj:`lambda(i) &lt;lambda&gt;`):</span>
+<span class="sd">            return i^th color</span>
+<span class="sd">        marker (:obj:`lambda(i) &lt;lambda&gt;`):</span>
+<span class="sd">            return i^th marker</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dpi</span><span class="p">:</span> <span class="nb">int</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">font_size</span><span class="p">:</span> <span class="nb">int</span><span class="o">=</span><span class="mi">11</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dpi</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span> <span class="n">font_size</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">11</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Constructor method.</span>
 
 <span class="sd">        Args:</span>
-<span class="sd">            dpi: resolution for rasterized images</span>
-<span class="sd">            font_size: general font size</span>
+<span class="sd">            dpi:</span>
+<span class="sd">                resolution for rasterized images</span>
+<span class="sd">            font_size:</span>
+<span class="sd">                general font size</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">dpi</span> <span class="o">=</span> <span class="n">dpi</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">font_size</span> <span class="o">=</span> <span class="n">font_size</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">fdict</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="n">Any</span><span class="p">,</span><span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fdict</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="n">Any</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
         <span class="n">prop_cycle</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;axes.prop_cycle&#39;</span><span class="p">]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">colors</span> <span class="o">=</span> <span class="n">prop_cycle</span><span class="o">.</span><span class="n">by_key</span><span class="p">()[</span><span class="s1">&#39;color&#39;</span><span class="p">]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">n_colors</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">colors</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">color_cycle</span> <span class="o">=</span> <span class="n">cycle</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">colors</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">markers</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="s1">&#39;s&#39;</span><span class="p">,</span> <span class="s1">&#39;v&#39;</span><span class="p">,</span> <span class="s1">&#39;p&#39;</span><span class="p">,</span> <span class="s1">&#39;*&#39;</span><span class="p">,</span> <span class="s1">&#39;D&#39;</span><span class="p">,</span> <span class="s1">&#39;X&#39;</span><span class="p">,</span> <span class="s1">&#39;^&#39;</span><span class="p">,</span><span class="s1">&#39;h&#39;</span><span class="p">,</span><span class="s1">&#39;P&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">markers</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="s1">&#39;s&#39;</span><span class="p">,</span> <span class="s1">&#39;v&#39;</span><span class="p">,</span> <span class="s1">&#39;p&#39;</span><span class="p">,</span> <span class="s1">&#39;*&#39;</span><span class="p">,</span> <span class="s1">&#39;D&#39;</span><span class="p">,</span> <span class="s1">&#39;X&#39;</span><span class="p">,</span> <span class="s1">&#39;^&#39;</span><span class="p">,</span> <span class="s1">&#39;h&#39;</span><span class="p">,</span> <span class="s1">&#39;P&#39;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">n_markers</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">markers</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">marker_cycle</span> <span class="o">=</span> <span class="n">cycle</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">markers</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">linestyle_list</span> <span class="o">=</span> <span class="p">(</span> <span class="s1">&#39;solid&#39;</span><span class="p">,</span> <span class="s1">&#39;dashdot&#39;</span><span class="p">,</span> <span class="s1">&#39;dashed&#39;</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span> <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">linestyle_list</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;solid&#39;</span><span class="p">,</span> <span class="s1">&#39;dashdot&#39;</span><span class="p">,</span> <span class="s1">&#39;dashed&#39;</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)))</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">color</span>  <span class="o">=</span> <span class="k">lambda</span> <span class="n">i_</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">colors</span><span class="p">[</span><span class="n">i_</span><span class="o">%</span><span class="bp">self</span><span class="o">.</span><span class="n">n_colors</span><span class="p">]</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">marker</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">i_</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">markers</span><span class="p">[</span><span class="n">i_</span><span class="o">%</span><span class="bp">self</span><span class="o">.</span><span class="n">n_markers</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">i_</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">colors</span><span class="p">[</span><span class="n">i_</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_colors</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">marker</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">i_</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">markers</span><span class="p">[</span><span class="n">i_</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_markers</span><span class="p">]</span>
 
     <span class="k">def</span> <span class="nf">create_figure</span><span class="p">(</span>
-        <span class="bp">self</span><span class="p">,</span>
-        <span class="n">fig_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-        <span class="n">fig_size</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span><span class="nb">float</span><span class="p">]]</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-        <span class="n">dpi</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span><span class="o">=</span><span class="kc">None</span>
-        <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">plt</span><span class="o">.</span><span class="n">Figure</span><span class="p">:</span>
+            <span class="bp">self</span><span class="p">,</span>
+            <span class="n">fig_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+            <span class="n">fig_size</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+            <span class="n">dpi</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">plt</span><span class="o">.</span><span class="n">Figure</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Initialize a :mod:`Pyplot &lt;matplotlib.pyplot&gt;` figure,</span>
-<span class="sd">        set its size and dpi, set the font size, choose the Arial font family if possible,</span>
+<span class="sd">        set its size and dpi, set the font size,</span>
+<span class="sd">        choose the Arial font family if possible,</span>
 <span class="sd">        and append it to the figures dictionary,</span>
 
 <span class="sd">        Args:</span>
-<span class="sd">            fig_name: name of figure; used as key in figures dictionary</span>
-<span class="sd">            fig_size: optional width and height of figure in inches</span>
-<span class="sd">            dpi: rasterization resolution</span>
+<span class="sd">            fig_name:</span>
+<span class="sd">                name of figure; used as key in figures dictionary</span>
+<span class="sd">            fig_size:</span>
+<span class="sd">                optional width and height of figure in inches</span>
+<span class="sd">            dpi:</span>
+<span class="sd">                rasterization resolution</span>
 
 <span class="sd">        Returns:</span>
 <span class="sd">            :obj:`Pyplot figure &lt;matplotlib.figure.Figure&gt;`:</span>
-<span class="sd">                reference to :mod:`MatPlotLib/Pyplot &lt;matplotlib.pyplot&gt;` figure</span>
+<span class="sd">                reference to :mod:`MatPlotLib/Pyplot &lt;matplotlib.pyplot&gt;`</span>
+<span class="sd">                figure</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">fig_size_</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">8</span><span class="p">)</span> <span class="k">if</span> <span class="n">fig_size</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">fig_size</span>
+        <span class="n">fig_size_</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span> <span class="k">if</span> <span class="n">fig_size</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">fig_size</span>
         <span class="n">dpi_</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dpi</span> <span class="k">if</span> <span class="n">dpi</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">dpi</span>
-        <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Creating plot: </span><span class="si">{</span><span class="n">fig_name</span><span class="si">}</span><span class="s1"> size=</span><span class="si">{</span><span class="n">fig_size_</span><span class="si">}</span><span class="s1"> @ </span><span class="si">{</span><span class="n">dpi_</span><span class="si">}</span><span class="s1"> dpi&#39;</span><span class="p">)</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s1">&#39;Creating plot: </span><span class="si">{</span><span class="n">fig_name</span><span class="si">}</span><span class="s1"> size=</span><span class="si">{</span><span class="n">fig_size_</span><span class="si">}</span><span class="s1"> @ </span><span class="si">{</span><span class="n">dpi_</span><span class="si">}</span><span class="s1"> dpi&#39;</span><span class="p">)</span>
         <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">fdict</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="n">fig_name</span><span class="p">:</span><span class="n">fig</span><span class="p">})</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fdict</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="n">fig_name</span><span class="p">:</span> <span class="n">fig</span><span class="p">})</span>
         <span class="n">fig</span><span class="o">.</span><span class="n">set_size_inches</span><span class="p">(</span><span class="n">fig_size_</span><span class="p">)</span>
         <span class="n">fig</span><span class="o">.</span><span class="n">set_dpi</span><span class="p">(</span><span class="n">dpi_</span><span class="p">)</span>
         <span class="k">try</span><span class="p">:</span>
@@ -388,17 +413,18 @@ and append it to the figures dictionary,</p>
 <span class="sd">        Get aspect ratio of graph.</span>
 
 <span class="sd">        Args:</span>
-<span class="sd">            axes (:obj:`MatPlotLib axes &lt;matplotlib.axes.Axes&gt;`):</span>
+<span class="sd">            axes:</span>
 <span class="sd">                the `axes` object of the figure</span>
 
 <span class="sd">        Returns:</span>
-<span class="sd">            float: aspect ratio</span>
+<span class="sd">            float:</span>
+<span class="sd">                aspect ratio</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="c1"># Total figure size</span>
-        <span class="n">figWH</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="n">axes</span><span class="o">.</span><span class="n">get_figure</span><span class="p">()</span><span class="o">.</span><span class="n">get_size_inches</span><span class="p">()</span>
+        <span class="n">figWH</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="n">axes</span><span class="o">.</span><span class="n">get_figure</span><span class="p">()</span><span class="o">.</span><span class="n">get_size_inches</span><span class="p">()</span>
         <span class="n">figW</span><span class="p">,</span> <span class="n">figH</span> <span class="o">=</span> <span class="n">figWH</span>
         <span class="c1"># Axis size on figure</span>
-        <span class="n">bounds</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span><span class="nb">float</span><span class="p">,</span><span class="nb">float</span><span class="p">,</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="n">axes</span><span class="o">.</span><span class="n">get_position</span><span class="p">()</span><span class="o">.</span><span class="n">bounds</span>
+        <span class="n">bounds</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="n">axes</span><span class="o">.</span><span class="n">get_position</span><span class="p">()</span><span class="o">.</span><span class="n">bounds</span>
         <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">h</span> <span class="o">=</span> <span class="n">bounds</span>
         <span class="c1"># Ratio of display units</span>
         <span class="n">disp_ratio</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="p">(</span><span class="n">figH</span> <span class="o">*</span> <span class="n">h</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">figW</span> <span class="o">*</span> <span class="n">w</span><span class="p">)</span>
@@ -418,9 +444,11 @@ and append it to the figures dictionary,</p>
         <span class="c1"># axes.set_aspect((y_lim[1]-y_lim[0])/(x_lim[1]-x_lim[0]))</span>
         <span class="n">axes</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="bp">self</span><span class="o">.</span><span class="n">get_aspect</span><span class="p">(</span><span class="n">axes</span><span class="p">))</span>
 
-    <span class="k">def</span> <span class="nf">stretch</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fig</span><span class="p">:</span> <span class="n">plt</span><span class="o">.</span><span class="n">Figure</span><span class="p">,</span>
-                <span class="n">xs</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span><span class="nb">float</span><span class="p">]]</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-                <span class="n">ys</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span><span class="nb">float</span><span class="p">]]</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">stretch</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">fig</span><span class="p">:</span> <span class="n">plt</span><span class="o">.</span><span class="n">Figure</span><span class="p">,</span>
+        <span class="n">xs</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">ys</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        TBD</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -428,11 +456,11 @@ and append it to the figures dictionary,</p>
         <span class="k">if</span> <span class="n">xs</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">x_lim</span> <span class="o">=</span> <span class="n">axes</span><span class="o">.</span><span class="n">get_xlim</span><span class="p">()</span>
             <span class="n">x_range</span> <span class="o">=</span> <span class="n">x_lim</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="n">x_lim</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-            <span class="n">axes</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="n">x_lim</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="n">x_range</span><span class="o">*</span><span class="n">xs</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">x_lim</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="n">x_range</span><span class="o">*</span><span class="n">xs</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+            <span class="n">axes</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="n">x_lim</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="n">x_range</span><span class="o">*</span><span class="n">xs</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">x_lim</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="n">x_range</span><span class="o">*</span><span class="n">xs</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
         <span class="k">if</span> <span class="n">ys</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">y_lim</span> <span class="o">=</span> <span class="n">axes</span><span class="o">.</span><span class="n">get_ylim</span><span class="p">()</span>
             <span class="n">y_range</span> <span class="o">=</span> <span class="n">y_lim</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="n">y_lim</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-            <span class="n">axes</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="n">y_lim</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="n">y_range</span><span class="o">*</span><span class="n">ys</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">y_lim</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="n">y_range</span><span class="o">*</span><span class="n">ys</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+            <span class="n">axes</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="n">y_lim</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="n">y_range</span><span class="o">*</span><span class="n">ys</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">y_lim</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="n">y_range</span><span class="o">*</span><span class="n">ys</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
 
     <span class="c1"># def covector_fishbone_vertical(self,</span>
     <span class="c1">#                                x: float, y: float,</span>
@@ -503,7 +531,7 @@ and append it to the figures dictionary,</p>
     <span class="c1">#         if norm((dx,dy))&gt;fishbone_len:</span>
     <span class="c1">#             break</span>
     <span class="c1">#         plt.plot([x-dx],[y-dy], &#39;o&#39;, ms=2, c=color)</span>
-    <span class="c1">#         plt.plot([x-dx-npx/2,x-dx+npx/2],[y-dy+npy/2,y-dy-npy/2], c=color)</span>
+    <span class="c1">#       plt.plot([x-dx-npx/2,x-dx+npx/2],[y-dy+npy/2,y-dy-npy/2], c=color)</span>
 
 <span class="c1"># from dataclasses import dataclass, field</span>
 <span class="c1"># @dataclass(repr=True, eq=False, order=False, unsafe_hash=False, frozen=False)</span>
@@ -525,7 +553,8 @@ and append it to the figures dictionary,</p>
     <span class="c1">#     self.markers = [&#39;o&#39;, &#39;s&#39;, &#39;v&#39;, &#39;p&#39;, &#39;*&#39;, &#39;D&#39;, &#39;X&#39;, &#39;^&#39;,&#39;h&#39;,&#39;P&#39;]</span>
     <span class="c1">#     self.n_markers = len(self.markers)</span>
     <span class="c1">#     self.marker_cycle = cycle(self.markers)</span>
-    <span class="c1">#     self.linestyle_list = [ &#39;solid&#39;, &#39;dashdot&#39;, &#39;dashed&#39;, (0, (3, 1, 1, 1))]</span>
+    <span class="c1">#     self.linestyle_list = [ &#39;solid&#39;, &#39;dashdot&#39;, &#39;dashed&#39;,</span>
+    <span class="c1">#   (0, (3, 1, 1, 1))]</span>
 </pre></div>
 </div>
 </div>

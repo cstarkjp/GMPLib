@@ -134,7 +134,8 @@ Returns quietly if the directory already exists.</p>
 <dt class="sig sig-object py" id="gmplib.save.export_results">
 <span class="sig-prename descclassname"><span class="pre">gmplib.save.</span></span><span class="sig-name descname"><span class="pre">export_results</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">results_dir</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/os.html#os.PathLike" title="(in Python v3.10)"><span class="pre">os.PathLike</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/os.html#os.PathLike" title="(in Python v3.10)"><span class="pre">os.PathLike</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">raw_dict</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">suffix</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.10)"><span class="pre">None</span></a><a class="headerlink" href="#gmplib.save.export_results" title="Permalink to this definition">¶</a></dt>
 <dd><p>Export results dictionary to JSON file.</p>
-<p>Tries to ensure all dictionary entries are serializable by running <cite>latex</cite>
+<p>Tries to ensure all dictionary entries are
+serializable by running <cite>latex</cite>
 on keys and converting values to floats.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -143,7 +144,8 @@ on keys and converting values to floats.</p>
 <li><p><strong>filename</strong> – name of output JSON file</p></li>
 <li><p><strong>suffix</strong> – to append to filename prior to addition of ‘.json’ extension</p></li>
 <li><p><strong>raw_dict</strong> – dictionary of results, possibly requiring conversion
-from latex form such that serialization into a JSON file is possible</p></li>
+from latex form such that serialization into a JSON file
+is possible</p></li>
 </ul>
 </dd>
 </dl>
@@ -184,7 +186,8 @@ from latex form such that serialization into a JSON file is possible</p></li>
 <span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
 
 <span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;create_dir&#39;</span><span class="p">,</span> <span class="s1">&#39;create_directories&#39;</span><span class="p">,</span>
-           <span class="s1">&#39;export_results&#39;</span><span class="p">,</span> <span class="s1">&#39;export_plots&#39;</span><span class="p">,</span><span class="s1">&#39;export_plot&#39;</span><span class="p">]</span>
+           <span class="s1">&#39;export_results&#39;</span><span class="p">,</span> <span class="s1">&#39;export_plots&#39;</span><span class="p">,</span> <span class="s1">&#39;export_plot&#39;</span><span class="p">]</span>
+
 
 <span class="k">def</span> <span class="nf">create_dir</span><span class="p">(</span><span class="n">dir_</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;</span>
@@ -212,8 +215,11 @@ from latex form such that serialization into a JSON file is possible</p></li>
         <span class="k">raise</span>
     <span class="k">return</span> <span class="n">dir_</span>
 
-<span class="k">def</span> <span class="nf">create_directories</span><span class="p">(</span><span class="n">results_path</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span><span class="nb">str</span><span class="p">]</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;..&#39;</span><span class="p">,</span><span class="s1">&#39;Results&#39;</span><span class="p">),</span>
-                       <span class="n">results_dir</span><span class="p">:</span> <span class="nb">str</span><span class="o">=</span><span class="s1">&#39;Demo&#39;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+
+<span class="k">def</span> <span class="nf">create_directories</span><span class="p">(</span>
+    <span class="n">results_path</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;..&#39;</span><span class="p">,</span> <span class="s1">&#39;Results&#39;</span><span class="p">),</span>
+    <span class="n">results_dir</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;Demo&#39;</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Create results parent and target directory.</span>
 
@@ -230,81 +236,108 @@ from latex form such that serialization into a JSON file is possible</p></li>
     <span class="n">results_dir_</span> <span class="o">=</span> <span class="n">results_path_</span><span class="o">+</span><span class="p">[</span><span class="n">results_dir</span><span class="p">]</span>
     <span class="k">return</span> <span class="n">create_dir</span><span class="p">(</span><span class="n">join</span><span class="p">(</span><span class="o">*</span><span class="n">results_dir_</span><span class="p">))</span>
 
-<span class="k">def</span> <span class="nf">export_results</span><span class="p">(</span> <span class="n">results_dir</span><span class="p">:</span> <span class="n">PathLike</span><span class="p">,</span>
-                    <span class="n">filename</span><span class="p">:</span> <span class="n">PathLike</span><span class="p">,</span>
-                    <span class="n">raw_dict</span><span class="p">:</span> <span class="n">Dict</span><span class="p">,</span>
-                    <span class="n">suffix</span><span class="p">:</span> <span class="nb">str</span><span class="o">=</span><span class="s1">&#39;&#39;</span> <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+
+<span class="k">def</span> <span class="nf">export_results</span><span class="p">(</span>
+    <span class="n">results_dir</span><span class="p">:</span> <span class="n">PathLike</span><span class="p">,</span>
+    <span class="n">filename</span><span class="p">:</span> <span class="n">PathLike</span><span class="p">,</span>
+    <span class="n">raw_dict</span><span class="p">:</span> <span class="n">Dict</span><span class="p">,</span>
+    <span class="n">suffix</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Export results dictionary to JSON file.</span>
 
-<span class="sd">    Tries to ensure all dictionary entries are serializable by running `latex`</span>
+<span class="sd">    Tries to ensure all dictionary entries are</span>
+<span class="sd">    serializable by running `latex`</span>
 <span class="sd">    on keys and converting values to floats.</span>
 
 <span class="sd">    Args:</span>
-<span class="sd">        results_dir: name of output directory</span>
-<span class="sd">        filename: name of output JSON file</span>
-<span class="sd">        suffix: to append to filename prior to addition of &#39;.json&#39; extension</span>
-<span class="sd">        raw_dict: dictionary of results, possibly requiring conversion</span>
-<span class="sd">            from latex form such that serialization into a JSON file is possible</span>
+<span class="sd">        results_dir:</span>
+<span class="sd">            name of output directory</span>
+
+<span class="sd">        filename:</span>
+<span class="sd">            name of output JSON file</span>
+
+<span class="sd">        suffix:</span>
+<span class="sd">            to append to filename prior to addition of &#39;.json&#39; extension</span>
+
+<span class="sd">        raw_dict:</span>
+<span class="sd">            dictionary of results, possibly requiring conversion</span>
+<span class="sd">            from latex form such that serialization into a JSON file</span>
+<span class="sd">            is possible</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">serializable_dict</span> <span class="o">=</span> <span class="p">{}</span>
     <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">raw_dict</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-        <span class="n">serializable_dict</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="n">latex</span><span class="p">(</span><span class="n">item</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span><span class="nb">float</span><span class="p">(</span><span class="n">item</span><span class="p">[</span><span class="mi">1</span><span class="p">])})</span>
+        <span class="n">serializable_dict</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="n">latex</span><span class="p">(</span><span class="n">item</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span> <span class="nb">float</span><span class="p">(</span><span class="n">item</span><span class="p">[</span><span class="mi">1</span><span class="p">])})</span>
     <span class="n">results_path_</span> <span class="o">=</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">results_dir</span><span class="p">)]</span><span class="o">+</span><span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39;_&#39;</span><span class="o">+</span><span class="n">suffix</span><span class="o">+</span><span class="s1">&#39;.json&#39;</span><span class="p">]</span>
     <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">join</span><span class="p">(</span><span class="o">*</span><span class="n">results_path_</span><span class="p">),</span> <span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;latin-1&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fp</span><span class="p">:</span>
         <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">join</span><span class="p">(</span><span class="o">*</span><span class="n">results_path_</span><span class="p">))</span>
         <span class="n">dump</span><span class="p">(</span><span class="n">serializable_dict</span><span class="p">,</span> <span class="n">fp</span><span class="p">,</span> <span class="n">separators</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;, </span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="s1">&#39;: &#39;</span><span class="p">))</span>
 
-<span class="k">def</span> <span class="nf">export_plots</span><span class="p">(</span><span class="n">fig_dict</span><span class="p">:</span> <span class="n">Dict</span><span class="p">,</span>
-                 <span class="n">results_dir</span><span class="p">:</span> <span class="n">PathLike</span><span class="p">,</span>
-                 <span class="n">file_types</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span><span class="n">Tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span><span class="nb">str</span><span class="p">]</span><span class="o">=</span><span class="s1">&#39;pdf&#39;</span><span class="p">,</span>
-                 <span class="n">suffix</span><span class="p">:</span> <span class="nb">str</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span>
-                 <span class="n">dpi</span><span class="p">:</span> <span class="nb">int</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+
+<span class="k">def</span> <span class="nf">export_plots</span><span class="p">(</span>
+    <span class="n">fig_dict</span><span class="p">:</span> <span class="n">Dict</span><span class="p">,</span>
+    <span class="n">results_dir</span><span class="p">:</span> <span class="n">PathLike</span><span class="p">,</span>
+    <span class="n">file_types</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;pdf&#39;</span><span class="p">,</span>
+    <span class="n">suffix</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+    <span class="n">dpi</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Export plots to PDF or other format files</span>
 
 <span class="sd">    Args:</span>
-<span class="sd">        fig_dict: dictionary of figures</span>
-<span class="sd">        results_dir: name of output directory</span>
-<span class="sd">        file_types: file format (or list of file formats)</span>
-<span class="sd">        suffix: filename suffix</span>
+<span class="sd">        fig_dict:</span>
+<span class="sd">            dictionary of figures</span>
+<span class="sd">        results_dir:</span>
+<span class="sd">            name of output directory</span>
+<span class="sd">        file_types:</span>
+<span class="sd">            file format (or list of file formats)</span>
+<span class="sd">        suffix:</span>
+<span class="sd">            filename suffix</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">results_path</span><span class="p">:</span> <span class="n">PathLike</span> <span class="o">=</span> <span class="n">realpath</span><span class="p">(</span><span class="n">results_dir</span><span class="p">)</span>
     <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Writing to dir: &quot;</span><span class="si">{</span><span class="n">results_path</span><span class="si">}</span><span class="s1">&quot;&#39;</span><span class="p">)</span>
     <span class="n">file_types_</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="n">file_types</span> \
-                             <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">file_types</span><span class="p">,</span> <span class="nb">list</span><span class="p">)</span> \
-                             <span class="k">else</span>  <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">file_types</span><span class="p">)]</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">file_types</span><span class="p">,</span> <span class="nb">list</span><span class="p">)</span> \
+        <span class="k">else</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">file_types</span><span class="p">)]</span>
     <span class="k">for</span> <span class="n">file_type</span> <span class="ow">in</span> <span class="n">file_types_</span><span class="p">:</span>
         <span class="c1"># logging.info(f&#39;Image file type: &quot;{file_type}&quot;&#39;)</span>
         <span class="k">for</span> <span class="n">fig_dict_item</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">fig_dict</span><span class="o">.</span><span class="n">items</span><span class="p">()):</span>
             <span class="n">export_plot</span><span class="p">(</span><span class="o">*</span><span class="n">fig_dict_item</span><span class="p">,</span> <span class="n">results_path</span><span class="p">,</span>
                         <span class="n">file_type</span><span class="o">=</span><span class="n">file_type</span><span class="p">,</span> <span class="n">suffix</span><span class="o">=</span><span class="n">suffix</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="n">dpi</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">export_plot</span><span class="p">(</span><span class="n">fig_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-                <span class="n">fig</span><span class="p">:</span> <span class="n">figure</span><span class="p">,</span>
-                <span class="n">results_dir</span><span class="p">:</span> <span class="n">PathLike</span><span class="p">,</span>
-                <span class="n">file_type</span><span class="p">:</span> <span class="nb">str</span><span class="o">=</span><span class="s1">&#39;pdf&#39;</span><span class="p">,</span>
-                <span class="n">suffix</span><span class="p">:</span> <span class="nb">str</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span>
-                <span class="n">dpi</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+
+<span class="k">def</span> <span class="nf">export_plot</span><span class="p">(</span>
+    <span class="n">fig_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">fig</span><span class="p">:</span> <span class="n">figure</span><span class="p">,</span>
+    <span class="n">results_dir</span><span class="p">:</span> <span class="n">PathLike</span><span class="p">,</span>
+    <span class="n">file_type</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;pdf&#39;</span><span class="p">,</span>
+    <span class="n">suffix</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+    <span class="n">dpi</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Export plot to PDF or other format file</span>
 
 <span class="sd">    Args:</span>
-<span class="sd">        fig_name: name to be used for file (extension auto-appended)</span>
-<span class="sd">        fig: figure object</span>
-<span class="sd">        results_dir: name of output directory</span>
-<span class="sd">        file_type: file format</span>
-<span class="sd">        suffix: filename suffix</span>
+<span class="sd">        fig_name:</span>
+<span class="sd">            name to be used for file (extension auto-appended)</span>
+<span class="sd">        fig:</span>
+<span class="sd">            figure object</span>
+<span class="sd">        results_dir:</span>
+<span class="sd">            name of output directory</span>
+<span class="sd">        file_type:</span>
+<span class="sd">            file format</span>
+<span class="sd">        suffix:</span>
+<span class="sd">            filename suffix</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">fig_name_</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">fig_name</span><span class="si">}{</span><span class="n">suffix</span><span class="si">}</span><span class="s1">.</span><span class="si">{</span><span class="n">file_type</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="si">}</span><span class="s1">&#39;</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="c1"># logging.info(f&#39;dpi={dpi}&#39;)</span>
-        <span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">join</span><span class="p">(</span><span class="n">results_dir</span><span class="p">,</span><span class="n">fig_name_</span><span class="p">),</span>
+        <span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">join</span><span class="p">(</span><span class="n">results_dir</span><span class="p">,</span> <span class="n">fig_name_</span><span class="p">),</span>
                     <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">,</span>
                     <span class="n">pad_inches</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span>
                     <span class="n">dpi</span><span class="o">=</span><span class="n">dpi</span><span class="p">,</span>
                     <span class="nb">format</span><span class="o">=</span><span class="n">file_type</span>
-        <span class="p">)</span>
+                    <span class="p">)</span>
         <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Exported &quot;</span><span class="si">{</span><span class="n">fig_name_</span><span class="si">}</span><span class="s1">&quot;&#39;</span><span class="p">)</span>
     <span class="k">except</span> <span class="ne">OSError</span><span class="p">:</span>
         <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Failed to export figure &quot;</span><span class="si">{</span><span class="n">fig_name_</span><span class="si">}</span><span class="s1">&quot;&#39;</span><span class="p">)</span>

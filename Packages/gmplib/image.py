@@ -22,12 +22,12 @@ import warnings
 # import logging
 import os
 from os import listdir, PathLike
-from os.path import join #, realpath, splitext
+from os.path import join  # , realpath, splitext
 from functools import reduce
 from decimal import Decimal
 
 # Typing
-from typing import Dict, Tuple, List, Optional #, Any, Union
+from typing import Dict, Tuple, List, Optional  # , Any, Union
 
 # Abstract classes & methods
 from abc import ABC, abstractmethod
@@ -43,10 +43,15 @@ from PyPDF2.pdf import PageObject
 
 warnings.filterwarnings("ignore")
 
-__all__ = [ 'combine_images', 'combine_raster_images', 'combine_pdf_images',
-            'combine_raster_images_vertically', 'combine_raster_images_horizontally',
-            'combine_pdf_images_vertically', 'combine_pdf_images_horizontally',
-            'fetch_images', 'resize' ]
+__all__ = ['combine_images',
+           'combine_raster_images',
+           'combine_pdf_images',
+           'combine_raster_images_vertically',
+           'combine_raster_images_horizontally',
+           'combine_pdf_images_vertically',
+           'combine_pdf_images_horizontally',
+           'fetch_images',
+           'resize']
 
 
 class combine_images(ABC):
@@ -62,14 +67,15 @@ class combine_images(ABC):
         out_path: where to write combined-image file
         do_align_right: align all images along right margin
     """
-    def __init__( self,
-                  out_path: PathLike,
-                  into_filename: PathLike,
-                  image_bundle: List[str],
-                  image_sources: Dict[str,str],
-                  file_type: str='jpg',
-                  spacing: int=20,
-                  do_align_right: bool=False ):
+
+    def __init__(self,
+                 out_path: PathLike,
+                 into_filename: PathLike,
+                 image_bundle: List[str],
+                 image_sources: Dict[str, str],
+                 file_type: str = 'jpg',
+                 spacing: int = 20,
+                 do_align_right: bool = False):
         """
         Constructor method
         """
@@ -81,10 +87,10 @@ class combine_images(ABC):
 
     @abstractmethod
     def get_images(self,
-                    image_bundle: List[str],
-                    image_sources: Dict[str,str],
-                    file_type: str,
-                    spacing: float) -> None:
+                   image_bundle: List[str],
+                   image_sources: Dict[str, str],
+                   file_type: str,
+                   spacing: float) -> None:
         """
         How to get image files (abstract method).
 
@@ -127,9 +133,10 @@ class combine_raster_images(combine_images):
     Combine raster image files.
     Inherits from `combine_images`.
     """
+
     def get_images(self,
                    image_bundle: List[str],
-                   image_sources: Dict[str,str],
+                   image_sources: Dict[str, str],
                    file_type: str,
                    spacing: float) -> None:
         """
@@ -137,7 +144,7 @@ class combine_raster_images(combine_images):
         """
         self.image_list = [
             PIL.Image.open(join(image_sources[f'{image_name}.{file_type}'],
-                                              f'{image_name}.{file_type}'))
+                                f'{image_name}.{file_type}'))
             for image_name in image_bundle
         ]
 
@@ -148,13 +155,16 @@ class combine_raster_images(combine_images):
         """
         Write combined image to a raster file.
         """
-        self.combo_image.save(join(str(out_path), f'{into_filename}.{file_type}'))
+        self.combo_image.save(
+            join(str(out_path), f'{into_filename}.{file_type}'))
+
 
 class combine_raster_images_vertically(combine_raster_images):
     """
     Combine raster images in a vertical layout.
     Inherits from `combine_raster_images`.
     """
+
     def paste_images(self,
                      spacing: float,
                      do_align_right: bool) -> None:
@@ -163,19 +173,23 @@ class combine_raster_images_vertically(combine_raster_images):
         """
         x_size = max([image.size[0] for image in self.image_list])
         y_sizes = [image.size[1] for image in self.image_list]
-        y_size = reduce(lambda x,y: x+y, y_sizes) + spacing*(len(self.image_list)-1)
-        self.combo_image = PIL.Image.new('RGB',(x_size, y_size), (255,255,255))
+        y_size = reduce(lambda x, y: x+y, y_sizes) + \
+            spacing*(len(self.image_list)-1)
+        self.combo_image = PIL.Image.new(
+            'RGB', (x_size, y_size), (255, 255, 255))
         y_offset = 0
-        for image,y_size in zip(self.image_list, y_sizes):
+        for image, y_size in zip(self.image_list, y_sizes):
             x_offset = x_size-image.size[0] if do_align_right else 0
-            self.combo_image.paste(image, (x_offset,y_offset))
+            self.combo_image.paste(image, (x_offset, y_offset))
             y_offset += y_size + spacing
+
 
 class combine_raster_images_horizontally(combine_raster_images):
     """
     Combine raster images in a horizontal layout.
     Inherits from `combine_raster_images`.
     """
+
     def paste_images(self,
                      spacing: float,
                      do_align_right: bool) -> None:
@@ -184,11 +198,13 @@ class combine_raster_images_horizontally(combine_raster_images):
         """
         y_size = max([image.size[1] for image in self.image_list])
         x_sizes = [image.size[0] for image in self.image_list]
-        x_size = reduce(lambda x,y: x+y, x_sizes) + spacing*(len(self.image_list)-1)
-        self.combo_image = PIL.Image.new('RGB',(x_size, y_size), (255,255,255))
+        x_size = reduce(lambda x, y: x+y, x_sizes) + \
+            spacing*(len(self.image_list)-1)
+        self.combo_image = PIL.Image.new(
+            'RGB', (x_size, y_size), (255, 255, 255))
         x_offset = 0
-        for image,x_size in zip(self.image_list,x_sizes):
-            self.combo_image.paste(image, (x_offset,0))
+        for image, x_size in zip(self.image_list, x_sizes):
+            self.combo_image.paste(image, (x_offset, 0))
             x_offset += x_size + spacing
 
 
@@ -197,25 +213,26 @@ class combine_pdf_images(combine_images):
     Combine PDF image files.
     Inherits from `combine_images`.
     """
+
     def get_images(self,
-                    image_bundle: List[str],
-                    image_sources: Dict[str,str],
-                    file_type: str,
-                    spacing: float) -> None:
+                   image_bundle: List[str],
+                   image_sources: Dict[str, str],
+                   file_type: str,
+                   spacing: float) -> None:
         """
         How to read the image files.
         """
         self.page_list = []
         for image_name in image_bundle:
             pdf_path = join(image_sources[f'{image_name}.{file_type}'],
-                                          f'{image_name}.{file_type}')
+                            f'{image_name}.{file_type}')
             # The following cleaner method doesn't work because PdfFileReader
             #   appears to require pdf files to remain open for subsequent use
             # Exactly how/when they are actually closed is not at all clear
             # with open(pdf_path,'rb') as f:
             #     pdf_reader = PdfFileReader(f)
             #     self.page_list.append(pdf_reader.getPage(0))
-            pdf_reader = PdfFileReader(open(pdf_path,'rb'))
+            pdf_reader = PdfFileReader(open(pdf_path, 'rb'))
             self.page_list.append(pdf_reader.getPage(0))
 
     def save_combo_image(self,
@@ -231,11 +248,13 @@ class combine_pdf_images(combine_images):
         with open(combo_path, 'wb') as f:
             writer.write(f)
 
+
 class combine_pdf_images_vertically(combine_pdf_images):
     """
     Combine PDF images in a vertical layout.
     Inherits from `combine_pdf_images`.
     """
+
     def paste_images(self,
                      spacing: float,
                      do_align_right: bool) -> None:
@@ -247,19 +266,23 @@ class combine_pdf_images_vertically(combine_pdf_images):
         y_sizes: List[Decimal] = [page_.mediaBox.getHeight()
                                   for page_ in self.page_list]
         y_size: Decimal \
-            = reduce(lambda x,y: x+y, y_sizes) + Decimal(spacing)*(len(self.page_list)-1)
+            = reduce(lambda x, y: x+y, y_sizes) \
+            + Decimal(spacing)*(len(self.page_list)-1)
         self.combo_page = PageObject.createBlankPage(None, x_size, y_size)
         y_offset = y_size
-        for i_, (page_,y_size_) in enumerate(zip(self.page_list, y_sizes)):
-            y_offset -= Decimal(y_size_) + Decimal(spacing if i_>0 else 0)
-            x_offset = (x_size-page_.mediaBox.getWidth() if do_align_right else 0)
-            self.combo_page.mergeTranslatedPage(page_, x_offset,y_offset)
+        for i_, (page_, y_size_) in enumerate(zip(self.page_list, y_sizes)):
+            y_offset -= Decimal(y_size_) + Decimal(spacing if i_ > 0 else 0)
+            x_offset = (x_size-page_.mediaBox.getWidth()
+                        if do_align_right else 0)
+            self.combo_page.mergeTranslatedPage(page_, x_offset, y_offset)
+
 
 class combine_pdf_images_horizontally(combine_pdf_images):
     """
     Combine PDF images in a horizontal layout.
     Inherits from `combine_pdf_images`.
     """
+
     def paste_images(self,
                      spacing: float,
                      do_align_right: bool) -> None:
@@ -272,20 +295,21 @@ class combine_pdf_images_horizontally(combine_pdf_images):
                                   for page_ in self.page_list]
         x_sizes.reverse()
         x_size: Decimal \
-            = reduce(lambda x,y: x+y, x_sizes) + Decimal(spacing)*(len(self.page_list)-1)
+            = reduce(lambda x, y: x+y, x_sizes) \
+            + Decimal(spacing)*(len(self.page_list)-1)
         self.combo_page = PageObject.createBlankPage(None, x_size, y_size)
         x_offset = x_size
         page_list = self.page_list.copy()
         page_list.reverse()
-        for i_, (page_,x_size_) in enumerate(zip(page_list,x_sizes)):
-            x_offset -= Decimal(x_size_) +  Decimal(spacing if i_>0 else 0)
-            self.combo_page.mergeTranslatedPage(page_, x_offset,0)
+        for i_, (page_, x_size_) in enumerate(zip(page_list, x_sizes)):
+            x_offset -= Decimal(x_size_) + Decimal(spacing if i_ > 0 else 0)
+            self.combo_page.mergeTranslatedPage(page_, x_offset, 0)
 
 
-def fetch_images( images: Optional[Dict[str,Image]]=None,
-                  image_sources: Optional[Dict[str,str]]=None,
-                  image_paths: Optional[List[str]]=None
-        ) -> Tuple[Dict[str,Image],Dict[str,str]]:
+def fetch_images(images: Optional[Dict[str, Image]] = None,
+                 image_sources: Optional[Dict[str, str]] = None,
+                 image_paths: Optional[List[str]] = None
+                 ) -> Tuple[Dict[str, Image], Dict[str, str]]:
     """
     Imports images from a list of source directories.
     If `images` and `image_sources` are `None` new dictionaries are created;
@@ -310,17 +334,18 @@ def fetch_images( images: Optional[Dict[str,Image]]=None,
             for file in listing:
                 file_split = os.path.splitext(file)
                 file_split[1].lower()
-                if file_split[1] in ['.png','.jpg','.jpeg']:
-                    images[file] = Image(filename=join(image_path,file))
-                elif file_split[1]=='.pdf':
-                    images[file] = PdfImage(filename=join(image_path,file))
+                if file_split[1] in ['.png', '.jpg', '.jpeg']:
+                    images[file] = Image(filename=join(image_path, file))
+                elif file_split[1] == '.pdf':
+                    images[file] = PdfImage(filename=join(image_path, file))
             image_sources.update({key: image_path for key in listing})
     return (images, image_sources)
 
+
 def resize(image: Image,
-            width: Optional[int]=None,
-            height: Optional[int]=None
-        ) -> Image:
+           width: Optional[int] = None,
+           height: Optional[int] = None
+           ) -> Image:
     """
     Modify an :mod:`Image <IPython image>` size
 
@@ -332,10 +357,6 @@ def resize(image: Image,
     if height is not None:
         image.height = height
     return image
-
-
-
-
 
 
 #
