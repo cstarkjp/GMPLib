@@ -134,16 +134,18 @@ by mapping the LHS into a key and the RHS into a value.</p>
 <dt class="sig sig-object py" id="gmplib.utils.export_results">
 <span class="sig-prename descclassname"><span class="pre">gmplib.utils.</span></span><span class="sig-name descname"><span class="pre">export_results</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">results_to_export:</span> <span class="pre">Dict,</span> <span class="pre">results_dir:</span> <span class="pre">os.PathLike,</span> <span class="pre">suffix:</span> <span class="pre">str</span> <span class="pre">=</span> <span class="pre">'',</span> <span class="pre">do_parse:</span> <span class="pre">bool</span> <span class="pre">=</span> <span class="pre">True,</span> <span class="pre">max_nparray_size:</span> <span class="pre">Optional[int]</span> <span class="pre">=</span> <span class="pre">None,</span> <span class="pre">var_types:</span> <span class="pre">List[Any]</span> <span class="pre">=</span> <span class="pre">[&lt;class</span> <span class="pre">'float'&gt;]</span></em><span class="sig-paren">)</span> &#x2192; <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.10)"><span class="pre">None</span></a><a class="headerlink" href="#gmplib.utils.export_results" title="Permalink to this definition">¶</a></dt>
 <dd><p>Write results dictionary of dictonaries as a hierarchical JSON file.</p>
-<p>This version can handle Dolfin/FEniCS data, but such capability should
-really be delegated to more specialized code.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>results_to_export</strong> – results dictionary (of dictionaries)</p></li>
 <li><p><strong>results_dir</strong> – path to results directory</p></li>
-<li><p><strong>suffix</strong> – to append to file</p></li>
-<li><p><strong>do_parse</strong> – convert from e.g. numpy array into JSONable list?</p></li>
-<li><p><strong>max_nparray_size</strong> – limit the size of parseable np arrays</p></li>
+<li><p><strong>suffix</strong> – optional suffix to append to filename (not the extension)</p></li>
+<li><p><strong>do_parse</strong> – optionally convert from e.g. numpy array into JSONable list?</p></li>
+<li><p><strong>max_nparray_size</strong> – optional limit size of parseable np arrays</p></li>
+<li><p><strong>var_types</strong> – optional list of types (as objects) to be converted into floats:
+the default is ‘[float]’ but if ‘[float, adj.AdjFloat]’
+is passed then an attempt is made to convert Dolfin/FEniCS data
+as well</p></li>
 </ul>
 </dd>
 </dl>
@@ -250,7 +252,7 @@ need to remain symbolic.</p>
 <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">,</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Union</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Optional</span>
 
 <span class="c1"># Abstract classes &amp; methods</span>
-<span class="kn">from</span> <span class="nn">abc</span> <span class="kn">import</span> <span class="n">ABC</span>  <span class="c1"># , abstractmethod</span>
+<span class="c1"># from abc import ABC  # , abstractmethod</span>
 
 <span class="c1"># NumPy</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -277,7 +279,7 @@ need to remain symbolic.</p>
 <span class="k">def</span> <span class="nf">numify</span><span class="p">(</span><span class="nb">str</span><span class="p">):</span> <span class="k">return</span> <span class="nb">float</span><span class="p">(</span><span class="nb">str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;p&#39;</span><span class="p">,</span> <span class="s1">&#39;.&#39;</span><span class="p">))</span>
 
 
-<span class="k">class</span> <span class="nc">Results</span><span class="p">(</span><span class="n">ABC</span><span class="p">):</span>
+<span class="k">class</span> <span class="nc">Results</span><span class="p">:</span>  <span class="c1"># (ABC):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Template for results container class</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -336,20 +338,22 @@ need to remain symbolic.</p>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Write results dictionary of dictonaries as a hierarchical JSON file.</span>
 
-<span class="sd">    This version can handle Dolfin/FEniCS data, but such capability should</span>
-<span class="sd">    really be delegated to more specialized code.</span>
-
 <span class="sd">    Args:</span>
 <span class="sd">        results_to_export:</span>
 <span class="sd">            results dictionary (of dictionaries)</span>
 <span class="sd">        results_dir:</span>
 <span class="sd">            path to results directory</span>
 <span class="sd">        suffix:</span>
-<span class="sd">            to append to file</span>
+<span class="sd">            optional suffix to append to filename (not the extension)</span>
 <span class="sd">        do_parse:</span>
-<span class="sd">            convert from e.g. numpy array into JSONable list?</span>
+<span class="sd">            optionally convert from e.g. numpy array into JSONable list?</span>
 <span class="sd">        max_nparray_size:</span>
-<span class="sd">            limit the size of parseable np arrays</span>
+<span class="sd">            optional limit size of parseable np arrays</span>
+<span class="sd">        var_types:</span>
+<span class="sd">            optional list of types (as objects) to be converted into floats:</span>
+<span class="sd">            the default is &#39;[float]&#39; but if &#39;[float, adj.AdjFloat]&#39;</span>
+<span class="sd">            is passed then an attempt is made to convert Dolfin/FEniCS data</span>
+<span class="sd">            as well</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="n">do_parse</span><span class="p">:</span>
         <span class="n">export</span> <span class="o">=</span> <span class="n">Results</span><span class="p">()</span>

@@ -27,7 +27,7 @@ from copy import deepcopy
 from typing import Dict, Tuple, Any, Union, List, Optional
 
 # Abstract classes & methods
-from abc import ABC  # , abstractmethod
+# from abc import ABC  # , abstractmethod
 
 # NumPy
 import numpy as np
@@ -54,7 +54,7 @@ __all__ = ['Results',
 def numify(str): return float(str.replace('p', '.'))
 
 
-class Results(ABC):
+class Results:  # (ABC):
     """
     Template for results container class
     """
@@ -113,20 +113,22 @@ def export_results(
     """
     Write results dictionary of dictonaries as a hierarchical JSON file.
 
-    This version can handle Dolfin/FEniCS data, but such capability should
-    really be delegated to more specialized code.
-
     Args:
         results_to_export:
             results dictionary (of dictionaries)
         results_dir:
             path to results directory
         suffix:
-            to append to file
+            optional suffix to append to filename (not the extension)
         do_parse:
-            convert from e.g. numpy array into JSONable list?
+            optionally convert from e.g. numpy array into JSONable list?
         max_nparray_size:
-            limit the size of parseable np arrays
+            optional limit size of parseable np arrays
+        var_types:
+            optional list of types (as objects) to be converted into floats:
+            the default is '[float]' but if '[float, adj.AdjFloat]'
+            is passed then an attempt is made to convert Dolfin/FEniCS data
+            as well
     """
     if do_parse:
         export = Results()
