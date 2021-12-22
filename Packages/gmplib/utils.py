@@ -109,7 +109,6 @@ def export_results(
     max_nparray_size: Optional[int] = None,
     var_types: List[Any] = [float],
     # [float, adj.AdjFloat]
-    # do_dolfin_adjoint: bool = False
 ) -> None:
     """
     Write results dictionary of dictonaries as a hierarchical JSON file.
@@ -128,16 +127,7 @@ def export_results(
             convert from e.g. numpy array into JSONable list?
         max_nparray_size:
             limit the size of parseable np arrays
-        do_dolfin_adjoint:
-            attempt to load Dolfin adjoint pkg and parse
-            FEniCS-type data into JSONable form?
     """
-    # if do_dolfin_adjoint:
-    #     try:
-    #         import dolfin_adjoint as adj
-    #     except Exception:
-    #         print(Exception)
-    #         raise
     if do_parse:
         export = Results()
         for attribute, attribute_value in results_to_export.items():
