@@ -24,14 +24,12 @@ from os.path import realpath, join
 from json import dumps
 # from functools import reduce
 from copy import deepcopy
-
-# Typing
 from typing import Dict, Tuple, Any, Union, List, Optional
 
 # Abstract classes & methods
 from abc import ABC  # , abstractmethod
 
-# Numpy
+# NumPy
 import numpy as np
 
 # SymPy
@@ -259,7 +257,12 @@ def gmround(eqn: Eq, n: int = 0, sf: float = 1) -> Eq:
     return Eq(eqn.lhs, approx_rhs if n is None or n > 0 else int(approx_rhs))
 
 
-def convert(eqn: Eq, units: Quantity, n: int = 0, do_raw: bool = False) -> Eq:
+def convert(
+    eqn: Eq,
+    units: Quantity,
+    n: int = 0,
+    do_raw: bool = False
+) -> Eq:
     """
     Add units to a SymPy equation whose RHS is a dimensioned value.
     Also round as required.

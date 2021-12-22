@@ -18,8 +18,6 @@ import logging
 from os.path import exists, join, realpath
 from os import mkdir, PathLike
 from json import dump
-
-# Typing
 from typing import Dict, Tuple, Union, Optional, List
 
 # SymPy

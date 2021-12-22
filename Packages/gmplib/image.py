@@ -25,8 +25,6 @@ from os import listdir, PathLike
 from os.path import join  # , realpath, splitext
 from functools import reduce
 from decimal import Decimal
-
-# Typing
 from typing import Dict, Tuple, List, Optional  # , Any, Union
 
 # Abstract classes & methods
@@ -59,23 +57,32 @@ class combine_images(ABC):
     Join together a set of images, with padding (abstract class template).
 
     Args:
-        into_filename: name of output combined-image file
-        image_bundle: list of image filenames
-        image_sources: dictionary of image source paths with filename keys
-        file_type: file type (usually 'jpg' or 'pdf')
-        spacing: pixel padding between images
-        out_path: where to write combined-image file
-        do_align_right: align all images along right margin
+        into_filename:
+            name of output combined-image file
+        image_bundle:
+            list of image filenames
+        image_sources:
+            dictionary of image source paths with filename keys
+        file_type:
+            file type (usually 'jpg' or 'pdf')
+        spacing:
+            pixel padding between images
+        out_path:
+            where to write combined-image file
+        do_align_right:
+            align all images along right margin
     """
 
-    def __init__(self,
-                 out_path: PathLike,
-                 into_filename: PathLike,
-                 image_bundle: List[str],
-                 image_sources: Dict[str, str],
-                 file_type: str = 'jpg',
-                 spacing: int = 20,
-                 do_align_right: bool = False):
+    def __init__(
+        self,
+        out_path: PathLike,
+        into_filename: PathLike,
+        image_bundle: List[str],
+        image_sources: Dict[str, str],
+        file_type: str = 'jpg',
+        spacing: int = 20,
+        do_align_right: bool = False
+    ) -> None:
         """
         Constructor method
         """
@@ -86,45 +93,60 @@ class combine_images(ABC):
         self.save_combo_image(out_path, into_filename, file_type)
 
     @abstractmethod
-    def get_images(self,
-                   image_bundle: List[str],
-                   image_sources: Dict[str, str],
-                   file_type: str,
-                   spacing: float) -> None:
+    def get_images(
+        self,
+        image_bundle: List[str],
+        image_sources: Dict[str, str],
+        file_type: str,
+        spacing: float
+    ) -> None:
         """
         How to get image files (abstract method).
 
         Args:
-            image_bundle: list of image filenames
-            image_sources: dictionary of image source paths with filename keys
-            file_type: file type (usually 'jpg' or 'pdf')
-            spacing: pixel padding between images
+            image_bundle:
+                list of image filenames
+            image_sources:
+                dictionary of image source paths with filename keys
+            file_type:
+                file type (usually 'jpg' or 'pdf')
+            spacing:
+                pixel padding between images
         """
 
     @abstractmethod
-    def paste_images(self,
-                     spacing: float,
-                     do_align_right: bool) -> None:
+    def paste_images(
+        self,
+        spacing: float,
+        do_align_right: bool
+    ) -> None:
         """
         How to combine image files (abstract method).
 
         Args:
-            spacing: pixel padding between images
-            do_align_right: align all images along right margin
+            spacing:
+                pixel padding between images
+            do_align_right:
+                align all images along right margin
         """
 
     @abstractmethod
-    def save_combo_image(self,
-                         out_path: PathLike,
-                         into_filename: PathLike,
-                         file_type: str) -> None:
+    def save_combo_image(
+        self,
+        out_path: PathLike,
+        into_filename: PathLike,
+        file_type: str
+    ) -> None:
         """
         How to write combined image file (abstract method)
 
         Args:
-            out_path: where to write combined-image file
-            into_filename: name of output combined-image file
-            file_type: file type (usually 'jpg' or 'pdf')
+            out_path:
+                where to write combined-image file
+            into_filename:
+                name of output combined-image file
+            file_type:
+                file type (usually 'jpg' or 'pdf')
         """
 
 
@@ -148,10 +170,12 @@ class combine_raster_images(combine_images):
             for image_name in image_bundle
         ]
 
-    def save_combo_image(self,
-                         out_path: PathLike,
-                         into_filename: PathLike,
-                         file_type: str) -> None:
+    def save_combo_image(
+        self,
+        out_path: PathLike,
+        into_filename: PathLike,
+        file_type: str
+    ) -> None:
         """
         Write combined image to a raster file.
         """
@@ -165,9 +189,11 @@ class combine_raster_images_vertically(combine_raster_images):
     Inherits from `combine_raster_images`.
     """
 
-    def paste_images(self,
-                     spacing: float,
-                     do_align_right: bool) -> None:
+    def paste_images(
+        self,
+        spacing: float,
+        do_align_right: bool
+    ) -> None:
         """
         How to combine the images
         """
@@ -190,9 +216,11 @@ class combine_raster_images_horizontally(combine_raster_images):
     Inherits from `combine_raster_images`.
     """
 
-    def paste_images(self,
-                     spacing: float,
-                     do_align_right: bool) -> None:
+    def paste_images(
+        self,
+        spacing: float,
+        do_align_right: bool
+    ) -> None:
         """
         How to combine the images.
         """
@@ -214,11 +242,13 @@ class combine_pdf_images(combine_images):
     Inherits from `combine_images`.
     """
 
-    def get_images(self,
-                   image_bundle: List[str],
-                   image_sources: Dict[str, str],
-                   file_type: str,
-                   spacing: float) -> None:
+    def get_images(
+        self,
+        image_bundle: List[str],
+        image_sources: Dict[str, str],
+        file_type: str,
+        spacing: float
+    ) -> None:
         """
         How to read the image files.
         """
@@ -235,10 +265,12 @@ class combine_pdf_images(combine_images):
             pdf_reader = PdfFileReader(open(pdf_path, 'rb'))
             self.page_list.append(pdf_reader.getPage(0))
 
-    def save_combo_image(self,
-                         out_path: PathLike,
-                         into_filename: PathLike,
-                         file_type: str) -> None:
+    def save_combo_image(
+        self,
+        out_path: PathLike,
+        into_filename: PathLike,
+        file_type: str
+    ) -> None:
         """
         How to write the image to a file.
         """
@@ -255,9 +287,11 @@ class combine_pdf_images_vertically(combine_pdf_images):
     Inherits from `combine_pdf_images`.
     """
 
-    def paste_images(self,
-                     spacing: float,
-                     do_align_right: bool) -> None:
+    def paste_images(
+        self,
+        spacing: float,
+        do_align_right: bool
+    ) -> None:
         """
         How to combine the images
         """
@@ -283,9 +317,11 @@ class combine_pdf_images_horizontally(combine_pdf_images):
     Inherits from `combine_pdf_images`.
     """
 
-    def paste_images(self,
-                     spacing: float,
-                     do_align_right: bool) -> None:
+    def paste_images(
+        self,
+        spacing: float,
+        do_align_right: bool
+    ) -> None:
         """
         How to combine the images.
         """
@@ -306,10 +342,11 @@ class combine_pdf_images_horizontally(combine_pdf_images):
             self.combo_page.mergeTranslatedPage(page_, x_offset, 0)
 
 
-def fetch_images(images: Optional[Dict[str, Image]] = None,
-                 image_sources: Optional[Dict[str, str]] = None,
-                 image_paths: Optional[List[str]] = None
-                 ) -> Tuple[Dict[str, Image], Dict[str, str]]:
+def fetch_images(
+    images: Optional[Dict[str, Image]] = None,
+    image_sources: Optional[Dict[str, str]] = None,
+    image_paths: Optional[List[str]] = None
+) -> Tuple[Dict[str, Image], Dict[str, str]]:
     """
     Imports images from a list of source directories.
     If `images` and `image_sources` are `None` new dictionaries are created;
@@ -342,10 +379,11 @@ def fetch_images(images: Optional[Dict[str, Image]] = None,
     return (images, image_sources)
 
 
-def resize(image: Image,
-           width: Optional[int] = None,
-           height: Optional[int] = None
-           ) -> Image:
+def resize(
+    image: Image,
+    width: Optional[int] = None,
+    height: Optional[int] = None
+) -> Image:
     """
     Modify an :mod:`Image <IPython image>` size
 

@@ -13,13 +13,12 @@ Requires Python packages/modules:
 ---------------------------------------------------------------------
 """
 
+# Library
 import warnings
 import logging
 from os.path import realpath, join
 from json import load
 from copy import copy
-
-# Typing
 from typing import Dict, Tuple, Any, List, Union, Optional
 
 # SymPy
@@ -27,8 +26,10 @@ from sympy.parsing.sympy_parser import parse_expr
 
 warnings.filterwarnings("ignore")
 
-__all__ = ['import_parameters', 'read_json_file',
-           'Parameters', 'ParametersNestedGroup']
+__all__ = ['import_parameters',
+           'read_json_file',
+           'Parameters',
+           'ParametersNestedGroup']
 
 
 def import_parameters(
@@ -111,10 +112,10 @@ class Parameters():
     """
 
     def __init__(
-            self,
-            imported_parameters: Dict,
-            evaluations: Optional[Dict] = None,
-            sequence: Tuple = ()
+        self,
+        imported_parameters: Dict,
+        evaluations: Optional[Dict] = None,
+        sequence: Tuple = ()
     ) -> None:
         """
         Initialize class instance.
@@ -159,10 +160,10 @@ class ParametersNestedGroup():
     """
 
     def __init__(
-            self,
-            group_name: str,
-            parameters_dict: Dict,
-            evaluations: Optional[Dict] = None
+        self,
+        group_name: str,
+        parameters_dict: Dict,
+        evaluations: Optional[Dict] = None
     ) -> None:
         """
         Initialize class instance.

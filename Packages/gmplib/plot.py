@@ -16,12 +16,7 @@ import warnings
 import logging
 from itertools import cycle
 import operator as op
-
-# Typing
 from typing import Dict, Any, Tuple, Optional  # , List,  Callable
-
-# SciPy
-# from scipy.linalg import norm
 
 # MatPlotLib
 import matplotlib as mpl
@@ -95,10 +90,10 @@ class GraphingBase:
         self.marker = lambda i_: self.markers[i_ % self.n_markers]
 
     def create_figure(
-            self,
-            fig_name: str,
-            fig_size: Optional[Tuple[float, float]] = None,
-            dpi: Optional[int] = None
+        self,
+        fig_name: str,
+        fig_size: Optional[Tuple[float, float]] = None,
+        dpi: Optional[int] = None
     ) -> plt.Figure:
         """
         Initialize a :mod:`Pyplot <matplotlib.pyplot>` figure,
@@ -119,8 +114,8 @@ class GraphingBase:
                 reference to :mod:`MatPlotLib/Pyplot <matplotlib.pyplot>`
                 figure
         """
-        fig_size_: Tuple[float, float] = (
-            8, 8) if fig_size is None else fig_size
+        fig_size_: Tuple[float, float] \
+            = (8, 8) if fig_size is None else fig_size
         dpi_: float = self.dpi if dpi is None else dpi
         logging.info(
             f'Creating plot: {fig_name} size={fig_size_} @ {dpi_} dpi')

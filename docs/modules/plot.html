@@ -290,12 +290,7 @@ figure</p>
 <span class="kn">import</span> <span class="nn">logging</span>
 <span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">cycle</span>
 <span class="kn">import</span> <span class="nn">operator</span> <span class="k">as</span> <span class="nn">op</span>
-
-<span class="c1"># Typing</span>
 <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">,</span> <span class="n">Optional</span>  <span class="c1"># , List,  Callable</span>
-
-<span class="c1"># SciPy</span>
-<span class="c1"># from scipy.linalg import norm</span>
 
 <span class="c1"># MatPlotLib</span>
 <span class="kn">import</span> <span class="nn">matplotlib</span> <span class="k">as</span> <span class="nn">mpl</span>
@@ -369,10 +364,10 @@ figure</p>
         <span class="bp">self</span><span class="o">.</span><span class="n">marker</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">i_</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">markers</span><span class="p">[</span><span class="n">i_</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_markers</span><span class="p">]</span>
 
     <span class="k">def</span> <span class="nf">create_figure</span><span class="p">(</span>
-            <span class="bp">self</span><span class="p">,</span>
-            <span class="n">fig_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-            <span class="n">fig_size</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-            <span class="n">dpi</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">fig_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">fig_size</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">dpi</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">plt</span><span class="o">.</span><span class="n">Figure</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Initialize a :mod:`Pyplot &lt;matplotlib.pyplot&gt;` figure,</span>
@@ -393,8 +388,8 @@ figure</p>
 <span class="sd">                reference to :mod:`MatPlotLib/Pyplot &lt;matplotlib.pyplot&gt;`</span>
 <span class="sd">                figure</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">fig_size_</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
-            <span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span> <span class="k">if</span> <span class="n">fig_size</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">fig_size</span>
+        <span class="n">fig_size_</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]</span> \
+            <span class="o">=</span> <span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span> <span class="k">if</span> <span class="n">fig_size</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">fig_size</span>
         <span class="n">dpi_</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dpi</span> <span class="k">if</span> <span class="n">dpi</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">dpi</span>
         <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
             <span class="sa">f</span><span class="s1">&#39;Creating plot: </span><span class="si">{</span><span class="n">fig_name</span><span class="si">}</span><span class="s1"> size=</span><span class="si">{</span><span class="n">fig_size_</span><span class="si">}</span><span class="s1"> @ </span><span class="si">{</span><span class="n">dpi_</span><span class="si">}</span><span class="s1"> dpi&#39;</span><span class="p">)</span>
