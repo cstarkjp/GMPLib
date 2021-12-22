@@ -16,11 +16,12 @@ import warnings
 import logging
 from itertools import cycle
 import operator as op
-from typing import Dict, Any, Tuple, Optional  # , List,  Callable
+from typing import Dict, Any, Tuple, Optional, List  # ,  Callable
 
 # MatPlotLib
 import matplotlib as mpl
 import matplotlib.pyplot as plt
+import matplotlib.font_manager
 
 warnings.filterwarnings("ignore")
 
@@ -88,6 +89,23 @@ class GraphingBase:
 
         self.color = lambda i_: self.colors[i_ % self.n_colors]
         self.marker = lambda i_: self.markers[i_ % self.n_markers]
+        self.font_family = 'Arial' if 'Arial' in self.get_fonts() else ''
+        mpl.rc('font', size=self.font_size, family=self.font_family)
+
+    def get_fonts(self) -> List[str]:
+        """
+        Fetch the names of all the font families available on the system
+        """
+        fpaths = matplotlib.font_manager.findSystemFonts()
+        fonts: List[str] = []
+        for fpath in fpaths:
+            try:
+                font = matplotlib.font_manager.get_font(fpath).family_name
+                fonts.append(font)
+            except RuntimeError as re:
+                logging.debug(f'{re}: failed to get font name for {fpath}')
+                pass
+        return fonts
 
     def create_figure(
         self,
@@ -99,7 +117,7 @@ class GraphingBase:
         Initialize a :mod:`Pyplot <matplotlib.pyplot>` figure,
         set its size and dpi, set the font size,
         choose the Arial font family if possible,
-        and append it to the figures dictionary,
+        and append it to the figures dictionary.
 
         Args:
             fig_name:
@@ -123,10 +141,6 @@ class GraphingBase:
         self.fdict.update({fig_name: fig})
         fig.set_size_inches(fig_size_)
         fig.set_dpi(dpi_)
-        try:
-            mpl.rc('font', size=self.font_size, family='Arial')
-        except:
-            mpl.rc('font', size=self.font_size)
         return fig
 
     def get_aspect(self, axes: plt.Axes) -> float:

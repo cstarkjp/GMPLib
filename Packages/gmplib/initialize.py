@@ -75,15 +75,15 @@ if is_python:
         get_ipython().magic("config InlineBackend.figure_format = 'retina'")
     except NameError:
         pass
-    except:
-        print('Possibly benign error trying to config Matplotlib backend')
+    # except:
+    #     print('Possibly benign error trying to config Matplotlib backend')
 
     try:
         get_ipython().magic('matplotlib inline')
     except NameError:
         pass
-    except:
-        print('Possibly benign error trying to config Matplotlib backend')
+    # except:
+    #     print('Possibly benign error trying to config Matplotlib backend')
 
     try:
         get_ipython().magic('load_ext autoreload')
@@ -95,5 +95,5 @@ if is_python:
             + 'possibly because not running IPython:',
             error
         )
-    except:
-        print('Possibly benign error trying to config autoreload')
+    # except:
+    #     print('Possibly benign error trying to config autoreload')

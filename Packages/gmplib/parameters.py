@@ -37,11 +37,11 @@ def import_parameters(
     filenames: Tuple[str] = ('defaults',)
 ) -> Tuple[Dict, str]:
     """
-    Load JSON parameters files (defaults and job) and parse them in turn to
+    Load JSON parameter files (defaults and job) and parse them in turn to
     generate a job parameters dictionary.
 
     Args:
-        path (list): path to JSON parameters files
+        path (list): path to JSON parameter files
         filenames (str): list of defaults and job JSON parameter filenames
 
     Return:
@@ -56,15 +56,15 @@ def import_parameters(
 
 def read_json_file(filepaths: Union[Tuple[str], List[str]]) -> Dict:
     """
-    Load and parse a list of JSON parameters files into a parameters dict.
+    Load and parse a list of JSON parameter files into a parameters dict.
 
-    Step through a list of JSON parameters files
-    (usually "defaults.json" and the job JSON file).
+    Step through a list of JSON parameter files
+    (usually 'defaults.json' and the job JSON file).
     Parse each into a parameters dict, ensuring that subsequent JSON parameters
     override any set by previous JSON files.
 
     Args:
-        filepaths: JSON parameters files to be read and parsed
+        filepaths: JSON parameter files to be read and parsed
 
     Return:
         dict:  job parameters dictionary
@@ -170,7 +170,7 @@ class ParametersNestedGroup():
         Convert items in a parameters sub-dictionary into class attributes,
         setting the attribute name to the dict item's key and the
         attribute value to the dict item's value.
-        If the value is a Sympy reference, parse it into a Sympy object
+        If the value is a SymPy reference, parse it into a SymPy object
         before attribution.
 
         Args:

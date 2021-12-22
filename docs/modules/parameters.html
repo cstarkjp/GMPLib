@@ -107,7 +107,7 @@ are the sub-dictionaries.</p>
 Convert items in a parameters sub-dictionary into class attributes,
 setting the attribute name to the dict item’s key and the
 attribute value to the dict item’s value.
-If the value is a Sympy reference, parse it into a Sympy object
+If the value is a SymPy reference, parse it into a SymPy object
 before attribution.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -137,12 +137,12 @@ before attribution.</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="gmplib.parameters.import_parameters">
 <span class="sig-prename descclassname"><span class="pre">gmplib.parameters.</span></span><span class="sig-name descname"><span class="pre">import_parameters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filenames</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">('defaults')</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">,</span> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#gmplib.parameters.import_parameters" title="Permalink to this definition">¶</a></dt>
-<dd><p>Load JSON parameters files (defaults and job) and parse them in turn to
+<dd><p>Load JSON parameter files (defaults and job) and parse them in turn to
 generate a job parameters dictionary.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>path</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.10)"><em>list</em></a>) – path to JSON parameters files</p></li>
+<li><p><strong>path</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.10)"><em>list</em></a>) – path to JSON parameter files</p></li>
 <li><p><strong>filenames</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a>) – list of defaults and job JSON parameter filenames</p></li>
 </ul>
 </dd>
@@ -158,14 +158,14 @@ generate a job parameters dictionary.</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="gmplib.parameters.read_json_file">
 <span class="sig-prename descclassname"><span class="pre">gmplib.parameters.</span></span><span class="sig-name descname"><span class="pre">read_json_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filepaths</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Dict</span><a class="headerlink" href="#gmplib.parameters.read_json_file" title="Permalink to this definition">¶</a></dt>
-<dd><p>Load and parse a list of JSON parameters files into a parameters dict.</p>
-<p>Step through a list of JSON parameters files
-(usually “defaults.json” and the job JSON file).
+<dd><p>Load and parse a list of JSON parameter files into a parameters dict.</p>
+<p>Step through a list of JSON parameter files
+(usually ‘defaults.json’ and the job JSON file).
 Parse each into a parameters dict, ensuring that subsequent JSON parameters
 override any set by previous JSON files.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>filepaths</strong> – JSON parameters files to be read and parsed</p>
+<dd class="field-odd"><p><strong>filepaths</strong> – JSON parameter files to be read and parsed</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>job parameters dictionary</p>
@@ -217,11 +217,11 @@ override any set by previous JSON files.</p>
     <span class="n">filenames</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;defaults&#39;</span><span class="p">,)</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">Dict</span><span class="p">,</span> <span class="nb">str</span><span class="p">]:</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Load JSON parameters files (defaults and job) and parse them in turn to</span>
+<span class="sd">    Load JSON parameter files (defaults and job) and parse them in turn to</span>
 <span class="sd">    generate a job parameters dictionary.</span>
 
 <span class="sd">    Args:</span>
-<span class="sd">        path (list): path to JSON parameters files</span>
+<span class="sd">        path (list): path to JSON parameter files</span>
 <span class="sd">        filenames (str): list of defaults and job JSON parameter filenames</span>
 
 <span class="sd">    Return:</span>
@@ -236,15 +236,15 @@ override any set by previous JSON files.</p>
 
 <span class="k">def</span> <span class="nf">read_json_file</span><span class="p">(</span><span class="n">filepaths</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]])</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Load and parse a list of JSON parameters files into a parameters dict.</span>
+<span class="sd">    Load and parse a list of JSON parameter files into a parameters dict.</span>
 
-<span class="sd">    Step through a list of JSON parameters files</span>
-<span class="sd">    (usually &quot;defaults.json&quot; and the job JSON file).</span>
+<span class="sd">    Step through a list of JSON parameter files</span>
+<span class="sd">    (usually &#39;defaults.json&#39; and the job JSON file).</span>
 <span class="sd">    Parse each into a parameters dict, ensuring that subsequent JSON parameters</span>
 <span class="sd">    override any set by previous JSON files.</span>
 
 <span class="sd">    Args:</span>
-<span class="sd">        filepaths: JSON parameters files to be read and parsed</span>
+<span class="sd">        filepaths: JSON parameter files to be read and parsed</span>
 
 <span class="sd">    Return:</span>
 <span class="sd">        dict:  job parameters dictionary</span>
@@ -350,7 +350,7 @@ override any set by previous JSON files.</p>
 <span class="sd">        Convert items in a parameters sub-dictionary into class attributes,</span>
 <span class="sd">        setting the attribute name to the dict item&#39;s key and the</span>
 <span class="sd">        attribute value to the dict item&#39;s value.</span>
-<span class="sd">        If the value is a Sympy reference, parse it into a Sympy object</span>
+<span class="sd">        If the value is a SymPy reference, parse it into a SymPy object</span>
 <span class="sd">        before attribution.</span>
 
 <span class="sd">        Args:</span>

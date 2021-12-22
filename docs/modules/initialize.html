@@ -155,15 +155,15 @@ unavailable processing continues regardless.</p>
         <span class="n">get_ipython</span><span class="p">()</span><span class="o">.</span><span class="n">magic</span><span class="p">(</span><span class="s2">&quot;config InlineBackend.figure_format = &#39;retina&#39;&quot;</span><span class="p">)</span>
     <span class="k">except</span> <span class="ne">NameError</span><span class="p">:</span>
         <span class="k">pass</span>
-    <span class="k">except</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Possibly benign error trying to config Matplotlib backend&#39;</span><span class="p">)</span>
+    <span class="c1"># except:</span>
+    <span class="c1">#     print(&#39;Possibly benign error trying to config Matplotlib backend&#39;)</span>
 
     <span class="k">try</span><span class="p">:</span>
         <span class="n">get_ipython</span><span class="p">()</span><span class="o">.</span><span class="n">magic</span><span class="p">(</span><span class="s1">&#39;matplotlib inline&#39;</span><span class="p">)</span>
     <span class="k">except</span> <span class="ne">NameError</span><span class="p">:</span>
         <span class="k">pass</span>
-    <span class="k">except</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Possibly benign error trying to config Matplotlib backend&#39;</span><span class="p">)</span>
+    <span class="c1"># except:</span>
+    <span class="c1">#     print(&#39;Possibly benign error trying to config Matplotlib backend&#39;)</span>
 
     <span class="k">try</span><span class="p">:</span>
         <span class="n">get_ipython</span><span class="p">()</span><span class="o">.</span><span class="n">magic</span><span class="p">(</span><span class="s1">&#39;load_ext autoreload&#39;</span><span class="p">)</span>
@@ -175,8 +175,8 @@ unavailable processing continues regardless.</p>
             <span class="o">+</span> <span class="s1">&#39;possibly because not running IPython:&#39;</span><span class="p">,</span>
             <span class="n">error</span>
         <span class="p">)</span>
-    <span class="k">except</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Possibly benign error trying to config autoreload&#39;</span><span class="p">)</span>
+    <span class="c1"># except:</span>
+    <span class="c1">#     print(&#39;Possibly benign error trying to config autoreload&#39;)</span>
 </pre></div>
 </div>
 </div>

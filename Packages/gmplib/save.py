@@ -185,5 +185,5 @@ def export_plot(
     except OSError:
         logging.info(f'Failed to export figure "{fig_name_}"')
         raise
-    except:
-        raise
+    # except:
+    #     raise

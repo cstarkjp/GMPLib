@@ -39,9 +39,16 @@ from sympy.physics.units.systems import SI
 
 warnings.filterwarnings("ignore")
 
-__all__ = ['Results', 'numify', 'get_pkg_path',
-           'is_jsonable', 'export_results', 'e2d',
-           'dict2mat', 'omitdict', 'gmround', 'convert']
+__all__ = ['Results',
+           'numify',
+           'get_pkg_path',
+           'is_jsonable',
+           'export_results',
+           'e2d',
+           'dict2mat',
+           'omitdict',
+           'gmround',
+           'convert']
 
 
 def numify(str): return float(str.replace('p', '.'))
@@ -100,7 +107,9 @@ def export_results(
     suffix: str = '',
     do_parse: bool = True,
     max_nparray_size: Optional[int] = None,
-    do_dolfin_adjoint: bool = False
+    var_types: List[Any] = [float],
+    # [float, adj.AdjFloat]
+    # do_dolfin_adjoint: bool = False
 ) -> None:
     """
     Write results dictionary of dictonaries as a hierarchical JSON file.
@@ -123,32 +132,34 @@ def export_results(
             attempt to load Dolfin adjoint pkg and parse
             FEniCS-type data into JSONable form?
     """
-    if do_dolfin_adjoint:
-        try:
-            import dolfin_adjoint as adj
-        except Exception:
-            print(Exception)
-            raise
+    # if do_dolfin_adjoint:
+    #     try:
+    #         import dolfin_adjoint as adj
+    #     except Exception:
+    #         print(Exception)
+    #         raise
     if do_parse:
         export = Results()
         for attribute, attribute_value in results_to_export.items():
             attribute_value_copy = deepcopy(attribute_value)
             # unjsonable_sub_attributes = {}
             for sub_attribute in attribute_value.__dict__:
-                sub_attribute_value = getattr(
-                    attribute_value_copy, sub_attribute)
-                var_types = [float] \
-                    if not do_dolfin_adjoint \
-                    else [float, adj.AdjFloat]
+                sub_attribute_value \
+                    = getattr(attribute_value_copy, sub_attribute)
+                # var_types = [float] \
+                #     if not do_dolfin_adjoint \
+                #     else [float, adj.AdjFloat]
                 matching_subattrs = [isinstance(sub_attribute_value, var_type)
                                      for var_type in var_types]
                 if any(matching_subattrs):
-                    setattr(attribute_value_copy, sub_attribute,
+                    setattr(attribute_value_copy,
+                            sub_attribute,
                             float(sub_attribute_value))
                 elif isinstance(sub_attribute_value, np.ndarray) \
                         and (max_nparray_size is None
                              or sub_attribute_value.size <= max_nparray_size):
-                    setattr(attribute_value_copy, sub_attribute,
+                    setattr(attribute_value_copy,
+                            sub_attribute,
                             [list(array) for array in sub_attribute_value])
             setattr(export, attribute, attribute_value_copy)
 
@@ -193,11 +204,17 @@ def e2d(
     Returns:
         dict: key=LHS of eqn, value=RHS of eqn
     """
-    def negate_eqn(eqn_): return Eq(-eqn_.lhs,
-                                    - eqn_.rhs) if do_negate else eqn_
+    def negate_eqn(eqn_):
+        return Eq(-eqn_.lhs, - eqn_.rhs) if do_negate \
+            else eqn_
 
-    def flip_eqn(eqn_): return Eq(eqn_.rhs, eqn_.lhs) if do_flip else eqn_
-    def make_dict(eqn_): return dict([(flip_eqn(negate_eqn(eqn_))).args])
+    def flip_eqn(eqn_):
+        return Eq(eqn_.rhs, eqn_.lhs) if do_flip \
+            else eqn_
+
+    def make_dict(eqn_):
+        return dict([(flip_eqn(negate_eqn(eqn_))).args])
+
     eqns = eqn_or_eqns \
         if isinstance(eqn_or_eqns, (list, tuple)) \
         else [eqn_or_eqns]
