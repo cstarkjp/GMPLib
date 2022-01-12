@@ -28,35 +28,11 @@ from matplotlib.pyplot import figure
 
 warnings.filterwarnings("ignore")
 
-__all__ = ['create_dir', 'create_directories',
-           'export_results', 'export_plots', 'export_plot']
-
-
-def create_dir(dir_: str) -> str:
-    """
-    Try to create an output directory if one doesn't exist.
-
-    Throws an exception if the directory cannot be created.
-    Returns quietly if the directory already exists.
-
-    Args:
-        dir_ : name of directory
-
-    Returns:
-        str: path to directory (see :mod:`os.path`)
-    """
-    try:
-        if not exists(dir_):
-            mkdir(dir_)
-        else:
-            return dir_
-    except OSError:
-        print('Cannot create directory')
-        raise
-    except Exception:
-        print(Exception)
-        raise
-    return dir_
+__all__ = ['create_dir',
+           'create_directories',
+           'export_results',
+           'export_plots',
+           'export_plot']
 
 
 def create_directories(
@@ -78,6 +54,33 @@ def create_directories(
     create_dir(join(*results_path_))
     results_dir_ = results_path_+[results_dir]
     return create_dir(join(*results_dir_))
+
+
+def create_dir(dir_: str) -> str:
+    """
+    Try to create an output directory if one doesn't exist.
+
+    Throws an exception if the directory cannot be created.
+    Returns quietly if the directory already exists.
+
+    Args:
+        dir_ : name of directory
+
+    Returns:
+        str: path to directory (see :mod:`os.path`)
+    """
+    try:
+        if not exists(dir_):
+            mkdir(dir_)
+        else:
+            return dir_
+    except OSError:
+        print(f'Cannot create directory "{realpath(dir_)}"')
+        raise
+    except Exception:
+        print(Exception)
+        raise
+    return dir_
 
 
 def export_results(

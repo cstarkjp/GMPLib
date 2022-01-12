@@ -139,7 +139,6 @@ class Parameters():
         """
         Constructor method.
         """
-
         evaluations_: Dict = {} if evaluations is None else evaluations
         imported_parameters_: Dict = copy(imported_parameters)
         for group_name in sequence:
