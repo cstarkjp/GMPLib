@@ -21,6 +21,9 @@ from json import load
 from copy import copy
 from typing import Dict, Tuple, Any, List, Union, Optional
 
+from pprint import PrettyPrinter
+pp = PrettyPrinter(indent=4).pprint
+
 # SymPy
 from sympy.parsing.sympy_parser import parse_expr
 
@@ -74,6 +77,7 @@ def read_json_file(filepaths: Union[Tuple[str], List[str]]) -> Dict:
     # Step through each JSON parameters file in turn
     for filepath in filepaths:
         parameters_file_name = filepath+'.json'
+        logging.info(f'gmplib.parameters: {parameters_file_name}')
         # Read in the parameters file
         with open(parameters_file_name, encoding='latin-1') as json_file:
             parameters = load(json_file)
@@ -108,7 +112,22 @@ def read_json_file(filepaths: Union[Tuple[str], List[str]]) -> Dict:
 
 class Parameters():
     """
-    Parameters (job parameters) container
+    Job parameters container
+
+    Convert top-level items in the parameters dictionary,
+    whose keys are group names
+    and whose values are sub-dictionary groups of parameters,
+    into class attributes.
+    The attribute names are the group names and their values
+    are the sub-dictionaries.
+
+    Args:
+        imported_parameters:
+            job parameters dictionary
+
+    Attributes:
+        various (class attribute): matching top-level items in the
+        parameters dictionary
     """
 
     def __init__(
@@ -118,21 +137,7 @@ class Parameters():
         sequence: Tuple = ()
     ) -> None:
         """
-        Initialize class instance.
-        Convert top-level items in the parameters dictionary,
-        whose keys are group names
-        and whose values are sub-dictionary groups of parameters,
-        into class attributes.
-        The attribute names are the group names and their values
-        are the sub-dictionaries.
-
-        Args:
-            imported_parameters:
-                job parameters dictionary
-
-        Attributes:
-            various (class attribute): matching top-level items in the
-            parameters dictionary
+        Constructor method.
         """
 
         evaluations_: Dict = {} if evaluations is None else evaluations
@@ -142,7 +147,7 @@ class Parameters():
             setattr(
                 self,
                 group_name,
-                ParametersNestedGroup(group_name, group_dict, evaluations_)
+                ParametersNestedGroup(self, group_name, group_dict, evaluations_)
             )
             imported_parameters_.pop(group_name)
         for group_name, group_dict in imported_parameters_.items():
@@ -150,39 +155,41 @@ class Parameters():
             setattr(
                 self,
                 group_name,
-                ParametersNestedGroup(group_name, group_dict, evaluations_)
+                ParametersNestedGroup(self, group_name, group_dict, evaluations_)
             )
 
 
 class ParametersNestedGroup():
     """
-    ParametersNestedGroup (job parameters) sub-container
+    Job `ParametersNestedGroup'  sub-container
+
+    Convert items in a parameters sub-dictionary into class attributes,
+    setting the attribute name to the dict item's key and the
+    attribute value to the dict item's value.
+    If the value is a SymPy reference, parse it into a SymPy object
+    before attribution.
+
+    Args:
+        imported_parameters (dict): job parameters dictionary
+
+    Attributes:
+        various (class attribute): matching second-level items in the
+        parameters dictionary
     """
 
     def __init__(
         self,
+        parent: Any,
         group_name: str,
         parameters_dict: Dict,
         evaluations: Optional[Dict] = None
     ) -> None:
         """
-        Initialize class instance.
-        Convert items in a parameters sub-dictionary into class attributes,
-        setting the attribute name to the dict item's key and the
-        attribute value to the dict item's value.
-        If the value is a SymPy reference, parse it into a SymPy object
-        before attribution.
-
-        Args:
-            imported_parameters (dict): job parameters dictionary
-
-        Attributes:
-            various (class attribute): matching second-level items in the
-            parameters dictionary
+        Constructor method.
         """
+        logging.info(f'gmplib.parameters: p.{group_name}')
         if evaluations is None:
             evaluations = {}
-        # logging.debug(group_name, parameters_dict, evaluations)
         for s_key, s_value in parameters_dict.items():
             setattr(self, s_key, parse_expr(s_value.replace('sy.', ''))
                     if isinstance(s_value, str) and 'sy.' in s_value else
@@ -193,5 +200,7 @@ class ParametersNestedGroup():
         p = self
         if group_name in evaluations.keys():
             for attr in evaluations[group_name]:
-                logging.debug(group_name, attr, eval(str(getattr(self, attr))))
-                setattr(p, attr, eval(str(getattr(self, attr))))
+                value = eval(str(getattr(self, attr)))
+                setattr(p, attr, value)
+                ls = f'gmplib.parameters: p.{group_name}.{attr} <- {value}'
+                logging.info(ls)
