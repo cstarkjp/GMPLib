@@ -39,7 +39,7 @@ from sympy.physics.units.systems import SI
 
 warnings.filterwarnings("ignore")
 
-__all__ = ['Results',
+__all__ = ['ResultsContainer',
            'numify',
            'get_pkg_path',
            'is_jsonable',
@@ -54,7 +54,7 @@ __all__ = ['Results',
 def numify(str): return float(str.replace('p', '.'))
 
 
-class Results:  # (ABC):
+class ResultsContainer:  # (ABC):
     """
     Template for results container class
     """
