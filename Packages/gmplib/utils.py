@@ -131,7 +131,7 @@ def export_results(
             as well
     """
     if do_parse:
-        export = Results()
+        export = ResultsContainer()
         for attribute, attribute_value in results_to_export.items():
             attribute_value_copy = deepcopy(attribute_value)
             # unjsonable_sub_attributes = {}
