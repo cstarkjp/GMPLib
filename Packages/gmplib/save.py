@@ -125,7 +125,7 @@ def export_plots(
     results_dir: PathLike,
     file_types: Union[List[str], Tuple[str], str] = 'pdf',
     suffix: str = '',
-    dpi: int = None
+    dpi: Optional[int] = None
 ) -> None:
     """
     Export plots to PDF or other format files
@@ -148,8 +148,11 @@ def export_plots(
     for file_type in file_types_:
         # logging.info(f'Image file type: "{file_type}"')
         for fig_dict_item in list(fig_dict.items()):
-            export_plot(*fig_dict_item, results_path,
-                        file_type=file_type, suffix=suffix, dpi=dpi)
+            export_plot(*fig_dict_item,
+                        results_path,
+                        file_type=file_type,
+                        suffix=suffix,
+                        dpi=dpi)
 
 
 def export_plot(
@@ -182,8 +185,7 @@ def export_plot(
                     bbox_inches='tight',
                     pad_inches=0.05,
                     dpi=dpi,
-                    format=file_type
-                    )
+                    format=file_type)
         logging.info(f'Exported "{fig_name_}"')
     except OSError:
         logging.info(f'Failed to export figure "{fig_name_}"')

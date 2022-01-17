@@ -51,7 +51,11 @@ __all__ = ['ResultsContainer',
            'convert']
 
 
-def numify(str): return float(str.replace('p', '.'))
+def numify(str_):
+    """
+    Replace decimal point with letter 'p'
+    """
+    return float(str_.replace('p', '.'))
 
 
 class ResultsContainer:  # (ABC):
@@ -107,7 +111,7 @@ def export_results(
     suffix: str = '',
     do_parse: bool = True,
     max_nparray_size: Optional[int] = None,
-    var_types: List[Any] = [float],
+    var_types: List[Any] = None,
     # [float, adj.AdjFloat]
 ) -> None:
     """
@@ -125,11 +129,12 @@ def export_results(
         max_nparray_size:
             optional limit size of parseable np arrays
         var_types:
-            optional list of types (as objects) to be converted into floats:
+            optional tuple of types (as objects) to be converted into floats:
             the default is '[float]' but if '[float, adj.AdjFloat]'
             is passed then an attempt is made to convert Dolfin/FEniCS data
             as well
     """
+    var_types_ = [] if var_types is None else var_types
     if do_parse:
         export = ResultsContainer()
         for attribute, attribute_value in results_to_export.items():
@@ -138,11 +143,11 @@ def export_results(
             for sub_attribute in attribute_value.__dict__:
                 sub_attribute_value \
                     = getattr(attribute_value_copy, sub_attribute)
-                # var_types = [float] \
+                # var_types_ = [float] \
                 #     if not do_dolfin_adjoint \
                 #     else [float, adj.AdjFloat]
                 matching_subattrs = [isinstance(sub_attribute_value, var_type)
-                                     for var_type in var_types]
+                                     for var_type in var_types_]
                 if any(matching_subattrs):
                     setattr(attribute_value_copy,
                             sub_attribute,
