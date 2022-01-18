@@ -14,6 +14,7 @@ Requires Python packages/modules:
 """
 
 # Library
+from sympy.parsing.sympy_parser import parse_expr
 import warnings
 import logging
 from os.path import realpath, join
@@ -25,7 +26,6 @@ from pprint import PrettyPrinter
 pp = PrettyPrinter(indent=4).pprint
 
 # SymPy
-from sympy.parsing.sympy_parser import parse_expr
 
 warnings.filterwarnings("ignore")
 
@@ -77,7 +77,8 @@ def read_json_file(filepaths: Union[Tuple[str], List[str]]) -> Dict:
     # Step through each JSON parameters file in turn
     for filepath in filepaths:
         parameters_file_name = filepath+'.json'
-        logging.info(f'gmplib.parameters: {parameters_file_name}')
+        logging.info(
+            f'gmplib.parameters.read_json_file: {parameters_file_name}')
         # Read in the parameters file
         with open(parameters_file_name, encoding='latin-1') as json_file:
             parameters = load(json_file)
@@ -146,7 +147,8 @@ class Parameters():
             setattr(
                 self,
                 group_name,
-                ParametersNestedGroup(self, group_name, group_dict, evaluations_)
+                ParametersNestedGroup(
+                    self, group_name, group_dict, evaluations_)
             )
             imported_parameters_.pop(group_name)
         for group_name, group_dict in imported_parameters_.items():
@@ -154,7 +156,8 @@ class Parameters():
             setattr(
                 self,
                 group_name,
-                ParametersNestedGroup(self, group_name, group_dict, evaluations_)
+                ParametersNestedGroup(
+                    self, group_name, group_dict, evaluations_)
             )
 
 
@@ -186,7 +189,9 @@ class ParametersNestedGroup():
         """
         Constructor method.
         """
-        logging.info(f'gmplib.parameters: p.{group_name}')
+        logging.info(
+            f'gmplib.parameters.ParametersNestedGroup: p.{group_name}'
+        )
         if evaluations is None:
             evaluations = {}
         for s_key, s_value in parameters_dict.items():
@@ -201,5 +206,6 @@ class ParametersNestedGroup():
             for attr in evaluations[group_name]:
                 value = eval(str(getattr(self, attr)))
                 setattr(p, attr, value)
-                ls = f'gmplib.parameters: p.{group_name}.{attr} <- {value}'
+                ls = f'gmplib.parameters.ParametersNestedGroup:'\
+                    + ' p.{group_name}.{attr} <- {value}'
                 logging.info(ls)

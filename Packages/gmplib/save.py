@@ -141,7 +141,8 @@ def export_plots(
             filename suffix
     """
     results_path: PathLike = realpath(results_dir)
-    logging.info(f'Writing to dir: "{results_path}"')
+    logging.info('gmplib.save.export_plots:\n   '
+                 + f'Writing to dir: "{results_path}"')
     file_types_: List[str] = file_types \
         if isinstance(file_types, list) \
         else [str(file_types)]
@@ -186,9 +187,9 @@ def export_plot(
                     pad_inches=0.05,
                     dpi=dpi,
                     format=file_type)
-        logging.info(f'Exported "{fig_name_}"')
+        logging.info(f'gmplib.save.export_plot: Exported "{fig_name_}"')
     except OSError:
-        logging.info(f'Failed to export figure "{fig_name_}"')
+        logging.info(f'gmplib.save.export_plot: Failed to export figure "{fig_name_}"')
         raise
     # except:
     #     raise

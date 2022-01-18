@@ -135,8 +135,8 @@ class GraphingBase:
         fig_size_: Tuple[float, float] \
             = (8, 8) if fig_size is None else fig_size
         dpi_: float = self.dpi if dpi is None else dpi
-        logging.info(
-            f'Creating plot: {fig_name} size={fig_size_} @ {dpi_} dpi')
+        logging.info('gmplib.plot.GraphingBase:\n   '
+            + f'Creating plot: {fig_name} size={fig_size_} @ {dpi_} dpi')
         fig = plt.figure()
         self.fdict.update({fig_name: fig})
         fig.set_size_inches(fig_size_)
