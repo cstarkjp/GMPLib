@@ -183,35 +183,11 @@ is possible</p></li>
 
 <span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
 
-<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;create_dir&#39;</span><span class="p">,</span> <span class="s1">&#39;create_directories&#39;</span><span class="p">,</span>
-           <span class="s1">&#39;export_results&#39;</span><span class="p">,</span> <span class="s1">&#39;export_plots&#39;</span><span class="p">,</span> <span class="s1">&#39;export_plot&#39;</span><span class="p">]</span>
-
-
-<span class="k">def</span> <span class="nf">create_dir</span><span class="p">(</span><span class="n">dir_</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Try to create an output directory if one doesn&#39;t exist.</span>
-
-<span class="sd">    Throws an exception if the directory cannot be created.</span>
-<span class="sd">    Returns quietly if the directory already exists.</span>
-
-<span class="sd">    Args:</span>
-<span class="sd">        dir_ : name of directory</span>
-
-<span class="sd">    Returns:</span>
-<span class="sd">        str: path to directory (see :mod:`os.path`)</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">try</span><span class="p">:</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="n">exists</span><span class="p">(</span><span class="n">dir_</span><span class="p">):</span>
-            <span class="n">mkdir</span><span class="p">(</span><span class="n">dir_</span><span class="p">)</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="k">return</span> <span class="n">dir_</span>
-    <span class="k">except</span> <span class="ne">OSError</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Cannot create directory&#39;</span><span class="p">)</span>
-        <span class="k">raise</span>
-    <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="ne">Exception</span><span class="p">)</span>
-        <span class="k">raise</span>
-    <span class="k">return</span> <span class="n">dir_</span>
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;create_dir&#39;</span><span class="p">,</span>
+           <span class="s1">&#39;create_directories&#39;</span><span class="p">,</span>
+           <span class="s1">&#39;export_results&#39;</span><span class="p">,</span>
+           <span class="s1">&#39;export_plots&#39;</span><span class="p">,</span>
+           <span class="s1">&#39;export_plot&#39;</span><span class="p">]</span>
 
 
 <span class="k">def</span> <span class="nf">create_directories</span><span class="p">(</span>
@@ -233,6 +209,33 @@ is possible</p></li>
     <span class="n">create_dir</span><span class="p">(</span><span class="n">join</span><span class="p">(</span><span class="o">*</span><span class="n">results_path_</span><span class="p">))</span>
     <span class="n">results_dir_</span> <span class="o">=</span> <span class="n">results_path_</span><span class="o">+</span><span class="p">[</span><span class="n">results_dir</span><span class="p">]</span>
     <span class="k">return</span> <span class="n">create_dir</span><span class="p">(</span><span class="n">join</span><span class="p">(</span><span class="o">*</span><span class="n">results_dir_</span><span class="p">))</span>
+
+
+<span class="k">def</span> <span class="nf">create_dir</span><span class="p">(</span><span class="n">dir_</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Try to create an output directory if one doesn&#39;t exist.</span>
+
+<span class="sd">    Throws an exception if the directory cannot be created.</span>
+<span class="sd">    Returns quietly if the directory already exists.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        dir_ : name of directory</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        str: path to directory (see :mod:`os.path`)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">exists</span><span class="p">(</span><span class="n">dir_</span><span class="p">):</span>
+            <span class="n">mkdir</span><span class="p">(</span><span class="n">dir_</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">dir_</span>
+    <span class="k">except</span> <span class="ne">OSError</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Cannot create directory &quot;</span><span class="si">{</span><span class="n">realpath</span><span class="p">(</span><span class="n">dir_</span><span class="p">)</span><span class="si">}</span><span class="s1">&quot;&#39;</span><span class="p">)</span>
+        <span class="k">raise</span>
+    <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="ne">Exception</span><span class="p">)</span>
+        <span class="k">raise</span>
+    <span class="k">return</span> <span class="n">dir_</span>
 
 
 <span class="k">def</span> <span class="nf">export_results</span><span class="p">(</span>
@@ -277,7 +280,7 @@ is possible</p></li>
     <span class="n">results_dir</span><span class="p">:</span> <span class="n">PathLike</span><span class="p">,</span>
     <span class="n">file_types</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;pdf&#39;</span><span class="p">,</span>
     <span class="n">suffix</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
-    <span class="n">dpi</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">dpi</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Export plots to PDF or other format files</span>
@@ -293,15 +296,19 @@ is possible</p></li>
 <span class="sd">            filename suffix</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">results_path</span><span class="p">:</span> <span class="n">PathLike</span> <span class="o">=</span> <span class="n">realpath</span><span class="p">(</span><span class="n">results_dir</span><span class="p">)</span>
-    <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Writing to dir: &quot;</span><span class="si">{</span><span class="n">results_path</span><span class="si">}</span><span class="s1">&quot;&#39;</span><span class="p">)</span>
+    <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;gmplib.save.export_plots:</span><span class="se">\n</span><span class="s1">   &#39;</span>
+                 <span class="o">+</span> <span class="sa">f</span><span class="s1">&#39;Writing to dir: &quot;</span><span class="si">{</span><span class="n">results_path</span><span class="si">}</span><span class="s1">&quot;&#39;</span><span class="p">)</span>
     <span class="n">file_types_</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="n">file_types</span> \
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">file_types</span><span class="p">,</span> <span class="nb">list</span><span class="p">)</span> \
         <span class="k">else</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">file_types</span><span class="p">)]</span>
     <span class="k">for</span> <span class="n">file_type</span> <span class="ow">in</span> <span class="n">file_types_</span><span class="p">:</span>
         <span class="c1"># logging.info(f&#39;Image file type: &quot;{file_type}&quot;&#39;)</span>
         <span class="k">for</span> <span class="n">fig_dict_item</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">fig_dict</span><span class="o">.</span><span class="n">items</span><span class="p">()):</span>
-            <span class="n">export_plot</span><span class="p">(</span><span class="o">*</span><span class="n">fig_dict_item</span><span class="p">,</span> <span class="n">results_path</span><span class="p">,</span>
-                        <span class="n">file_type</span><span class="o">=</span><span class="n">file_type</span><span class="p">,</span> <span class="n">suffix</span><span class="o">=</span><span class="n">suffix</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="n">dpi</span><span class="p">)</span>
+            <span class="n">export_plot</span><span class="p">(</span><span class="o">*</span><span class="n">fig_dict_item</span><span class="p">,</span>
+                        <span class="n">results_path</span><span class="p">,</span>
+                        <span class="n">file_type</span><span class="o">=</span><span class="n">file_type</span><span class="p">,</span>
+                        <span class="n">suffix</span><span class="o">=</span><span class="n">suffix</span><span class="p">,</span>
+                        <span class="n">dpi</span><span class="o">=</span><span class="n">dpi</span><span class="p">)</span>
 
 
 <span class="k">def</span> <span class="nf">export_plot</span><span class="p">(</span>
@@ -334,11 +341,10 @@ is possible</p></li>
                     <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">,</span>
                     <span class="n">pad_inches</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span>
                     <span class="n">dpi</span><span class="o">=</span><span class="n">dpi</span><span class="p">,</span>
-                    <span class="nb">format</span><span class="o">=</span><span class="n">file_type</span>
-                    <span class="p">)</span>
-        <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Exported &quot;</span><span class="si">{</span><span class="n">fig_name_</span><span class="si">}</span><span class="s1">&quot;&#39;</span><span class="p">)</span>
+                    <span class="nb">format</span><span class="o">=</span><span class="n">file_type</span><span class="p">)</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;gmplib.save.export_plot: Exported &quot;</span><span class="si">{</span><span class="n">fig_name_</span><span class="si">}</span><span class="s1">&quot;&#39;</span><span class="p">)</span>
     <span class="k">except</span> <span class="ne">OSError</span><span class="p">:</span>
-        <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Failed to export figure &quot;</span><span class="si">{</span><span class="n">fig_name_</span><span class="si">}</span><span class="s1">&quot;&#39;</span><span class="p">)</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;gmplib.save.export_plot: Failed to export figure &quot;</span><span class="si">{</span><span class="n">fig_name_</span><span class="si">}</span><span class="s1">&quot;&#39;</span><span class="p">)</span>
         <span class="k">raise</span>
     <span class="c1"># except:</span>
     <span class="c1">#     raise</span>
