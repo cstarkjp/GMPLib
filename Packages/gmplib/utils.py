@@ -19,12 +19,14 @@ Requires Python packages/modules:
 import warnings
 import logging
 import os
+
 # from os import listdir
 from os.path import realpath, join
 from json import dumps
+
 # from functools import reduce
 from copy import deepcopy
-from typing import Dict, Tuple, Any, Union, List, Optional
+from typing import Dict, Tuple, Any, Union, List, Optional, Iterable
 
 # Abstract classes & methods
 # from abc import ABC  # , abstractmethod
@@ -39,23 +41,25 @@ from sympy.physics.units.systems import SI
 
 warnings.filterwarnings("ignore")
 
-__all__ = ['ResultsContainer',
-           'numify',
-           'get_pkg_path',
-           'is_jsonable',
-           'export_results',
-           'e2d',
-           'dict2mat',
-           'omitdict',
-           'gmround',
-           'convert']
+__all__ = [
+    "ResultsContainer",
+    "numify",
+    "get_pkg_path",
+    "is_jsonable",
+    "export_results",
+    "e2d",
+    "dict2mat",
+    "omitdict",
+    "gmround",
+    "convert",
+]
 
 
 def numify(str_):
     """
     Replace decimal point with letter 'p'
     """
-    return float(str_.replace('p', '.'))
+    return float(str_.replace("p", "."))
 
 
 class ResultsContainer:  # (ABC):
@@ -69,7 +73,7 @@ class ResultsContainer:  # (ABC):
         """
 
 
-def get_pkg_path(pkg: Any, subpkg: str = '') -> str:
+def get_pkg_path(pkg: Any, subpkg: str = "") -> str:
     """
     Find the file path to a given package folder.
     If 'subpkg' is given, return the sub-package path.
@@ -83,7 +87,7 @@ def get_pkg_path(pkg: Any, subpkg: str = '') -> str:
     Returns:
         str: Path to (sub)package
     """
-    return realpath(join(pkg.__path__[0], '..', '..', subpkg))
+    return realpath(join(pkg.__path__[0], "..", "..", subpkg))
 
 
 def is_jsonable(item: Any) -> bool:
@@ -108,7 +112,7 @@ def is_jsonable(item: Any) -> bool:
 def export_results(
     results_to_export: Dict,
     results_dir: os.PathLike,
-    suffix: str = '',
+    suffix: str = "",
     do_parse: bool = True,
     max_nparray_size: Optional[int] = None,
     var_types: List[Any] = None,
@@ -141,23 +145,26 @@ def export_results(
             attribute_value_copy = deepcopy(attribute_value)
             # unjsonable_sub_attributes = {}
             for sub_attribute in attribute_value.__dict__:
-                sub_attribute_value \
-                    = getattr(attribute_value_copy, sub_attribute)
+                sub_attribute_value = getattr(attribute_value_copy, sub_attribute)
                 # var_types_ = [float] \
                 #     if not do_dolfin_adjoint \
                 #     else [float, adj.AdjFloat]
-                matching_subattrs = [isinstance(sub_attribute_value, var_type)
-                                     for var_type in var_types_]
+                matching_subattrs = [
+                    isinstance(sub_attribute_value, var_type) for var_type in var_types_
+                ]
                 if any(matching_subattrs):
-                    setattr(attribute_value_copy,
-                            sub_attribute,
-                            float(sub_attribute_value))
-                elif isinstance(sub_attribute_value, np.ndarray) \
-                        and (max_nparray_size is None
-                             or sub_attribute_value.size <= max_nparray_size):
-                    setattr(attribute_value_copy,
-                            sub_attribute,
-                            [list(array) for array in sub_attribute_value])
+                    setattr(
+                        attribute_value_copy, sub_attribute, float(sub_attribute_value)
+                    )
+                elif isinstance(sub_attribute_value, np.ndarray) and (
+                    max_nparray_size is None
+                    or sub_attribute_value.size <= max_nparray_size
+                ):
+                    setattr(
+                        attribute_value_copy,
+                        sub_attribute,
+                        [list(array) for array in sub_attribute_value],
+                    )
             setattr(export, attribute, attribute_value_copy)
 
         export_dict = {}
@@ -170,21 +177,21 @@ def export_results(
     try:
         json_str = dumps(export_dict, sort_keys=False, indent=4)
     except Exception:
-        print('Failed to serialize results into JSON format')
-    json_filename = f'results{suffix}.json'
+        print("Failed to serialize results into JSON format")
+    json_filename = f"results{suffix}.json"
     json_path = realpath(join(results_dir, json_filename))
-    with open(json_path, 'w', encoding='latin-1') as json_file:
+    with open(json_path, "w", encoding="latin-1") as json_file:
         print(f'Writing to "{json_path}"')
         try:
             json_file.write(json_str)
         except Exception:
-            print('Failed to write analysis results JSON file')
+            print("Failed to write analysis results JSON file")
 
 
 def e2d(
     eqn_or_eqns: Union[Eq, Tuple[Eq], List[Eq]],
     do_flip: bool = False,
-    do_negate: bool = False
+    do_negate: bool = False,
 ) -> Dict[Any, Any]:
     """
     Convert a SymPy equation (or list of equations) into a dictionary item
@@ -201,20 +208,17 @@ def e2d(
     Returns:
         dict: key=LHS of eqn, value=RHS of eqn
     """
+
     def negate_eqn(eqn_):
-        return Eq(-eqn_.lhs, - eqn_.rhs) if do_negate \
-            else eqn_
+        return Eq(-eqn_.lhs, -eqn_.rhs) if do_negate else eqn_
 
     def flip_eqn(eqn_):
-        return Eq(eqn_.rhs, eqn_.lhs) if do_flip \
-            else eqn_
+        return Eq(eqn_.rhs, eqn_.lhs) if do_flip else eqn_
 
     def make_dict(eqn_):
         return dict([(flip_eqn(negate_eqn(eqn_))).args])
 
-    eqns = eqn_or_eqns \
-        if isinstance(eqn_or_eqns, (list, tuple)) \
-        else [eqn_or_eqns]
+    eqns = eqn_or_eqns if isinstance(eqn_or_eqns, (list, tuple)) else [eqn_or_eqns]
     eqn_dict: Dict[Any, Any] = {}
     for eqn in eqns:
         eqn_dict.update(make_dict(eqn))
@@ -235,7 +239,7 @@ def dict2mat(dict_: Dict) -> Matrix:
     return Matrix(list(dict_.items()))
 
 
-def omitdict(dict_: Dict[Any, Any], omitlist: List) -> Dict[Any, Any]:
+def omitdict(dict_: Dict[Any, Any], omitlist: Iterable) -> Dict[Any, Any]:
     """
     Strip a dictionary of a list of keys.
     Used to remove items for a substitution dict if their values
@@ -246,7 +250,7 @@ def omitdict(dict_: Dict[Any, Any], omitlist: List) -> Dict[Any, Any]:
         try:
             del rtn_dict_[k]
         except KeyError:
-            logging.debug(f'{k} not found: skipping')
+            logging.debug(f"{k} not found: skipping")
     return rtn_dict_
 
 
@@ -266,17 +270,13 @@ def gmround(eqn: Eq, n: int = 0, sf: float = 1) -> Eq:
     Returns:
         :class:`sympy.Eq <sympy.core.relational.Equality>`: SymPy equation
     """
-    approx_rhs: float\
-        = np.round(float(N(eqn.rhs)*sf), n) if n is not None else N(eqn.rhs)*sf
+    approx_rhs: float = (
+        np.round(float(N(eqn.rhs) * sf), n) if n is not None else N(eqn.rhs) * sf
+    )
     return Eq(eqn.lhs, approx_rhs if n is None or n > 0 else int(approx_rhs))
 
 
-def convert(
-    eqn: Eq,
-    units: Quantity,
-    n: int = 0,
-    do_raw: bool = False
-) -> Eq:
+def convert(eqn: Eq, units: Quantity, n: int = 0, do_raw: bool = False) -> Eq:
     """
     Add units to a SymPy equation whose RHS is a dimensioned value.
     Also round as required.
@@ -292,12 +292,14 @@ def convert(
     Returns:
         :class:`sympy.Eq <sympy.core.relational.Equality>`: SymPy equation
     """
-    _ = Quantity('unknown_units')
+    _ = Quantity("unknown_units")
     SI.set_quantity_dimension(_, SI.get_quantity_dimension(eqn.lhs))
     cf = convert_to(_, units).n()
-    return Eq(eqn.lhs,
-              np.round(float(N(cf.args[0]*eqn.rhs)), n)*Mul(*cf.args[1:])) \
-        if do_raw is not True \
-        else Eq(eqn.lhs, np.round(float(N(eqn.rhs)), n)*N(cf))
+    return (
+        Eq(eqn.lhs, np.round(float(N(cf.args[0] * eqn.rhs)), n) * Mul(*cf.args[1:]))
+        if do_raw is not True
+        else Eq(eqn.lhs, np.round(float(N(eqn.rhs)), n) * N(cf))
+    )
+
 
 #
