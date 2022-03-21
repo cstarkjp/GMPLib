@@ -5,7 +5,7 @@ from os import PathLike
 from typing import Dict, List, Optional, Tuple
 from wand.image import Image as PdfImage
 
-class combine_images(ABC, metaclass=abc.ABCMeta):
+class CombineImages(ABC, metaclass=abc.ABCMeta):
     combo_image: Image
     combo_page: PdfImage
     def __init__(
@@ -33,7 +33,7 @@ class combine_images(ABC, metaclass=abc.ABCMeta):
         self, out_path: PathLike, into_filename: PathLike, file_type: str
     ) -> None: ...
 
-class combine_raster_images(combine_images, metaclass=abc.ABCMeta):
+class CombineRasterImages(CombineImages, metaclass=abc.ABCMeta):
     image_list: List[Image]
     def get_images(
         self,
@@ -46,15 +46,15 @@ class combine_raster_images(combine_images, metaclass=abc.ABCMeta):
         self, out_path: PathLike, into_filename: PathLike, file_type: str
     ) -> None: ...
 
-class combine_raster_images_vertically(combine_raster_images):
+class CombineRasterImagesVertically(CombineRasterImages):
     combo_image: Image
     def paste_images(self, spacing: float, do_align_right: bool) -> None: ...
 
-class combine_raster_images_horizontally(combine_raster_images):
+class CombineRasterImagesHorizontally(CombineRasterImages):
     combo_image: Image
     def paste_images(self, spacing: float, do_align_right: bool) -> None: ...
 
-class combine_pdf_images(combine_images, metaclass=abc.ABCMeta):
+class CombinePdfImages(CombineImages, metaclass=abc.ABCMeta):
     page_list: List[PdfImage]
     def get_images(
         self,
@@ -67,11 +67,11 @@ class combine_pdf_images(combine_images, metaclass=abc.ABCMeta):
         self, out_path: PathLike, into_filename: PathLike, file_type: str
     ) -> None: ...
 
-class combine_pdf_images_vertically(combine_pdf_images):
+class CombinePdfImagesVertically(CombinePdfImages):
     combo_page: PdfImage
     def paste_images(self, spacing: float, do_align_right: bool) -> None: ...
 
-class combine_pdf_images_horizontally(combine_pdf_images):
+class CombinePdfImagesHorizontally(CombinePdfImages):
     combo_page: PdfImage
     def paste_images(self, spacing: float, do_align_right: bool) -> None: ...
 

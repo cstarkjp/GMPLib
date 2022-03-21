@@ -41,19 +41,19 @@ from PyPDF2.pdf import PageObject
 warnings.filterwarnings("ignore")
 
 __all__ = [
-    "combine_images",
-    "combine_raster_images",
-    "combine_pdf_images",
-    "combine_raster_images_vertically",
-    "combine_raster_images_horizontally",
-    "combine_pdf_images_vertically",
-    "combine_pdf_images_horizontally",
+    "CombineImages",
+    "CombineRasterImages",
+    "CombinePdfImages",
+    "CombineRasterImagesVertically",
+    "CombineRasterImagesHorizontally",
+    "CombinePdfImagesVertically",
+    "CombinePdfImagesHorizontally",
     "fetch_images",
     "resize",
 ]
 
 
-class combine_images(ABC):
+class CombineImages(ABC):
     """
     Join together a set of images, with padding (abstract class template).
 
@@ -146,7 +146,7 @@ class combine_images(ABC):
         """
 
 
-class combine_raster_images(combine_images):
+class CombineRasterImages(CombineImages):
     """
     Combine raster image files.
 
@@ -183,7 +183,7 @@ class combine_raster_images(combine_images):
         )
 
 
-class combine_raster_images_vertically(combine_raster_images):
+class CombineRasterImagesVertically(CombineRasterImages):
     """
     Combine raster images in a vertical layout.
 
@@ -210,7 +210,7 @@ class combine_raster_images_vertically(combine_raster_images):
             y_offset += y_size + spacing
 
 
-class combine_raster_images_horizontally(combine_raster_images):
+class CombineRasterImagesHorizontally(CombineRasterImages):
     """
     Combine raster images in a horizontal layout.
 
@@ -236,7 +236,7 @@ class combine_raster_images_horizontally(combine_raster_images):
             x_offset += x_size + spacing
 
 
-class combine_pdf_images(combine_images):
+class CombinePdfImages(CombineImages):
     """
     Combine PDF image files.
 
@@ -280,7 +280,7 @@ class combine_pdf_images(combine_images):
             writer.write(f)
 
 
-class combine_pdf_images_vertically(combine_pdf_images):
+class CombinePdfImagesVertically(CombinePdfImages):
     """
     Combine PDF images in a vertical layout.
 
@@ -311,7 +311,7 @@ class combine_pdf_images_vertically(combine_pdf_images):
             self.combo_page.mergeTranslatedPage(page_, x_offset, y_offset)
 
 
-class combine_pdf_images_horizontally(combine_pdf_images):
+class CombinePdfImagesHorizontally(CombinePdfImages):
     """
     Combine PDF images in a horizontal layout.
 
