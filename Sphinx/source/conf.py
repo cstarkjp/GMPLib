@@ -1,3 +1,5 @@
+"""Sphinx config."""
+
 # Configuration file for the Sphinx documentation builder.
 #
 # This file only contains a selection of the most common options. For a full
@@ -17,12 +19,12 @@
 
 # -- Project information -----------------------------------------------------
 
-project = 'GMPLib'
-copyright = '2021, CPS'
-author = 'CPS'
+project = "GMPLib"
+copyright = "2021, CPS"
+author = "CPS"
 
 # The full version, including alpha/beta/rc tags
-release = '1.0'
+release = "1.0"
 
 
 # -- General configuration ---------------------------------------------------
@@ -31,17 +33,17 @@ release = '1.0'
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = [
-    'sphinx.ext.autodoc',
-    'sphinx.ext.githubpages',
-    'sphinx.ext.intersphinx',
-    'sphinx.ext.todo',
-    'sphinx.ext.napoleon',
-    'sphinx.ext.imgmath',
-    'recommonmark'
+    "sphinx.ext.autodoc",
+    "sphinx.ext.githubpages",
+    "sphinx.ext.intersphinx",
+    "sphinx.ext.todo",
+    "sphinx.ext.napoleon",
+    "sphinx.ext.imgmath",
+    "recommonmark",
 ]
 
 # Add any paths that contain templates here, relative to this directory.
-templates_path = ['_templates']
+templates_path = ["_templates"]
 
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
@@ -52,12 +54,12 @@ exclude_patterns = []
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
 # This pattern also affects html_static_path and html_extra_path.
-#exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
+# exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 
 source_parsers = {
-   '.md': 'recommonmark.parser.CommonMarkParser',
+    ".md": "recommonmark.parser.CommonMarkParser",
 }
-source_suffix = ['.rst', '.md']
+source_suffix = [".rst", ".md"]
 
 # The name of the Pygments (syntax highlighting) style to use.
 # pygments_style = 'sphinx'
@@ -73,58 +75,73 @@ todo_include_todos = True
 #
 # html_theme = 'alabaster'
 
-html_theme = 'sphinx_py3doc_enhanced_theme'
+html_theme = "sphinx_py3doc_enhanced_theme"
 import sphinx_py3doc_enhanced_theme
+
 html_theme_path = [sphinx_py3doc_enhanced_theme.get_html_theme_path()]
 
 html_theme_options = {
-    'bodyfont': '"Lucida Grande",Arial,sans-serif',
-    'headfont': '"Lucida Grande",Arial,sans-serif',
-    'codefont': 'monospace,sans-serif',
-    'linkcolor': '#0072AA',
-    'visitedlinkcolor': '#6363bb',
-    'extrastyling': False,
+    "bodyfont": '"Lucida Grande",Arial,sans-serif',
+    "headfont": '"Lucida Grande",Arial,sans-serif',
+    "codefont": "monospace,sans-serif",
+    "linkcolor": "#0072AA",
+    "visitedlinkcolor": "#6363bb",
+    "extrastyling": False,
 }
-pygments_style = 'friendly'
-
-
-
-
+pygments_style = "friendly"
 
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
-html_static_path = ['_static']
-
-
+html_static_path = ["_static"]
 
 
 html_sidebars = {
-    '**': [
-        'searchbox.html',
+    "**": [
+        "searchbox.html",
         # 'localtoc.html',
         # 'relations.html',
-        'globaltoc.html',
+        "globaltoc.html",
         # 'sourcelink.html',
     ]
 }
 
 # -- Intersphinx mappings -------------------------------------------------
 
+# intersphinx_mapping = {
+#     'sphinx': ('http://www.sphinx-doc.org/en/master', None),
+#     'python': ('https://docs.python.org/3', None),
+#     'matplotlib': ('https://matplotlib.org/stable', None),
+#     # 'mpl_toolkits': ('https://matplotlib.org', None),
+#     'np': ('https://docs.scipy.org/doc/numpy', None),
+#     'numpy': ('https://docs.scipy.org/doc/numpy', None),
+#     'scipy': ('https://docs.scipy.org/doc/scipy/reference', None),
+#     'sympy': ('https://docs.sympy.org/dev/', None),
+#     'PIL': ('https://pillow.readthedocs.io/en/latest/', None),
+#     'IPython': ('http://ipython.org/ipython-doc/stable', None),
+#     'Wand': ('https://docs.wand-py.org/en/0.6.7/', None),
+#     'PyPDF2': ('https://pythonhosted.org/PyPDF2/', None)
+# }
+
 intersphinx_mapping = {
-    'sphinx': ('http://www.sphinx-doc.org/en/master', None),
-    'python': ('https://docs.python.org/3', None),
-    'matplotlib': ('https://matplotlib.org/stable', None),
+    # https://geomorphysics.github.io/GMPLib
+    "gmplib": (
+        "/Users/colinstark/Projects/GMPLib",
+        "/Users/colinstark/Projects/GMPLib/objects.inv",
+    ),
+    "sphinx": ("https://www.sphinx-doc.org/en/master", None),
+    "python": ("https://docs.python.org/3", None),
+    "matplotlib": ("https://matplotlib.org/stable", None),
     # 'mpl_toolkits': ('https://matplotlib.org', None),
-    'np': ('https://docs.scipy.org/doc/numpy', None),
-    'numpy': ('https://docs.scipy.org/doc/numpy', None),
-    'scipy': ('https://docs.scipy.org/doc/scipy/reference', None),
-    'sympy': ('https://docs.sympy.org/dev/', None),
-    'PIL': ('https://pillow.readthedocs.io/en/latest/', None),
-    'IPython': ('http://ipython.org/ipython-doc/stable', None),
-    'Wand': ('https://docs.wand-py.org/en/0.6.7/', None),
-    'PyPDF2': ('https://pythonhosted.org/PyPDF2/', None)
+    "np": ("https://numpy.org/doc/stable", None),
+    "numpy": ("https://numpy.org/doc/stable", None),
+    "scipy": ("https://docs.scipy.org/doc/scipy", None),
+    "sympy": ("https://docs.sympy.org/latest/", None),
+    "PIL": ("https://pillow.readthedocs.io/en/latest/", None),
+    "IPython": ("http://ipython.org/ipython-doc/stable", None),
+    "Wand": ("https://docs.wand-py.org/en/0.6.7/", None),
+    "PyPDF2": ("https://pythonhosted.org/PyPDF2/", None),
 }
 
 

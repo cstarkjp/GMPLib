@@ -46,7 +46,6 @@
             
   <div class="section" id="module-gmplib.initialize">
 <span id="initialize-py"></span><h1><code class="docutils literal notranslate"><span class="pre">initialize.py</span></code><a class="headerlink" href="#module-gmplib.initialize" title="Permalink to this headline">¶</a></h1>
-<hr class="docutils" />
 <p>Configure to run in <a class="reference external" href="https://ipython.readthedocs.io/en/stable/">IPython</a>.</p>
 <hr class="docutils" />
 <p>Sets up <a class="reference external" href="https://ipython.readthedocs.io/en/stable/">IPython</a> environment if we’re running
@@ -73,14 +72,12 @@ unavailable processing continues regardless.</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="gmplib.initialize.check_is_ipython">
 <span class="sig-prename descclassname"><span class="pre">gmplib.initialize.</span></span><span class="sig-name descname"><span class="pre">check_is_ipython</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gmplib.initialize.check_is_ipython" title="Permalink to this definition">¶</a></dt>
-<dd><p>Check if we are running an IPython kernel from Jupyter etc</p>
+<dd><p>Check if we are running an IPython kernel from Jupyter etc.</p>
 </dd></dl>
 
 <div class="section" id="code">
 <h2>Code<a class="headerlink" href="#code" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">---------------------------------------------------------------------</span>
-
 <span class="sd">Configure to run in `IPython`_.</span>
 
 <span class="sd">---------------------------------------------------------------------</span>
@@ -96,8 +93,6 @@ unavailable processing continues regardless.</p>
 <span class="sd">   (in case the code has been modded) when</span>
 <span class="sd">   a notebook is re-run in-situ</span>
 
-
-
 <span class="sd">---------------------------------------------------------------------</span>
 
 <span class="sd">Requires `Matplotlib`_ and `IPython`_.</span>
@@ -109,7 +104,6 @@ unavailable processing continues regardless.</p>
 <span class="sd">smooth and seamless. It is not needed for normal operation, and if</span>
 <span class="sd">unavailable processing continues regardless.</span>
 
-
 <span class="sd">---------------------------------------------------------------------</span>
 
 <span class="sd">.. _Matplotlib: https://matplotlib.org/</span>
@@ -118,9 +112,6 @@ unavailable processing continues regardless.</p>
 <span class="sd">.. _IPython: https://ipython.readthedocs.io/en/stable/</span>
 <span class="sd">.. _Jupyter notebook: https://jupyter-notebook.readthedocs.io/en/stable/</span>
 <span class="sd">.. _Jupyter QtConsole: https://qtconsole.readthedocs.io/en/stable/</span>
-
-
-
 <span class="sd">&quot;&quot;&quot;</span>
 
 <span class="c1"># import logging</span>
@@ -135,11 +126,9 @@ unavailable processing continues regardless.</p>
 
 
 <span class="k">def</span> <span class="nf">check_is_ipython</span><span class="p">():</span>
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Check if we are running an IPython kernel from Jupyter etc</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="sd">&quot;&quot;&quot;Check if we are running an IPython kernel from Jupyter etc.&quot;&quot;&quot;</span>
     <span class="k">try</span><span class="p">:</span>
-        <span class="k">if</span> <span class="s1">&#39;IPKernelApp&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">get_ipython</span><span class="p">()</span><span class="o">.</span><span class="n">config</span><span class="p">:</span>  <span class="c1"># pragma: no cover</span>
+        <span class="k">if</span> <span class="s2">&quot;IPKernelApp&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">get_ipython</span><span class="p">()</span><span class="o">.</span><span class="n">config</span><span class="p">:</span>  <span class="c1"># pragma: no cover</span>
             <span class="k">return</span> <span class="kc">False</span>
     <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
         <span class="k">return</span> <span class="kc">False</span>
@@ -159,21 +148,21 @@ unavailable processing continues regardless.</p>
     <span class="c1">#     print(&#39;Possibly benign error trying to config Matplotlib backend&#39;)</span>
 
     <span class="k">try</span><span class="p">:</span>
-        <span class="n">get_ipython</span><span class="p">()</span><span class="o">.</span><span class="n">magic</span><span class="p">(</span><span class="s1">&#39;matplotlib inline&#39;</span><span class="p">)</span>
+        <span class="n">get_ipython</span><span class="p">()</span><span class="o">.</span><span class="n">magic</span><span class="p">(</span><span class="s2">&quot;matplotlib inline&quot;</span><span class="p">)</span>
     <span class="k">except</span> <span class="ne">NameError</span><span class="p">:</span>
         <span class="k">pass</span>
     <span class="c1"># except:</span>
     <span class="c1">#     print(&#39;Possibly benign error trying to config Matplotlib backend&#39;)</span>
 
     <span class="k">try</span><span class="p">:</span>
-        <span class="n">get_ipython</span><span class="p">()</span><span class="o">.</span><span class="n">magic</span><span class="p">(</span><span class="s1">&#39;load_ext autoreload&#39;</span><span class="p">)</span>
-        <span class="n">get_ipython</span><span class="p">()</span><span class="o">.</span><span class="n">magic</span><span class="p">(</span><span class="s1">&#39;autoreload 2&#39;</span><span class="p">)</span>
+        <span class="n">get_ipython</span><span class="p">()</span><span class="o">.</span><span class="n">magic</span><span class="p">(</span><span class="s2">&quot;load_ext autoreload&quot;</span><span class="p">)</span>
+        <span class="n">get_ipython</span><span class="p">()</span><span class="o">.</span><span class="n">magic</span><span class="p">(</span><span class="s2">&quot;autoreload 2&quot;</span><span class="p">)</span>
         <span class="c1"># get_ipython().magic(&#39;aimport &#39;+package_name)</span>
     <span class="k">except</span> <span class="ne">NameError</span> <span class="k">as</span> <span class="n">error</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span>
-            <span class="s1">&#39;Error trying to invoke get_ipython(), &#39;</span>
-            <span class="o">+</span> <span class="s1">&#39;possibly because not running IPython:&#39;</span><span class="p">,</span>
-            <span class="n">error</span>
+            <span class="s2">&quot;Error trying to invoke get_ipython(), &quot;</span>
+            <span class="o">+</span> <span class="s2">&quot;possibly because not running IPython:&quot;</span><span class="p">,</span>
+            <span class="n">error</span><span class="p">,</span>
         <span class="p">)</span>
     <span class="c1"># except:</span>
     <span class="c1">#     print(&#39;Possibly benign error trying to config autoreload&#39;)</span>

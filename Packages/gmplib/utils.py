@@ -1,7 +1,5 @@
 """
----------------------------------------------------------------------
-
-Utilities
+Utilities.
 
 ---------------------------------------------------------------------
 
@@ -10,12 +8,12 @@ Requires Python packages/modules:
   -  :mod:`sympy`
 
 ---------------------------------------------------------------------
-
 """
 # Allow failed import of dolfin-adjoint if not using FEniCS
 # pylint: disable=import-error, import-outside-toplevel
 
 # Library
+from modulefinder import Module
 import warnings
 import logging
 import os
@@ -56,26 +54,21 @@ __all__ = [
 
 
 def numify(str_):
-    """
-    Replace decimal point with letter 'p'
-    """
+    """Replace decimal point with letter 'p'."""
     return float(str_.replace("p", "."))
 
 
 class ResultsContainer:  # (ABC):
-    """
-    Template for results container class
-    """
+    """Provides template for results container class."""
 
     def __init__(self) -> None:
-        """
-        Constructor method
-        """
+        """Initialize."""
 
 
-def get_pkg_path(pkg: Any, subpkg: str = "") -> str:
+def get_pkg_path(pkg: Module, subpkg: str = "") -> str:
     """
     Find the file path to a given package folder.
+
     If 'subpkg' is given, return the sub-package path.
 
     Args:
@@ -87,12 +80,13 @@ def get_pkg_path(pkg: Any, subpkg: str = "") -> str:
     Returns:
         str: Path to (sub)package
     """
-    return realpath(join(pkg.__path__[0], "..", "..", subpkg))
+    return realpath(join(pkg.__path__[0], "..", "..", subpkg))  # type: ignore
 
 
 def is_jsonable(item: Any) -> bool:
     """
     Check whether an item can be written into a JSON file.
+
     If not, perhaps because the item is a numpy array etc,
     return false.
 
@@ -145,16 +139,21 @@ def export_results(
             attribute_value_copy = deepcopy(attribute_value)
             # unjsonable_sub_attributes = {}
             for sub_attribute in attribute_value.__dict__:
-                sub_attribute_value = getattr(attribute_value_copy, sub_attribute)
+                sub_attribute_value = getattr(
+                    attribute_value_copy, sub_attribute
+                )
                 # var_types_ = [float] \
                 #     if not do_dolfin_adjoint \
                 #     else [float, adj.AdjFloat]
                 matching_subattrs = [
-                    isinstance(sub_attribute_value, var_type) for var_type in var_types_
+                    isinstance(sub_attribute_value, var_type)
+                    for var_type in var_types_
                 ]
                 if any(matching_subattrs):
                     setattr(
-                        attribute_value_copy, sub_attribute, float(sub_attribute_value)
+                        attribute_value_copy,
+                        sub_attribute,
+                        float(sub_attribute_value),
                     )
                 elif isinstance(sub_attribute_value, np.ndarray) and (
                     max_nparray_size is None
@@ -194,8 +193,9 @@ def e2d(
     do_negate: bool = False,
 ) -> Dict[Any, Any]:
     """
-    Convert a SymPy equation (or list of equations) into a dictionary item
-    by mapping the LHS into a key and the RHS into a value.
+    Convert a SymPy equation (or list of equations) into a dictionary item.
+
+    Do this by mapping the LHS into a key and the RHS into a value.
 
     Args:
         eqn_or_eqns:
@@ -218,7 +218,9 @@ def e2d(
     def make_dict(eqn_):
         return dict([(flip_eqn(negate_eqn(eqn_))).args])
 
-    eqns = eqn_or_eqns if isinstance(eqn_or_eqns, (list, tuple)) else [eqn_or_eqns]
+    eqns = (
+        eqn_or_eqns if isinstance(eqn_or_eqns, (list, tuple)) else [eqn_or_eqns]
+    )
     eqn_dict: Dict[Any, Any] = {}
     for eqn in eqns:
         eqn_dict.update(make_dict(eqn))
@@ -227,7 +229,7 @@ def e2d(
 
 def dict2mat(dict_: Dict) -> Matrix:
     """
-    Convert a dictionary into a SymPy matrix
+    Convert a dictionary into a SymPy matrix.
 
     Args:
         dict_: dictionary
@@ -242,6 +244,7 @@ def dict2mat(dict_: Dict) -> Matrix:
 def omitdict(dict_: Dict[Any, Any], omitlist: Iterable) -> Dict[Any, Any]:
     """
     Strip a dictionary of a list of keys.
+
     Used to remove items for a substitution dict if their values
     need to remain symbolic.
     """
@@ -256,8 +259,9 @@ def omitdict(dict_: Dict[Any, Any], omitlist: Iterable) -> Dict[Any, Any]:
 
 def gmround(eqn: Eq, n: int = 0, sf: float = 1) -> Eq:
     """
-    Round numerical RHS of SymPy equation, converting to integer if
-    zero decimal places requested.
+    Round numerical RHS of SymPy equation.
+
+    Converting to integer if zero decimal places requested.
 
     Args:
         eqn:
@@ -271,7 +275,9 @@ def gmround(eqn: Eq, n: int = 0, sf: float = 1) -> Eq:
         :class:`sympy.Eq <sympy.core.relational.Equality>`: SymPy equation
     """
     approx_rhs: float = (
-        np.round(float(N(eqn.rhs) * sf), n) if n is not None else N(eqn.rhs) * sf
+        np.round(float(N(eqn.rhs) * sf), n)
+        if n is not None
+        else N(eqn.rhs) * sf
     )
     return Eq(eqn.lhs, approx_rhs if n is None or n > 0 else int(approx_rhs))
 
@@ -279,6 +285,7 @@ def gmround(eqn: Eq, n: int = 0, sf: float = 1) -> Eq:
 def convert(eqn: Eq, units: Quantity, n: int = 0, do_raw: bool = False) -> Eq:
     """
     Add units to a SymPy equation whose RHS is a dimensioned value.
+
     Also round as required.
 
     Args:
@@ -296,7 +303,10 @@ def convert(eqn: Eq, units: Quantity, n: int = 0, do_raw: bool = False) -> Eq:
     SI.set_quantity_dimension(_, SI.get_quantity_dimension(eqn.lhs))
     cf = convert_to(_, units).n()
     return (
-        Eq(eqn.lhs, np.round(float(N(cf.args[0] * eqn.rhs)), n) * Mul(*cf.args[1:]))
+        Eq(
+            eqn.lhs,
+            np.round(float(N(cf.args[0] * eqn.rhs)), n) * Mul(*cf.args[1:]),
+        )
         if do_raw is not True
         else Eq(eqn.lhs, np.round(float(N(eqn.rhs)), n) * N(cf))
     )

@@ -46,13 +46,12 @@
             
   <div class="section" id="module-gmplib.parameters">
 <span id="parameters-py"></span><h1><code class="docutils literal notranslate"><span class="pre">parameters.py</span></code><a class="headerlink" href="#module-gmplib.parameters" title="Permalink to this headline">¶</a></h1>
-<hr class="docutils" />
-<p>Import job parameters from JSON files and build a settings dictionary</p>
+<p>Import job parameters from JSON files and build a settings dictionary.</p>
 <p>TODO: This might be better done using dataclasses</p>
 <hr class="docutils" />
 <dl class="simple">
 <dt>Requires Python packages/modules:</dt><dd><ul class="simple">
-<li><p><a class="reference external" href="https://docs.sympy.org/dev/index.html#module-sympy" title="(in SymPy v1.10.dev)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sympy</span></code></a></p></li>
+<li><p><a class="reference external" href="https://docs.sympy.org/latest/index.html#module-sympy" title="(in SymPy v1.10.1)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">SymPy</span></code></a></p></li>
 </ul>
 </dd>
 </dl>
@@ -60,7 +59,7 @@
 <dl class="py class">
 <dt class="sig sig-object py" id="gmplib.parameters.Parameters">
 <em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">gmplib.parameters.</span></span><span class="sig-name descname"><span class="pre">Parameters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">imported_parameters</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">evaluations</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sequence</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Tuple</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">()</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gmplib.parameters.Parameters" title="Permalink to this definition">¶</a></dt>
-<dd><p>Job parameters container</p>
+<dd><p>Provide a job parameters container.</p>
 <p>Convert top-level items in the parameters dictionary,
 whose keys are group names
 and whose values are sub-dictionary groups of parameters,
@@ -91,7 +90,7 @@ are the sub-dictionaries.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="gmplib.parameters.Parameters.__init__">
 <span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">imported_parameters</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">evaluations</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sequence</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Tuple</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">()</span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.10)"><span class="pre">None</span></a><a class="headerlink" href="#gmplib.parameters.Parameters.__init__" title="Permalink to this definition">¶</a></dt>
-<dd><p>Constructor method.</p>
+<dd><p>Initialize.</p>
 </dd></dl>
 
 </dd></dl>
@@ -99,7 +98,7 @@ are the sub-dictionaries.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="gmplib.parameters.ParametersNestedGroup">
 <em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">gmplib.parameters.</span></span><span class="sig-name descname"><span class="pre">ParametersNestedGroup</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Any</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">group_name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">parameters_dict</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">evaluations</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gmplib.parameters.ParametersNestedGroup" title="Permalink to this definition">¶</a></dt>
-<dd><p>Job <a href="#id1"><span class="problematic" id="id2">`</span></a>ParametersNestedGroup’  sub-container</p>
+<dd><p>Provide a job <cite>ParametersNestedGroup</cite>  sub-container.</p>
 <p>Convert items in a parameters sub-dictionary into class attributes,
 setting the attribute name to the dict item’s key and the
 attribute value to the dict item’s value.
@@ -113,7 +112,7 @@ before attribution.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="gmplib.parameters.ParametersNestedGroup.various">
 <span class="sig-name descname"><span class="pre">various</span></span><a class="headerlink" href="#gmplib.parameters.ParametersNestedGroup.various" title="Permalink to this definition">¶</a></dt>
-<dd><p>matching second-level items in the</p>
+<dd><p>matching second-level items in the parameters dictionary</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type</dt>
 <dd class="field-odd"><p>class attribute</p>
@@ -121,15 +120,10 @@ before attribution.</p>
 </dl>
 </dd></dl>
 
-<dl class="py attribute">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">parameters</span> <span class="pre">dictionary</span></span></dt>
-<dd></dd></dl>
-
 <dl class="py method">
 <dt class="sig sig-object py" id="gmplib.parameters.ParametersNestedGroup.__init__">
 <span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Any</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">group_name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">parameters_dict</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">evaluations</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.10)"><span class="pre">None</span></a><a class="headerlink" href="#gmplib.parameters.ParametersNestedGroup.__init__" title="Permalink to this definition">¶</a></dt>
-<dd><p>Constructor method.</p>
+<dd><p>Initialize.</p>
 </dd></dl>
 
 </dd></dl>
@@ -137,8 +131,8 @@ before attribution.</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="gmplib.parameters.import_parameters">
 <span class="sig-prename descclassname"><span class="pre">gmplib.parameters.</span></span><span class="sig-name descname"><span class="pre">import_parameters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filenames</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">('defaults')</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">,</span> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#gmplib.parameters.import_parameters" title="Permalink to this definition">¶</a></dt>
-<dd><p>Load JSON parameter files (defaults and job) and parse them in turn to
-generate a job parameters dictionary.</p>
+<dd><p>Load JSON parameter files (defaults and job).</p>
+<p>Parse them in turn to generate a job parameters dictionary.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -179,16 +173,14 @@ override any set by previous JSON files.</p>
 <div class="section" id="code">
 <h2>Code<a class="headerlink" href="#code" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">---------------------------------------------------------------------</span>
-
-<span class="sd">Import job parameters from JSON files and build a settings dictionary</span>
+<span class="sd">Import job parameters from JSON files and build a settings dictionary.</span>
 
 <span class="sd">TODO: This might be better done using dataclasses</span>
 
 <span class="sd">---------------------------------------------------------------------</span>
 
 <span class="sd">Requires Python packages/modules:</span>
-<span class="sd">  -  :mod:`sympy`</span>
+<span class="sd">  -  :mod:`SymPy &lt;sympy&gt;`</span>
 
 <span class="sd">---------------------------------------------------------------------</span>
 <span class="sd">&quot;&quot;&quot;</span>
@@ -203,25 +195,28 @@ override any set by previous JSON files.</p>
 <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">,</span> <span class="n">Any</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Union</span><span class="p">,</span> <span class="n">Optional</span>
 
 <span class="kn">from</span> <span class="nn">pprint</span> <span class="kn">import</span> <span class="n">PrettyPrinter</span>
+
 <span class="n">pp</span> <span class="o">=</span> <span class="n">PrettyPrinter</span><span class="p">(</span><span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span><span class="o">.</span><span class="n">pprint</span>
 
 <span class="c1"># SymPy</span>
 
 <span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
 
-<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;import_parameters&#39;</span><span class="p">,</span>
-           <span class="s1">&#39;read_json_file&#39;</span><span class="p">,</span>
-           <span class="s1">&#39;Parameters&#39;</span><span class="p">,</span>
-           <span class="s1">&#39;ParametersNestedGroup&#39;</span><span class="p">]</span>
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;import_parameters&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;read_json_file&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Parameters&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;ParametersNestedGroup&quot;</span><span class="p">,</span>
+<span class="p">]</span>
 
 
 <span class="k">def</span> <span class="nf">import_parameters</span><span class="p">(</span>
-    <span class="n">path</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
-    <span class="n">filenames</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;defaults&#39;</span><span class="p">,)</span>
+    <span class="n">path</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="n">filenames</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;defaults&quot;</span><span class="p">,)</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">Dict</span><span class="p">,</span> <span class="nb">str</span><span class="p">]:</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Load JSON parameter files (defaults and job) and parse them in turn to</span>
-<span class="sd">    generate a job parameters dictionary.</span>
+<span class="sd">    Load JSON parameter files (defaults and job).</span>
+
+<span class="sd">    Parse them in turn to generate a job parameters dictionary.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        path (list): path to JSON parameter files</span>
@@ -232,8 +227,9 @@ override any set by previous JSON files.</p>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="c1"># Parse default and assigned JSON parameters files</span>
     <span class="n">dirpath</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">realpath</span><span class="p">(</span><span class="n">join</span><span class="p">(</span><span class="o">*</span><span class="n">path</span><span class="p">))</span>
-    <span class="n">filepaths</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> \
-        <span class="o">=</span> <span class="p">[</span><span class="n">realpath</span><span class="p">(</span><span class="n">join</span><span class="p">(</span><span class="n">dirpath</span><span class="p">,</span> <span class="n">filename</span><span class="p">))</span> <span class="k">for</span> <span class="n">filename</span> <span class="ow">in</span> <span class="n">filenames</span><span class="p">]</span>
+    <span class="n">filepaths</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="n">realpath</span><span class="p">(</span><span class="n">join</span><span class="p">(</span><span class="n">dirpath</span><span class="p">,</span> <span class="n">filename</span><span class="p">))</span> <span class="k">for</span> <span class="n">filename</span> <span class="ow">in</span> <span class="n">filenames</span>
+    <span class="p">]</span>
     <span class="k">return</span> <span class="p">(</span><span class="n">read_json_file</span><span class="p">(</span><span class="n">filepaths</span><span class="p">),</span> <span class="n">dirpath</span><span class="p">)</span>
 
 
@@ -256,11 +252,12 @@ override any set by previous JSON files.</p>
     <span class="n">parameters_dict</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="n">Any</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
     <span class="c1"># Step through each JSON parameters file in turn</span>
     <span class="k">for</span> <span class="n">filepath</span> <span class="ow">in</span> <span class="n">filepaths</span><span class="p">:</span>
-        <span class="n">parameters_file_name</span> <span class="o">=</span> <span class="n">filepath</span><span class="o">+</span><span class="s1">&#39;.json&#39;</span>
+        <span class="n">parameters_file_name</span> <span class="o">=</span> <span class="n">filepath</span> <span class="o">+</span> <span class="s2">&quot;.json&quot;</span>
         <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
-            <span class="sa">f</span><span class="s1">&#39;gmplib.parameters.read_json_file: </span><span class="si">{</span><span class="n">parameters_file_name</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+            <span class="sa">f</span><span class="s2">&quot;gmplib.parameters.read_json_file: </span><span class="si">{</span><span class="n">parameters_file_name</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="p">)</span>
         <span class="c1"># Read in the parameters file</span>
-        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">parameters_file_name</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;latin-1&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">json_file</span><span class="p">:</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">parameters_file_name</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;latin-1&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">json_file</span><span class="p">:</span>
             <span class="n">parameters</span> <span class="o">=</span> <span class="n">load</span><span class="p">(</span><span class="n">json_file</span><span class="p">)</span>
         <span class="c1"># Step through all the dict items in turn</span>
         <span class="c1"># We do this so that we can replace a (sub-)dict item</span>
@@ -278,7 +275,8 @@ override any set by previous JSON files.</p>
                         <span class="c1"># logging.debug(parameters_dict[item[0]])</span>
                         <span class="c1"># The sub-dict exists: update this key and value</span>
                         <span class="n">parameters_dict</span><span class="p">[</span><span class="n">item</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span><span class="o">.</span><span class="n">update</span><span class="p">(</span>
-                            <span class="p">{</span><span class="n">subitem</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span> <span class="n">subitem</span><span class="p">[</span><span class="mi">1</span><span class="p">]})</span>
+                            <span class="p">{</span><span class="n">subitem</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span> <span class="n">subitem</span><span class="p">[</span><span class="mi">1</span><span class="p">]}</span>
+                        <span class="p">)</span>
                     <span class="k">else</span><span class="p">:</span>
                         <span class="c1"># The sub-dict does not exist yet, so set this key</span>
                         <span class="c1">#    and value as its first item</span>
@@ -291,9 +289,9 @@ override any set by previous JSON files.</p>
     <span class="k">return</span> <span class="n">parameters_dict</span>
 
 
-<span class="k">class</span> <span class="nc">Parameters</span><span class="p">():</span>
+<span class="k">class</span> <span class="nc">Parameters</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Job parameters container</span>
+<span class="sd">    Provide a job parameters container.</span>
 
 <span class="sd">    Convert top-level items in the parameters dictionary,</span>
 <span class="sd">    whose keys are group names</span>
@@ -315,11 +313,9 @@ override any set by previous JSON files.</p>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">imported_parameters</span><span class="p">:</span> <span class="n">Dict</span><span class="p">,</span>
         <span class="n">evaluations</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Dict</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-        <span class="n">sequence</span><span class="p">:</span> <span class="n">Tuple</span> <span class="o">=</span> <span class="p">()</span>
+        <span class="n">sequence</span><span class="p">:</span> <span class="n">Tuple</span> <span class="o">=</span> <span class="p">(),</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Constructor method.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="sd">&quot;&quot;&quot;Initialize.&quot;&quot;&quot;</span>
         <span class="n">evaluations_</span><span class="p">:</span> <span class="n">Dict</span> <span class="o">=</span> <span class="p">{}</span> <span class="k">if</span> <span class="n">evaluations</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">evaluations</span>
         <span class="n">imported_parameters_</span><span class="p">:</span> <span class="n">Dict</span> <span class="o">=</span> <span class="n">copy</span><span class="p">(</span><span class="n">imported_parameters</span><span class="p">)</span>
         <span class="k">for</span> <span class="n">group_name</span> <span class="ow">in</span> <span class="n">sequence</span><span class="p">:</span>
@@ -328,7 +324,8 @@ override any set by previous JSON files.</p>
                 <span class="bp">self</span><span class="p">,</span>
                 <span class="n">group_name</span><span class="p">,</span>
                 <span class="n">ParametersNestedGroup</span><span class="p">(</span>
-                    <span class="bp">self</span><span class="p">,</span> <span class="n">group_name</span><span class="p">,</span> <span class="n">group_dict</span><span class="p">,</span> <span class="n">evaluations_</span><span class="p">)</span>
+                    <span class="bp">self</span><span class="p">,</span> <span class="n">group_name</span><span class="p">,</span> <span class="n">group_dict</span><span class="p">,</span> <span class="n">evaluations_</span>
+                <span class="p">),</span>
             <span class="p">)</span>
             <span class="n">imported_parameters_</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">group_name</span><span class="p">)</span>
         <span class="k">for</span> <span class="n">group_name</span><span class="p">,</span> <span class="n">group_dict</span> <span class="ow">in</span> <span class="n">imported_parameters_</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
@@ -337,13 +334,14 @@ override any set by previous JSON files.</p>
                 <span class="bp">self</span><span class="p">,</span>
                 <span class="n">group_name</span><span class="p">,</span>
                 <span class="n">ParametersNestedGroup</span><span class="p">(</span>
-                    <span class="bp">self</span><span class="p">,</span> <span class="n">group_name</span><span class="p">,</span> <span class="n">group_dict</span><span class="p">,</span> <span class="n">evaluations_</span><span class="p">)</span>
+                    <span class="bp">self</span><span class="p">,</span> <span class="n">group_name</span><span class="p">,</span> <span class="n">group_dict</span><span class="p">,</span> <span class="n">evaluations_</span>
+                <span class="p">),</span>
             <span class="p">)</span>
 
 
-<span class="k">class</span> <span class="nc">ParametersNestedGroup</span><span class="p">():</span>
+<span class="k">class</span> <span class="nc">ParametersNestedGroup</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Job `ParametersNestedGroup&#39;  sub-container</span>
+<span class="sd">    Provide a job `ParametersNestedGroup`  sub-container.</span>
 
 <span class="sd">    Convert items in a parameters sub-dictionary into class attributes,</span>
 <span class="sd">    setting the attribute name to the dict item&#39;s key and the</span>
@@ -352,11 +350,12 @@ override any set by previous JSON files.</p>
 <span class="sd">    before attribution.</span>
 
 <span class="sd">    Args:</span>
-<span class="sd">        imported_parameters (dict): job parameters dictionary</span>
+<span class="sd">        imported_parameters (dict):</span>
+<span class="sd">            job parameters dictionary</span>
 
 <span class="sd">    Attributes:</span>
-<span class="sd">        various (class attribute): matching second-level items in the</span>
-<span class="sd">        parameters dictionary</span>
+<span class="sd">        various (class attribute):</span>
+<span class="sd">            matching second-level items in the parameters dictionary</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
@@ -364,20 +363,20 @@ override any set by previous JSON files.</p>
         <span class="n">parent</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span>
         <span class="n">group_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
         <span class="n">parameters_dict</span><span class="p">:</span> <span class="n">Dict</span><span class="p">,</span>
-        <span class="n">evaluations</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Dict</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="n">evaluations</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Dict</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Constructor method.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
-            <span class="sa">f</span><span class="s1">&#39;gmplib.parameters.ParametersNestedGroup: p.</span><span class="si">{</span><span class="n">group_name</span><span class="si">}</span><span class="s1">&#39;</span>
-        <span class="p">)</span>
+        <span class="sd">&quot;&quot;&quot;Initialize.&quot;&quot;&quot;</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;gmplib.parameters.ParametersNestedGroup: p.</span><span class="si">{</span><span class="n">group_name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">evaluations</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">evaluations</span> <span class="o">=</span> <span class="p">{}</span>
         <span class="k">for</span> <span class="n">s_key</span><span class="p">,</span> <span class="n">s_value</span> <span class="ow">in</span> <span class="n">parameters_dict</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-            <span class="nb">setattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">s_key</span><span class="p">,</span> <span class="n">parse_expr</span><span class="p">(</span><span class="n">s_value</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;sy.&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">))</span>
-                    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">s_value</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span> <span class="ow">and</span> <span class="s1">&#39;sy.&#39;</span> <span class="ow">in</span> <span class="n">s_value</span> <span class="k">else</span>
-                    <span class="p">(</span><span class="kc">None</span> <span class="k">if</span> <span class="n">s_value</span> <span class="o">==</span> <span class="s1">&#39;None&#39;</span> <span class="k">else</span> <span class="p">(</span><span class="n">s_value</span><span class="p">)))</span>
+            <span class="nb">setattr</span><span class="p">(</span>
+                <span class="bp">self</span><span class="p">,</span>
+                <span class="n">s_key</span><span class="p">,</span>
+                <span class="n">parse_expr</span><span class="p">(</span><span class="n">s_value</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;sy.&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">))</span>
+                <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">s_value</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span> <span class="ow">and</span> <span class="s2">&quot;sy.&quot;</span> <span class="ow">in</span> <span class="n">s_value</span>
+                <span class="k">else</span> <span class="p">(</span><span class="kc">None</span> <span class="k">if</span> <span class="n">s_value</span> <span class="o">==</span> <span class="s2">&quot;None&quot;</span> <span class="k">else</span> <span class="p">(</span><span class="n">s_value</span><span class="p">)),</span>
+            <span class="p">)</span>
         <span class="c1"># For each item containing a &quot;p.&quot; reference, evaluate it</span>
         <span class="c1">#  - this allows us to set parameters that are dependent on</span>
         <span class="c1">#    other parameters</span>
@@ -386,8 +385,10 @@ override any set by previous JSON files.</p>
             <span class="k">for</span> <span class="n">attr</span> <span class="ow">in</span> <span class="n">evaluations</span><span class="p">[</span><span class="n">group_name</span><span class="p">]:</span>
                 <span class="n">value</span> <span class="o">=</span> <span class="nb">eval</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attr</span><span class="p">)))</span>
                 <span class="nb">setattr</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">attr</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
-                <span class="n">ls</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;gmplib.parameters.ParametersNestedGroup:&#39;</span>\
-                    <span class="o">+</span> <span class="s1">&#39; p.</span><span class="si">{group_name}</span><span class="s1">.</span><span class="si">{attr}</span><span class="s1"> &lt;- </span><span class="si">{value}</span><span class="s1">&#39;</span>
+                <span class="n">ls</span> <span class="o">=</span> <span class="p">(</span>
+                    <span class="sa">f</span><span class="s2">&quot;gmplib.parameters.ParametersNestedGroup:&quot;</span>
+                    <span class="o">+</span> <span class="s2">&quot; p.</span><span class="si">{group_name}</span><span class="s2">.</span><span class="si">{attr}</span><span class="s2"> &lt;- </span><span class="si">{value}</span><span class="s2">&quot;</span>
+                <span class="p">)</span>
                 <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">ls</span><span class="p">)</span>
 </pre></div>
 </div>

@@ -1,14 +1,12 @@
 """
----------------------------------------------------------------------
-
-Import job parameters from JSON files and build a settings dictionary
+Import job parameters from JSON files and build a settings dictionary.
 
 TODO: This might be better done using dataclasses
 
 ---------------------------------------------------------------------
 
 Requires Python packages/modules:
-  -  :mod:`sympy`
+  -  :mod:`SymPy <sympy>`
 
 ---------------------------------------------------------------------
 """
@@ -23,25 +21,28 @@ from copy import copy
 from typing import Dict, Tuple, Any, List, Union, Optional
 
 from pprint import PrettyPrinter
+
 pp = PrettyPrinter(indent=4).pprint
 
 # SymPy
 
 warnings.filterwarnings("ignore")
 
-__all__ = ['import_parameters',
-           'read_json_file',
-           'Parameters',
-           'ParametersNestedGroup']
+__all__ = [
+    "import_parameters",
+    "read_json_file",
+    "Parameters",
+    "ParametersNestedGroup",
+]
 
 
 def import_parameters(
-    path: Tuple[str],
-    filenames: Tuple[str] = ('defaults',)
+    path: Tuple[str], filenames: Tuple[str] = ("defaults",)
 ) -> Tuple[Dict, str]:
     """
-    Load JSON parameter files (defaults and job) and parse them in turn to
-    generate a job parameters dictionary.
+    Load JSON parameter files (defaults and job).
+
+    Parse them in turn to generate a job parameters dictionary.
 
     Args:
         path (list): path to JSON parameter files
@@ -52,8 +53,9 @@ def import_parameters(
     """
     # Parse default and assigned JSON parameters files
     dirpath: str = realpath(join(*path))
-    filepaths: List[str] \
-        = [realpath(join(dirpath, filename)) for filename in filenames]
+    filepaths: List[str] = [
+        realpath(join(dirpath, filename)) for filename in filenames
+    ]
     return (read_json_file(filepaths), dirpath)
 
 
@@ -76,11 +78,12 @@ def read_json_file(filepaths: Union[Tuple[str], List[str]]) -> Dict:
     parameters_dict: Dict[Any, Any] = {}
     # Step through each JSON parameters file in turn
     for filepath in filepaths:
-        parameters_file_name = filepath+'.json'
+        parameters_file_name = filepath + ".json"
         logging.info(
-            f'gmplib.parameters.read_json_file: {parameters_file_name}')
+            f"gmplib.parameters.read_json_file: {parameters_file_name}"
+        )
         # Read in the parameters file
-        with open(parameters_file_name, encoding='latin-1') as json_file:
+        with open(parameters_file_name, encoding="latin-1") as json_file:
             parameters = load(json_file)
         # Step through all the dict items in turn
         # We do this so that we can replace a (sub-)dict item
@@ -98,7 +101,8 @@ def read_json_file(filepaths: Union[Tuple[str], List[str]]) -> Dict:
                         # logging.debug(parameters_dict[item[0]])
                         # The sub-dict exists: update this key and value
                         parameters_dict[item[0]].update(
-                            {subitem[0]: subitem[1]})
+                            {subitem[0]: subitem[1]}
+                        )
                     else:
                         # The sub-dict does not exist yet, so set this key
                         #    and value as its first item
@@ -111,9 +115,9 @@ def read_json_file(filepaths: Union[Tuple[str], List[str]]) -> Dict:
     return parameters_dict
 
 
-class Parameters():
+class Parameters:
     """
-    Job parameters container
+    Provide a job parameters container.
 
     Convert top-level items in the parameters dictionary,
     whose keys are group names
@@ -135,11 +139,9 @@ class Parameters():
         self,
         imported_parameters: Dict,
         evaluations: Optional[Dict] = None,
-        sequence: Tuple = ()
+        sequence: Tuple = (),
     ) -> None:
-        """
-        Constructor method.
-        """
+        """Initialize."""
         evaluations_: Dict = {} if evaluations is None else evaluations
         imported_parameters_: Dict = copy(imported_parameters)
         for group_name in sequence:
@@ -148,7 +150,8 @@ class Parameters():
                 self,
                 group_name,
                 ParametersNestedGroup(
-                    self, group_name, group_dict, evaluations_)
+                    self, group_name, group_dict, evaluations_
+                ),
             )
             imported_parameters_.pop(group_name)
         for group_name, group_dict in imported_parameters_.items():
@@ -157,13 +160,14 @@ class Parameters():
                 self,
                 group_name,
                 ParametersNestedGroup(
-                    self, group_name, group_dict, evaluations_)
+                    self, group_name, group_dict, evaluations_
+                ),
             )
 
 
-class ParametersNestedGroup():
+class ParametersNestedGroup:
     """
-    Job `ParametersNestedGroup'  sub-container
+    Provide a job `ParametersNestedGroup`  sub-container.
 
     Convert items in a parameters sub-dictionary into class attributes,
     setting the attribute name to the dict item's key and the
@@ -172,32 +176,33 @@ class ParametersNestedGroup():
     before attribution.
 
     Args:
-        imported_parameters (dict): job parameters dictionary
+        imported_parameters (dict):
+            job parameters dictionary
 
     Attributes:
-        various (class attribute): matching second-level items in the
-        parameters dictionary
+        various (class attribute):
+            matching second-level items in the parameters dictionary
     """
 
     def __init__(
         self,
-        parent: Any,
+        parent: Parameters,
         group_name: str,
         parameters_dict: Dict,
-        evaluations: Optional[Dict] = None
+        evaluations: Optional[Dict] = None,
     ) -> None:
-        """
-        Constructor method.
-        """
-        logging.info(
-            f'gmplib.parameters.ParametersNestedGroup: p.{group_name}'
-        )
+        """Initialize."""
+        logging.info(f"gmplib.parameters.ParametersNestedGroup: p.{group_name}")
         if evaluations is None:
             evaluations = {}
         for s_key, s_value in parameters_dict.items():
-            setattr(self, s_key, parse_expr(s_value.replace('sy.', ''))
-                    if isinstance(s_value, str) and 'sy.' in s_value else
-                    (None if s_value == 'None' else (s_value)))
+            setattr(
+                self,
+                s_key,
+                parse_expr(s_value.replace("sy.", ""))
+                if isinstance(s_value, str) and "sy." in s_value
+                else (None if s_value == "None" else (s_value)),
+            )
         # For each item containing a "p." reference, evaluate it
         #  - this allows us to set parameters that are dependent on
         #    other parameters
@@ -206,6 +211,8 @@ class ParametersNestedGroup():
             for attr in evaluations[group_name]:
                 value = eval(str(getattr(self, attr)))
                 setattr(p, attr, value)
-                ls = f'gmplib.parameters.ParametersNestedGroup:'\
-                    + ' p.{group_name}.{attr} <- {value}'
+                ls = (
+                    f"gmplib.parameters.ParametersNestedGroup:"
+                    + " p.{group_name}.{attr} <- {value}"
+                )
                 logging.info(ls)

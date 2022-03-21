@@ -1,7 +1,5 @@
 """
----------------------------------------------------------------------
-
-Visualization
+Provide a data visualization class.
 
 ---------------------------------------------------------------------
 
@@ -9,14 +7,13 @@ Requires Python packages/modules:
   -  :mod:`matplotlib`
 
 ---------------------------------------------------------------------
-
 """
 # Library
 import warnings
 import logging
 from itertools import cycle
 import operator as op
-from typing import Dict, Any, Tuple, Optional, List  # ,  Callable
+from typing import Dict, Any, Tuple, Optional, List, Callable, Iterable, Sized
 
 # MatPlotLib
 import matplotlib as mpl
@@ -25,12 +22,12 @@ import matplotlib.font_manager
 
 warnings.filterwarnings("ignore")
 
-__all__ = ['GraphingBase']
+__all__ = ["GraphingBase"]
 
 
 class GraphingBase:
     """
-    Visualization base class.
+    Provide a visualization base class.
 
     Args:
         dpi:
@@ -65,37 +62,43 @@ class GraphingBase:
             return i^th marker
     """
 
-    def __init__(self, dpi: int = 100, font_size: int = 11) -> None:
-        """
-        Constructor method.
+    dpi: int
+    font_size: int
+    fdict: Dict
+    colors: Callable
+    n_colors: int
+    color_cycle: Callable
+    markers: Tuple
+    n_markers: int
+    marker_cycle: cycle
+    linestyle_list: Tuple
+    color: Callable
+    marker: Callable
+    font_family: str
 
-        Args:
-            dpi:
-                resolution for rasterized images
-            font_size:
-                general font size
-        """
+    def __init__(self, dpi: int = 100, font_size: int = 11) -> None:
+        """Initialize."""
         self.dpi = dpi
         self.font_size = font_size
         self.fdict: Dict[Any, Any] = {}
-        prop_cycle = plt.rcParams['axes.prop_cycle']
-        self.colors = prop_cycle.by_key()['color']
-        self.n_colors = len(self.colors)
-        self.color_cycle = cycle(self.colors)
-        self.markers = ('o', 's', 'v', 'p', '*', 'D', 'X', '^', 'h', 'P')
+        prop_cycle = plt.rcParams["axes.prop_cycle"]
+        self.colors = prop_cycle.by_key()["color"]  # type: ignore
+        self.n_colors = len(self.colors)  # type: ignore
+        self.color_cycle = cycle(self.colors)  # type: ignore
+        self.markers = ("o", "s", "v", "p", "*", "D", "X", "^", "h", "P")
         self.n_markers = len(self.markers)
         self.marker_cycle = cycle(self.markers)
-        self.linestyle_list = ('solid', 'dashdot', 'dashed', (0, (3, 1, 1, 1)))
+        self.linestyle_list = ("solid", "dashdot", "dashed", (0, (3, 1, 1, 1)))
 
-        self.color = lambda i_: self.colors[i_ % self.n_colors]
-        self.marker = lambda i_: self.markers[i_ % self.n_markers]
-        self.font_family = 'Arial' if 'Arial' in self.get_fonts() else ''
-        mpl.rc('font', size=self.font_size, family=self.font_family)
+        color_ = lambda i_: self.colors[i_ % self.n_colors]  # type: ignore
+        marker_ = lambda i_: self.markers[i_ % self.n_markers]  # type: ignore
+        self.color = color_  # type: ignore
+        self.marker = marker_  # type: ignore
+        self.font_family = "Arial" if "Arial" in self.get_fonts() else ""
+        mpl.rc("font", size=self.font_size, family=self.font_family)
 
     def get_fonts(self) -> List[str]:
-        """
-        Fetch the names of all the font families available on the system
-        """
+        """Fetch the names of all the font families available on the system."""
         fpaths = matplotlib.font_manager.findSystemFonts()
         fonts: List[str] = []
         for fpath in fpaths:
@@ -103,7 +106,7 @@ class GraphingBase:
                 font = matplotlib.font_manager.get_font(fpath).family_name
                 fonts.append(font)
             except RuntimeError as re:
-                logging.debug(f'{re}: failed to get font name for {fpath}')
+                logging.debug(f"{re}: failed to get font name for {fpath}")
                 pass
         return fonts
 
@@ -111,11 +114,12 @@ class GraphingBase:
         self,
         fig_name: str,
         fig_size: Optional[Tuple[float, float]] = None,
-        dpi: Optional[int] = None
+        dpi: Optional[int] = None,
     ) -> plt.Figure:
         """
-        Initialize a :mod:`Pyplot <matplotlib.pyplot>` figure,
-        set its size and dpi, set the font size,
+        Initialize a :mod:`Pyplot <matplotlib.pyplot>` figure.
+
+        Set its size and dpi, set the font size,
         choose the Arial font family if possible,
         and append it to the figures dictionary.
 
@@ -132,11 +136,14 @@ class GraphingBase:
                 reference to :mod:`MatPlotLib/Pyplot <matplotlib.pyplot>`
                 figure
         """
-        fig_size_: Tuple[float, float] \
-            = (8, 8) if fig_size is None else fig_size
+        fig_size_: Tuple[float, float] = (
+            (8, 8) if fig_size is None else fig_size
+        )
         dpi_: float = self.dpi if dpi is None else dpi
-        logging.info('gmplib.plot.GraphingBase:\n   '
-            + f'Creating plot: {fig_name} size={fig_size_} @ {dpi_} dpi')
+        logging.info(
+            "gmplib.plot.GraphingBase:\n   "
+            + f"Creating plot: {fig_name} size={fig_size_} @ {dpi_} dpi"
+        )
         fig = plt.figure()
         self.fdict.update({fig_name: fig})
         fig.set_size_inches(fig_size_)
@@ -167,35 +174,36 @@ class GraphingBase:
         # Negative over negative because of the order of subtraction
         # logging.info(axes.get_ylim(),axes.get_xlim())
         data_ratio: float = op.sub(*axes.get_ylim()) / op.sub(*axes.get_xlim())
-        aspect_ratio: float = disp_ratio/data_ratio
+        aspect_ratio: float = disp_ratio / data_ratio
         return aspect_ratio
 
     def naturalize(self, fig: plt.Figure) -> None:
-        """
-        TBD
-        """
+        """Adjust graph aspect ratio into 'natural' ratio."""
         axes: plt.Axes = fig.gca()
         # x_lim, y_lim = axes.get_xlim(), axes.get_ylim()
         # axes.set_aspect((y_lim[1]-y_lim[0])/(x_lim[1]-x_lim[0]))
-        axes.set_aspect(1/self.get_aspect(axes))
+        axes.set_aspect(1 / self.get_aspect(axes))
 
     def stretch(
-        self, fig: plt.Figure,
+        self,
+        fig: plt.Figure,
         xs: Optional[Tuple[float, float]] = None,
-        ys: Optional[Tuple[float, float]] = None
+        ys: Optional[Tuple[float, float]] = None,
     ) -> None:
-        """
-        TBD
-        """
+        """Stretch graph axes by respective factors."""
         axes: plt.Axes = fig.gca()
         if xs is not None:
             x_lim = axes.get_xlim()
-            x_range = x_lim[1]-x_lim[0]
-            axes.set_xlim(x_lim[0]-x_range*xs[0], x_lim[1]+x_range*xs[1])
+            x_range = x_lim[1] - x_lim[0]
+            axes.set_xlim(
+                x_lim[0] - x_range * xs[0], x_lim[1] + x_range * xs[1]
+            )
         if ys is not None:
             y_lim = axes.get_ylim()
-            y_range = y_lim[1]-y_lim[0]
-            axes.set_ylim(y_lim[0]-y_range*ys[0], y_lim[1]+y_range*ys[1])
+            y_range = y_lim[1] - y_lim[0]
+            axes.set_ylim(
+                y_lim[0] - y_range * ys[0], y_lim[1] + y_range * ys[1]
+            )
 
     # def covector_fishbone_vertical(self,
     #                                x: float, y: float,
@@ -268,25 +276,26 @@ class GraphingBase:
     #         plt.plot([x-dx],[y-dy], 'o', ms=2, c=color)
     #       plt.plot([x-dx-npx/2,x-dx+npx/2],[y-dy+npy/2,y-dy-npy/2], c=color)
 
+
 # from dataclasses import dataclass, field
 # @dataclass(repr=True, eq=False, order=False, unsafe_hash=False, frozen=False)
 
-    # dpi: int = field(repr=False, default=100)
-    # font_size: int = field(repr=False, default=11)
-    # fdict: dict = field(repr=True, default_factory=dict)
-    # colors: list = field(repr=False, default_factory=list)
-    #      #=lambda: (plt.rcParams['axes.prop_cycle']).by_key()['color'])
-    # markers: list = field(repr=False, default_factory=list)
-    #      #=lambda: ['o', 's', 'v', 'p', '*', 'D', 'X', '^','h','P'])
-    # linestyle_list: list = field(repr=False, default_factory=list)
-    #      #=lambda: [ 'solid', 'dashdot', 'dashed', (0, (3, 1, 1, 1))])
-    #
-    # def __post_init__(self):
-    #     self.colors = (plt.rcParams['axes.prop_cycle']).by_key()['color']
-    #     self.n_colors = len(list(self.colors))
-    #     self.color_cycle = cycle(self.colors)
-    #     self.markers = ['o', 's', 'v', 'p', '*', 'D', 'X', '^','h','P']
-    #     self.n_markers = len(self.markers)
-    #     self.marker_cycle = cycle(self.markers)
-    #     self.linestyle_list = [ 'solid', 'dashdot', 'dashed',
-    #   (0, (3, 1, 1, 1))]
+# dpi: int = field(repr=False, default=100)
+# font_size: int = field(repr=False, default=11)
+# fdict: dict = field(repr=True, default_factory=dict)
+# colors: list = field(repr=False, default_factory=list)
+#      #=lambda: (plt.rcParams['axes.prop_cycle']).by_key()['color'])
+# markers: list = field(repr=False, default_factory=list)
+#      #=lambda: ['o', 's', 'v', 'p', '*', 'D', 'X', '^','h','P'])
+# linestyle_list: list = field(repr=False, default_factory=list)
+#      #=lambda: [ 'solid', 'dashdot', 'dashed', (0, (3, 1, 1, 1))])
+#
+# def __post_init__(self):
+#     self.colors = (plt.rcParams['axes.prop_cycle']).by_key()['color']
+#     self.n_colors = len(list(self.colors))
+#     self.color_cycle = cycle(self.colors)
+#     self.markers = ['o', 's', 'v', 'p', '*', 'D', 'X', '^','h','P']
+#     self.n_markers = len(self.markers)
+#     self.marker_cycle = cycle(self.markers)
+#     self.linestyle_list = [ 'solid', 'dashdot', 'dashed',
+#   (0, (3, 1, 1, 1))]

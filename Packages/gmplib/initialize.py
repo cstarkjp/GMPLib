@@ -1,6 +1,4 @@
 """
----------------------------------------------------------------------
-
 Configure to run in `IPython`_.
 
 ---------------------------------------------------------------------
@@ -16,8 +14,6 @@ in a `Jupyter notebook`_ or `Jupyter QtConsole`_.
    (in case the code has been modded) when
    a notebook is re-run in-situ
 
-
-
 ---------------------------------------------------------------------
 
 Requires `Matplotlib`_ and `IPython`_.
@@ -29,7 +25,6 @@ restart. This makes code modding and subsequent rerunning of a notebook
 smooth and seamless. It is not needed for normal operation, and if
 unavailable processing continues regardless.
 
-
 ---------------------------------------------------------------------
 
 .. _Matplotlib: https://matplotlib.org/
@@ -38,9 +33,6 @@ unavailable processing continues regardless.
 .. _IPython: https://ipython.readthedocs.io/en/stable/
 .. _Jupyter notebook: https://jupyter-notebook.readthedocs.io/en/stable/
 .. _Jupyter QtConsole: https://qtconsole.readthedocs.io/en/stable/
-
-
-
 """
 
 # import logging
@@ -55,11 +47,9 @@ from IPython import get_ipython
 
 
 def check_is_ipython():
-    """
-    Check if we are running an IPython kernel from Jupyter etc
-    """
+    """Check if we are running an IPython kernel from Jupyter etc."""
     try:
-        if 'IPKernelApp' not in get_ipython().config:  # pragma: no cover
+        if "IPKernelApp" not in get_ipython().config:  # pragma: no cover
             return False
     except ImportError:
         return False
@@ -68,7 +58,7 @@ def check_is_ipython():
     return True
 
 
-is_python = check_is_ipython()
+is_python: bool = check_is_ipython()
 
 if is_python:
     try:
@@ -79,21 +69,21 @@ if is_python:
     #     print('Possibly benign error trying to config Matplotlib backend')
 
     try:
-        get_ipython().magic('matplotlib inline')
+        get_ipython().magic("matplotlib inline")
     except NameError:
         pass
     # except:
     #     print('Possibly benign error trying to config Matplotlib backend')
 
     try:
-        get_ipython().magic('load_ext autoreload')
-        get_ipython().magic('autoreload 2')
+        get_ipython().magic("load_ext autoreload")
+        get_ipython().magic("autoreload 2")
         # get_ipython().magic('aimport '+package_name)
     except NameError as error:
         print(
-            'Error trying to invoke get_ipython(), '
-            + 'possibly because not running IPython:',
-            error
+            "Error trying to invoke get_ipython(), "
+            + "possibly because not running IPython:",
+            error,
         )
     # except:
     #     print('Possibly benign error trying to config autoreload')
