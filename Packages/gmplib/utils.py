@@ -34,6 +34,8 @@ import numpy as np
 
 # SymPy
 from sympy import Eq, N, Mul, Matrix
+from sympy.matrices.immutable import ImmutableDenseMatrix
+from sympy.matrices import MutableDenseMatrix
 from sympy.physics.units import Quantity, convert_to
 from sympy.physics.units.systems import SI
 
@@ -106,6 +108,7 @@ def is_jsonable(item: Any) -> bool:
 def export_results(
     results_to_export: Dict,
     results_dir: os.PathLike,
+    results_filename: Optional[os.PathLike] = None,
     suffix: str = "",
     do_parse: bool = True,
     max_nparray_size: Optional[int] = None,
@@ -120,6 +123,8 @@ def export_results(
             results dictionary (of dictionaries)
         results_dir:
             path to results directory
+        results_filename:
+            optional name for JSON file (extension omitted)
         suffix:
             optional suffix to append to filename (not the extension)
         do_parse:
@@ -177,7 +182,7 @@ def export_results(
         json_str = dumps(export_dict, sort_keys=False, indent=4)
     except Exception:
         print("Failed to serialize results into JSON format")
-    json_filename = f"results{suffix}.json"
+    json_filename = f"results{suffix}.json" if results_filename is None else f"{results_filename}{suffix}.json" 
     json_path = realpath(join(results_dir, json_filename))
     with open(json_path, "w", encoding="latin-1") as json_file:
         print(f'Writing to "{json_path}"')
@@ -227,7 +232,7 @@ def e2d(
     return eqn_dict
 
 
-def dict2mat(dict_: Dict) -> Matrix:
+def dict2mat(dict_: Dict) -> MutableDenseMatrix:
     """
     Convert a dictionary into a SymPy matrix.
 

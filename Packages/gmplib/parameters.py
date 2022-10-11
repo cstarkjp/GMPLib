@@ -24,7 +24,21 @@ from pprint import PrettyPrinter
 
 pp = PrettyPrinter(indent=4).pprint
 
-# SymPy
+# Import units & dimensions
+from sympy.physics.units import (
+    mm,
+    meter,
+    meters,
+    second,
+    seconds,
+    hour,
+    hours,
+    kg,
+    gram,
+    grams,
+    g,
+    mole,
+)
 
 warnings.filterwarnings("ignore")
 
@@ -37,7 +51,8 @@ __all__ = [
 
 
 def import_parameters(
-    path: Tuple[str], filenames: Tuple[str] = ("defaults",)
+    path: Union[str, Tuple[str]],
+    filenames: Tuple[str] = ("defaults",),
 ) -> Tuple[Dict, str]:
     """
     Load JSON parameter files (defaults and job).
@@ -45,14 +60,14 @@ def import_parameters(
     Parse them in turn to generate a job parameters dictionary.
 
     Args:
-        path (list): path to JSON parameter files
-        filenames (str): list of defaults and job JSON parameter filenames
+        path (str, or as tuple of str): path to JSON parameter files
+        filenames (tuple): list of defaults and job JSON parameter filenames
 
     Return:
         dict:  job parameter dictionary
     """
     # Parse default and assigned JSON parameters files
-    dirpath: str = realpath(join(*path))
+    dirpath: str = realpath(join(*path)) if isinstance(path, tuple) else path
     filepaths: List[str] = [
         realpath(join(dirpath, filename)) for filename in filenames
     ]
@@ -74,7 +89,7 @@ def read_json_file(filepaths: Union[Tuple[str], List[str]]) -> Dict:
     Return:
         dict:  job parameters dictionary
     """
-    # Start wit a clean parameters dictionary
+    # Start with a clean parameters dictionary
     parameters_dict: Dict[Any, Any] = {}
     # Step through each JSON parameters file in turn
     for filepath in filepaths:
@@ -196,12 +211,19 @@ class ParametersNestedGroup:
         if evaluations is None:
             evaluations = {}
         for s_key, s_value in parameters_dict.items():
+            value_: Any
+            if isinstance(s_value, str) and "sy." in s_value:
+                value_ = parse_expr(s_value.replace("sy.", ""))
+            elif isinstance(s_value, str) and "unit." in s_value:
+                value_ = eval(s_value.replace("unit.", ""))
+            elif s_value == "None":
+                value_ = None
+            else:
+                value_ = s_value
             setattr(
                 self,
                 s_key,
-                parse_expr(s_value.replace("sy.", ""))
-                if isinstance(s_value, str) and "sy." in s_value
-                else (None if s_value == "None" else (s_value)),
+                value_,
             )
         # For each item containing a "p." reference, evaluate it
         #  - this allows us to set parameters that are dependent on

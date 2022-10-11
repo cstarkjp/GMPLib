@@ -35,8 +35,7 @@ from wand.image import Image as PdfImage
 import PIL
 
 # PDF processing
-from PyPDF2 import PdfFileReader, PdfFileWriter
-from PyPDF2.pdf import PageObject
+from PyPDF2 import PdfFileReader, PdfFileWriter, PageObject
 
 warnings.filterwarnings("ignore")
 
@@ -86,13 +85,13 @@ class CombineImages(ABC):
         image_sources: Dict[str, str],
         file_type: str = "jpg",
         spacing: int = 20,
-        do_align_right: bool = False,
+        do_align: bool = False,
     ) -> None:
         """Initialize."""
         self.combo_image: Image = None
         self.combo_page: PdfImage = None
         self.get_images(image_bundle, image_sources, file_type, spacing)
-        self.paste_images(spacing, do_align_right)
+        self.paste_images(spacing, do_align)
         self.save_combo_image(out_path, into_filename, file_type)
 
     @abstractmethod
@@ -118,15 +117,15 @@ class CombineImages(ABC):
         """
 
     @abstractmethod
-    def paste_images(self, spacing: float, do_align_right: bool) -> None:
+    def paste_images(self, spacing: float, do_align: bool) -> None:
         """
         How to combine image files (abstract method).
 
         Args:
             spacing:
                 pixel padding between images
-            do_align_right:
-                align all images along right margin
+            do_align:
+                align all images along right or top margin
         """
 
     @abstractmethod
@@ -193,7 +192,7 @@ class CombineRasterImagesVertically(CombineRasterImages):
     # Definitions
     combo_image: Image
 
-    def paste_images(self, spacing: float, do_align_right: bool) -> None:
+    def paste_images(self, spacing: float, do_align: bool) -> None:
         """Combine the images."""
         x_size = max([image.size[0] for image in self.image_list])
         y_sizes = [image.size[1] for image in self.image_list]
@@ -203,9 +202,9 @@ class CombineRasterImagesVertically(CombineRasterImages):
         self.combo_image = PIL.Image.new(
             "RGB", (x_size, y_size), (255, 255, 255)
         )
-        y_offset = 0
+        y_offset: int = 0
         for image, y_size in zip(self.image_list, y_sizes):
-            x_offset = x_size - image.size[0] if do_align_right else 0
+            x_offset: int = x_size - image.size[0] if do_align else 0
             self.combo_image.paste(image, (x_offset, y_offset))
             y_offset += y_size + spacing
 
@@ -220,7 +219,7 @@ class CombineRasterImagesHorizontally(CombineRasterImages):
     # Definitions
     combo_image: Image
 
-    def paste_images(self, spacing: float, do_align_right: bool) -> None:
+    def paste_images(self, spacing: float, do_align: bool) -> None:
         """Combine the images."""
         y_size = max([image.size[1] for image in self.image_list])
         x_sizes = [image.size[0] for image in self.image_list]
@@ -230,9 +229,10 @@ class CombineRasterImagesHorizontally(CombineRasterImages):
         self.combo_image = PIL.Image.new(
             "RGB", (x_size, y_size), (255, 255, 255)
         )
-        x_offset = 0
+        x_offset: int = 0
         for image, x_size in zip(self.image_list, x_sizes):
-            self.combo_image.paste(image, (x_offset, 0))
+            y_offset: int = y_size - image.size[1] if do_align else 0
+            self.combo_image.paste(image, (x_offset, y_offset))
             x_offset += x_size + spacing
 
 
@@ -290,7 +290,7 @@ class CombinePdfImagesVertically(CombinePdfImages):
     # Definitions
     combo_page: PdfImage
 
-    def paste_images(self, spacing: float, do_align_right: bool) -> None:
+    def paste_images(self, spacing: float, do_align: bool) -> None:
         """Combine the images."""
         x_size: Decimal = max(
             [page_.mediaBox.getWidth() for page_ in self.page_list]
@@ -305,9 +305,7 @@ class CombinePdfImagesVertically(CombinePdfImages):
         y_offset = y_size
         for i_, (page_, y_size_) in enumerate(zip(self.page_list, y_sizes)):
             y_offset -= Decimal(y_size_) + Decimal(spacing if i_ > 0 else 0)
-            x_offset = (
-                x_size - page_.mediaBox.getWidth() if do_align_right else 0
-            )
+            x_offset = x_size - page_.mediaBox.getWidth() if do_align else 0
             self.combo_page.mergeTranslatedPage(page_, x_offset, y_offset)
 
 
@@ -321,7 +319,7 @@ class CombinePdfImagesHorizontally(CombinePdfImages):
     # Definitions
     combo_page: PdfImage
 
-    def paste_images(self, spacing: float, do_align_right: bool) -> None:
+    def paste_images(self, spacing: float, do_align: bool) -> None:
         """Combine the images."""
         y_size: Decimal = max(
             [page_.mediaBox.getHeight() for page_ in self.page_list]
@@ -339,7 +337,8 @@ class CombinePdfImagesHorizontally(CombinePdfImages):
         page_list.reverse()
         for i_, (page_, x_size_) in enumerate(zip(page_list, x_sizes)):
             x_offset -= Decimal(x_size_) + Decimal(spacing if i_ > 0 else 0)
-            self.combo_page.mergeTranslatedPage(page_, x_offset, 0)
+            y_offset = y_size - page_.mediaBox.getHeight() if do_align else 0
+            self.combo_page.mergeTranslatedPage(page_, x_offset, y_offset)
 
 
 def fetch_images(
