@@ -35,7 +35,8 @@ __all__ = [
 
 
 def create_directories(
-    results_path: Tuple[str, str] = ("..", "Results"), results_dir: str = "Demo"
+    results_path: Tuple[str, str] = ("..", "Results"), 
+    results_dir: str = "Demo"
 ) -> str:
     """
     Create results parent and target directory.
