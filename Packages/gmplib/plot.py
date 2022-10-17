@@ -113,6 +113,7 @@ class GraphingBase:
     def create_figure(
         self,
         fig_name: str,
+        sub_plots = None,
         fig_size: Optional[Tuple[float, float]] = None,
         dpi: Optional[int] = None,
     ) -> plt.Figure:
@@ -144,7 +145,13 @@ class GraphingBase:
             "gmplib.plot.GraphingBase:\n   "
             + f"Creating plot: {fig_name} size={fig_size_} @ {dpi_} dpi"
         )
-        fig = plt.figure()
+        if sub_plots is None:
+            fig = plt.figure()
+        else:
+            fig, _ = plt.subplots(*sub_plots)
+            logging.info(
+                f"   with {sub_plots} sub-plots"
+            )
         self.fdict.update({fig_name: fig})
         fig.set_size_inches(fig_size_)
         fig.set_dpi(dpi_)
