@@ -16,6 +16,7 @@ from sympy.parsing.sympy_parser import parse_expr
 import warnings
 import logging
 from os.path import realpath, join
+from os import environ
 from json import load
 from copy import copy
 from typing import Dict, Tuple, Any, List, Union, Optional
