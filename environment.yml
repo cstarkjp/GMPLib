@@ -1,0 +1,19 @@
+# mamba env create --name GMPLib --file environment.yml
+#  - to export with versions:  mamba env export > environment_locked.yml
+name: GMPLib
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python
+  - jupyter
+  - ipython
+  - numpy
+  - matplotlib
+  - sympy
+  - pillow #PIL
+  - wand
+  - PyPDF2
+variables:
+  PYTHONPATH: /Users/cps/miniconda3/envs/GMPLib/lib/python3.12/site-packages:/Users/cps/Projects/GMPLib/Packages
+prefix: /Users/cps/miniconda3/envs/GMPLib
