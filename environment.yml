@@ -15,5 +15,5 @@ dependencies:
   - wand
   - PyPDF2
 variables:
-  PYTHONPATH: /Users/cps/miniconda3/envs/GMPLib/lib/python3.12/site-packages:/Users/cps/Projects/GMPLib/Packages
-prefix: /Users/cps/miniconda3/envs/GMPLib
+  PYTHONPATH: ${HOME}/miniconda3/envs/GMPLib/lib/python3.12/site-packages:${HOME}/Projects/GMPLib/Packages
+prefix: ${HOME}/miniconda3/envs/GMPLib

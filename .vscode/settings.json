@@ -11,21 +11,7 @@
       }
     ]
   },
-  "python.linting.enabled": true,
-  "python.linting.mypyEnabled": false,
-  "python.linting.flake8Enabled": false,
-  "python.linting.pylintEnabled": false,
-  "python.formatting.provider": "autopep8",
-  "python.formatting.autopep8Args": [
-    "--max-line-length=80",
-    "--ignore",
-    "E402"
-  ],
-  "python.formatting.blackArgs": ["--line-length", "80"],
-  "python.linting.pydocstyleEnabled": true,
-  "python.linting.pycodestyleEnabled": false,
-  "python.formatting.blackPath": "/opt/local/Library/Frameworks/Python.framework/Versions/3.8/bin/black",
-  "python.linting.banditEnabled": false,
-  "python.linting.prospectorEnabled": false,
-  "python.linting.pylintArgs": ["--disable=C0103"]
+  "python.analysis.extraPaths": [
+    "/Users/cps/miniconda3/envs/GMPLib/lib/python3.12/site-packages"
+  ]
 }
